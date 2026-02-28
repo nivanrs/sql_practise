@@ -6,11 +6,9 @@ A personal archive of daily SQL practice problems posted on [LinkedIn](https://w
 
 ```
 posts/
-├── index.md                  # Full post index with dates, screenshots, and PDFs
-├── *.md                      # One file per post (23 total)
-└── media/
-    ├── screenshots/          # LinkedIn post screenshots (23 PNGs)
-    └── pdfs/                 # LinkedIn carousel PDFs (6 PDFs)
+├── index.md          # Full post index with dates and PDF links
+├── *.md              # One file per post (23 total)
+└── media/pdfs/       # LinkedIn carousel PDFs (posts #1–5)
 ```
 
 ## Posts

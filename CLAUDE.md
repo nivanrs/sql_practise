@@ -9,10 +9,9 @@ A personal archive of LinkedIn "SQL of the Day" posts. Each post is a SQL practi
 ## Repository Structure
 
 - `posts/*.md` — One markdown file per post, named by slug (e.g. `premium_vs_freemium_downloads.md`)
-- `posts/index.md` — Master index table: post number, title, source, exact posting date, links to file/screenshot/PDF
-- `posts/media/screenshots/` — LinkedIn post screenshots, one PNG per post (`{slug}.png`)
-- `posts/media/pdfs/` — LinkedIn carousel PDFs (6 files, covering posts #1–5 plus one unindexed salary-gap post)
-- `images/` — Legacy image assets (pre-archive; superseded by `posts/media/`)
+- `posts/index.md` — Master index table: post number, title, source, exact posting date, links to file and PDF
+- `posts/media/pdfs/` — LinkedIn carousel PDFs (5 files, covering posts #1–5, Jan–Feb 2026)
+- `images/` — Legacy image assets for post #10 (Oscar problem)
 - `readme.md` — Project overview
 
 ## Post Markdown Format
@@ -43,17 +42,13 @@ Each post file follows this structure:
 ## Adding a New Post
 
 1. Create `posts/{slug}.md` using the format above
-2. Take a LinkedIn screenshot and save to `posts/media/screenshots/{slug}.png`
-3. If a carousel PDF exists, save to `posts/media/pdfs/`
-4. Add a row to `posts/index.md` — columns: `# | Problem | Source | Posted | File | Screenshot | PDF`
-   - **Posted date**: decode from LinkedIn URN with `urn >> 22` to get Unix ms timestamp
-   - Screenshot link: `[📸](media/screenshots/{slug}.png)`
+2. If a carousel PDF exists, save to `posts/media/pdfs/`
+3. Add a row to `posts/index.md` — columns: `# | Problem | Source | Posted | File | PDF`
+   - **Posted date**: decode from LinkedIn URN with `urn >> 22` to get Unix ms timestamp (`datetime.fromtimestamp((urn >> 22) / 1000, tz=timezone.utc)`)
    - PDF link: `[📄](media/pdfs/{filename}.pdf)` or `—`
 
 ## Key Facts
 
 - 23 posts indexed, spanning April 2025 – February 2026
-- LinkedIn URN → exact post date: `datetime.fromtimestamp((urn >> 22) / 1000, tz=timezone.utc)`
 - Post #10 (`person_with_most_oscars`) has no LinkedIn URN (posted date unknown)
-- The `sql_of_the_day_salary_gap.pdf` in `media/pdfs/` predates all 23 indexed posts and has no matching entry in the index
-- `.playwright-mcp/` is gitignored — used when scraping LinkedIn screenshots via Playwright MCP
+- `.playwright-mcp/` is gitignored — created when scraping LinkedIn via Playwright MCP
