@@ -16,10 +16,10 @@ A personal archive of LinkedIn "SQL of the Day" posts. Each post is a SQL practi
 
 ## Post Markdown Format
 
-Each post file follows this structure:
+Each post file follows this structure (header emoji is `💻`):
 ```
-## {emoji} SQL of the Day: {Title}
-🔗 {LinkedIn or StrataScratch URL}
+## 💻 SQL of the Day: {Title}
+🔗 {LinkedIn shortlink or StrataScratch URL}
 ### Problem:
 {problem statement}
 ---
@@ -39,16 +39,18 @@ Each post file follows this structure:
 {hashtags}
 ```
 
+Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, topic-specific tags at the end).
+
 ## Adding a New Post
 
 1. Create `posts/{slug}.md` using the format above
 2. If a carousel PDF exists, save to `posts/media/pdfs/`
-3. Add a row to `posts/index.md` — columns: `# | Problem | Source | Posted | File | PDF`
+3. Prepend a new row #1 to `posts/index.md` and renumber all existing rows — index is **reverse-chronological** (newest = #1)
    - **Posted date**: decode from LinkedIn URN with `urn >> 22` to get Unix ms timestamp (`datetime.fromtimestamp((urn >> 22) / 1000, tz=timezone.utc)`)
    - PDF link: `[📄](media/pdfs/{filename}.pdf)` or `—`
 
 ## Key Facts
 
-- 23 posts indexed, spanning April 2025 – February 2026
+- 24 posts total (23 indexed + `finding_purchases.md` pending index entry)
 - Post #10 (`person_with_most_oscars`) has no LinkedIn URN (posted date unknown)
 - `.playwright-mcp/` is gitignored — created when scraping LinkedIn via Playwright MCP
