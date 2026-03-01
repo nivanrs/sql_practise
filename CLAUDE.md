@@ -14,6 +14,11 @@ A personal archive of LinkedIn "SQL of the Day" posts. Each post is a SQL practi
 - `images/` — Legacy image assets for post #10 (Oscar problem)
 - `readme.md` — Project overview
 
+## Presentation sample
+
+https://www.canva.com/design/DAG-HWtEYj4/rK2Ae5G6JGPUfbNHnNcR-A/edit
+
+
 ## Post Markdown Format
 
 Each post file follows this structure (header emoji is `💻`):
