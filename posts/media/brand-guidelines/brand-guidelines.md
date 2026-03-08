@@ -2,6 +2,7 @@
 
 > Based on the carousel slide design used across LinkedIn posts.
 > Design ID: `DAG-HWtEYj4` (Canva)
+> Colors pixel-sampled from source PDFs. Design philosophy: [`warm-authority.md`](warm-authority.md). Visual reference: [`brand-guidelines.png`](brand-guidelines.png)
 
 ---
 
@@ -9,9 +10,9 @@
 
 | Role | Name | Hex | Usage |
 |---|---|---|---|
-| Background | Cream / Warm Ivory | `#FAF6EE` | All slide backgrounds |
-| Primary Text | Rich Black | `#1A1A1A` | Body copy, sub-labels |
-| Accent / Highlight | Deep Crimson | `#C41453` | Section headings, script CTA |
+| Background | Warm Cream | `#FBF3E4` | All slide backgrounds |
+| Primary Text | Near Black | `#1A1A1A` | Body copy, sub-labels |
+| Accent / Highlight | Crimson | `#B91646` | Section headings, script CTA |
 | Surface Dark | Code Panel | `#1E1E1E` | Code block background |
 | Code Text | Soft White | `#E8E8E8` | Code body text |
 | Decorative | Black Dots | `#000000` | Three-dot ornament (title slide) |
@@ -40,10 +41,10 @@
 
 | Role | Canva / Google Font |
 |---|---|
-| T1 / T2 Hero & Section Headings | **Anton** or **Bebas Neue** |
-| T3 Body | **DM Sans** or **Inter** |
-| T4 Script CTA | **Dancing Script** or **Playlist Script** |
-| T6 Code | **Source Code Pro** or **JetBrains Mono** |
+| T1 / T2 Hero & Section Headings | **Big Shoulders Bold** |
+| T3 Body | **Instrument Sans Regular** |
+| T4 Script CTA | **Nothing You Could Do** |
+| T6 Code | **JetBrains Mono** |
 
 ### Type Rules
 - Hero headline (T1) should be the dominant visual element — use it large
