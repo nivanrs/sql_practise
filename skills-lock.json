@@ -1,10 +1,45 @@
 {
   "version": 1,
   "skills": {
+    "canvas-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "a2fe47d24b3fd8e52faef731fff099c557e698083cd644b2e5695cc4dd8c7715"
+    },
+    "commit-work": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "computedHash": "88cec816d028de357ae7ede3ace36a2bc235a225e3e7d2bb18cdb5190ab6c482"
+    },
+    "copy-editing": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "3c6241215420e69b36814270a47413b2de9593b5516f5942b7481092f6c63382"
+    },
     "humanizer": {
       "source": "softaworks/agent-toolkit",
       "sourceType": "github",
       "computedHash": "34a38e6acc60d4529612d41ffe740bca0060d3c5e89e2a0d24ae795f67157fbb"
+    },
+    "pdf": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "cfbc539377088ca7e44a813b30c306327385bbd973cd7a721e1743f60837dd62"
+    },
+    "social-content": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "85ffbc05cf88939ba3ff643a315928185af16181470349dfbaad2880047c9900"
+    },
+    "web-to-markdown": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "computedHash": "bb00770209da2d362b3db0e0f31eecf4cea30019d977a36a5f062eac2d216058"
+    },
+    "writing-clearly-and-concisely": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "computedHash": "136a0413255aa82d800459c775eabf041620b2e9cbf2d713b739bf1b87a3db3a"
     }
   }
 }

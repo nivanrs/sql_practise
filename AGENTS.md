@@ -103,7 +103,14 @@ Full spec: `posts/media/brand-guidelines/warm-authority.md`
 
 ## Installed Skills
 
-| Skill | Location | Purpose |
-|-------|----------|---------|
-| humanizer | `.agents/skills/humanizer/` | Strip AI writing patterns from post text |
-| playwright-cli | `.claude/skills/playwright-cli/` | Browser automation for LinkedIn scraping |
+| Skill | Scope | Purpose |
+|-------|-------|---------|
+| `humanizer` | project + global | Strip AI writing patterns from post text |
+| `writing-clearly-and-concisely` | project + global | Tighten prose before finalising |
+| `web-to-markdown` | project + global | Scrape StrataScratch/Codewars problem pages into markdown |
+| `commit-work` | project + global | Stage, commit, and push with smart messages |
+| `social-content` | project + global | LinkedIn-specific copy and hook writing |
+| `copy-editing` | project + global | Polish takeaways and logic breakdown sections |
+| `canvas-design` | project + global | Generate PDFs and PNGs from design systems |
+| `pdf` | project + global | Programmatic PDF manipulation (merge, extract, inspect) |
+| `playwright-cli` | project only | Browser automation for LinkedIn scraping |
