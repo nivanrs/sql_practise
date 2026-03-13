@@ -58,7 +58,7 @@ https://www.canva.com/design/DAG-HWtEYj4/rK2Ae5G6JGPUfbNHnNcR-A/edit
 Each post file follows this structure (header emoji is `💻`):
 ```
 ## 💻 SQL of the Day: {Title}
-🔗 {LinkedIn shortlink or StrataScratch URL}
+🔗 {LinkedIn shortlink or StrataScratch URL} — StrataScratch links must include `?code_type=1` (e.g. `https://platform.stratascratch.com/coding/10141-apple-product-counts?code_type=1`)
 ### Problem:
 {problem statement}
 ---
@@ -79,6 +79,11 @@ Each post file follows this structure (header emoji is `💻`):
 ```
 
 Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, topic-specific tags at the end).
+
+## Writing Style Rules
+
+- **No dashes or em dashes** in post prose. Never use `-` as a sentence separator and never use `—`. Use a colon, a period, or restructure the sentence instead.
+- This applies to both `.md` and `.txt` files. Hyphens inside URLs, code, and compound adjectives used as modifiers before a noun are the only exceptions.
 
 ## Adding a New Post
 
