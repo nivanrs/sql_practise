@@ -1,0 +1,54 @@
+💻 SQL of the Day: Facebook Accounts
+
+Calculate the ratio of closed Facebook accounts to all accounts on January 10, 2020.
+
+🔗 https://platform.stratascratch.com/coding/10296-facebook-accounts?code_type=1
+
+─────────────────────────────
+
+𝗦𝗤𝗟 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻
+
+SELECT
+    COUNT(CASE WHEN status = 'closed' THEN 1 END)::float
+    /
+    COUNT(*) AS closed_ratio
+FROM fb_account_status
+WHERE status_date = '2020-01-10';
+
+─────────────────────────────
+
+🧩 Simple logic breakdown
+
+→ Filter the date — WHERE status_date = '2020-01-10' narrows the data to the snapshot we care about.
+
+→ Count closed accounts — COUNT(CASE WHEN status = 'closed' THEN 1 END) counts only matching rows. Non-matches return NULL, and COUNT ignores NULLs.
+
+→ Count all accounts — COUNT(*) counts every row on that date, regardless of status.
+
+→ Divide for the ratio — The ::float cast prevents integer division from rounding to 0 (e.g. 3/10 = 0 without it).
+
+─────────────────────────────
+
+📊 This pattern tells you:
+
+• Account health at a glance — a single ratio instantly reveals what share of your user base has churned on a given day.
+
+• Trend tracking — run this query across multiple dates to spot whether closures are accelerating or slowing.
+
+• Benchmarking — comparing closed ratios across time periods or segments helps set retention targets.
+
+─────────────────────────────
+
+🎯 Key takeaways
+
+1. CASE WHEN ... THEN 1 END inside COUNT() is the classic conditional-counting pattern — no subquery or separate filter needed.
+
+2. Always cast to ::float (or * 1.0) when dividing integers in PostgreSQL. Without it, 3 / 10 returns 0, not 0.3.
+
+3. COUNT(*) counts all rows; COUNT(expression) counts only non-NULL values. That difference is what makes the trick work.
+
+4. Swap the condition inside CASE WHEN to count any category — this scales to any "ratio of subset to total" problem.
+
+─────────────────────────────
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #ConditionalCounting #Facebook #BusinessIntelligence

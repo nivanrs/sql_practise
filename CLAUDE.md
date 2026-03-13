@@ -9,8 +9,9 @@ A personal archive of LinkedIn "SQL of the Day" posts. Each post is a SQL practi
 ## Repository Structure
 
 - `posts/*.md` — One markdown file per post, named `YYYY-MM-DD_{slug}.md` (e.g. `2026-02-02_premium_vs_freemium_downloads.md`)
+- `posts/linkedin/*.txt` — LinkedIn-copyable plain text version of each post (no markdown syntax)
 - `posts/index.md` — Master index table: post number, title, source, exact posting date, links to file and PDF
-- `posts/media/pdfs/` — LinkedIn carousel PDFs (7 files, covering select posts Jan–Mar 2026)
+- `posts/media/pdfs/` — LinkedIn carousel PDFs (7 files); all new carousels use Warm Authority; pre-2026-03-30 PDFs are legacy (dark/cyan Canva style, deprecated)
 - `images/` — Legacy image assets for post #11 (Oscar problem)
 - `readme.md` — Project overview
 
@@ -82,8 +83,9 @@ Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, to
 ## Adding a New Post
 
 1. Create `posts/YYYY-MM-DD_{slug}.md` using the format above
-2. If a carousel PDF exists, save to `posts/media/pdfs/`
-3. Prepend a new row #1 to `posts/index.md` and renumber all existing rows — index is **reverse-chronological** (newest = #1)
+2. Create `posts/linkedin/YYYY-MM-DD_{slug}.txt` — LinkedIn-copyable plain text version (no markdown syntax; use `→` bullets, `•` for lists, numbered for takeaways, `─────` dividers, emojis and hashtags preserved)
+3. If a carousel PDF exists, generate with Python/matplotlib and save to `posts/media/pdfs/YYYY-MM-DD_{slug}.pdf`
+4. Prepend a new row #1 to `posts/index.md` and renumber all existing rows — index is **reverse-chronological** (newest = #1)
    - **Posted date**: decode from LinkedIn URN with `urn >> 22` to get Unix ms timestamp (`datetime.fromtimestamp((urn >> 22) / 1000, tz=timezone.utc)`)
    - PDF link: `[📄](media/pdfs/{filename}.pdf)` or `—`
 
@@ -92,5 +94,6 @@ Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, to
 - 26 posts total (24 indexed + 2 pending index entries: `finding_purchases.md`, `number_of_units_per_nationality.md`)
 - Post #11 (`person_with_most_oscars`) file is dated `2026-03-23` but index still shows `—` for posted date (URN unknown)
 - `2026-03-30_facebook_accounts.md` — current file for post #1 (Facebook Accounts); carousel PDF at `posts/media/pdfs/2026-03-30_facebook_accounts.pdf`
-- Carousel PDFs are generated with Python/matplotlib (`PdfPages` backend, `figsize=(10.8, 10.8)`, Warm Authority fonts); reusable generator scripts saved to `/tmp/`
+- **Carousel generation**: all new PDFs use Python/matplotlib (`PdfPages`, `figsize=(10.8, 10.8)`, Warm Authority fonts); reusable scripts saved to `/tmp/gen_{slug}.py`
+- **Legacy PDFs** (pre-2026-03-30, dark/cyan Canva style) are deprecated — do not replicate that aesthetic
 - `.playwright-mcp/` is gitignored — created when scraping LinkedIn via Playwright MCP
