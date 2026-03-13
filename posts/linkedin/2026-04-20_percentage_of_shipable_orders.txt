@@ -1,0 +1,37 @@
+Sometimes the easiest way to compute a percentage in SQL is not dividing two separate COUNT functions.
+
+💻 𝗦𝗤𝗟 𝗼𝗳 𝘁𝗵𝗲 𝗗𝗮𝘆: Percentage of Shipable Orders (StrataScratch)
+🔗 Link in comments
+
+Problem: Find the percentage of shipable orders. Consider an order is shipable if the customer's address is known.
+
+─────────────────────────────
+
+🧠 𝗦𝗤𝗟 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻
+
+SELECT
+    AVG((address IS NOT NULL)::INT) * 100 AS percent_shipable
+FROM orders
+INNER JOIN customers
+    ON customers.id = orders.cust_id;
+
+─────────────────────────────
+
+🧩 𝗦𝗶𝗺𝗽𝗹𝗲 𝗹𝗼𝗴𝗶𝗰 𝗯𝗿𝗲𝗮𝗸𝗱𝗼𝘄𝗻:
+→ JOIN: Connects `orders` with `customers` to check address availability for each order.
+→ address IS NOT NULL: Evaluates to a boolean (true or false) based on whether the address is valid.
+→ AVG() * 100: Calculates the mean of 1 and 0 values, which mathematically equals dividing the valid address count by the total order count.
+
+─────────────────────────────
+
+📊 𝗧𝗵𝗶𝘀 𝗽𝗮𝘁𝘁𝗲𝗿𝗻 𝘁𝗲𝗹𝗹𝘀 𝘆𝗼𝘂:
+• Validating delivery inputs: Establishing logic that checks for a complete address before dispatching shipments is essential.
+• Cost reduction: Verifying this upfront will streamline operations and prevent sunk costs from packages that will never arrive.
+
+─────────────────────────────
+
+🎯 𝗞𝗲𝘆 𝘁𝗮𝗸𝗲𝗮𝘄𝗮𝘆𝘀:
+1. Pay close attention to exactly what must be calculated. Choosing between COUNT(), SUM(CASE WHEN ...), and AVG() depends entirely on your objective and each approach serves a distinct purpose.
+2. The `AVG((condition)::INT)` trick is an elegant shorthand for calculating percentages without dividing two lengthy aggregate expressions.
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #SupplyChainAnalytics

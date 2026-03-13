@@ -30,3 +30,5 @@ All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).
 | 24 | Find the Genre of the Person with Most Oscar Wins | StrataScratch #10171 | — | [2026-03-23_person_with_most_oscars.md](2026-03-23_person_with_most_oscars.md) | — |
 | 25 | Facebook Accounts | StrataScratch #10296 | — | [2026-03-30_facebook_accounts.md](2026-03-30_facebook_accounts.md) | [📄](media/pdfs/2026-03-30_facebook_accounts.pdf) |
 | 26 | Apple Product Counts | StrataScratch #10141 | — | [2026-04-06_apple_product_counts.md](2026-04-06_apple_product_counts.md) | [📄](media/pdfs/2026-04-06_apple_product_counts.pdf) |
+| 27 | Spam Posts | StrataScratch #10134 | — | [2026-04-13_spam_posts.md](2026-04-13_spam_posts.md) | [📄](media/pdfs/2026-04-13_spam_posts.pdf) |
+| 28 | Percentage of Shipable Orders | StrataScratch #10090 | — | [2026-04-20_percentage_of_shipable_orders.md](2026-04-20_percentage_of_shipable_orders.md) | [📄](media/pdfs/2026-04-20_percentage_of_shipable_orders.pdf) |
