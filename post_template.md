@@ -8,7 +8,7 @@
 
 ---
 
-### SQL Solution
+### 🧠 SQL Solution
 
 ```sql
 -- Your SQL query goes here

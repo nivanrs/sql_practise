@@ -62,7 +62,7 @@ Each post file follows this structure (header emoji is `💻`):
 ### Problem:
 {problem statement}
 ---
-### SQL Solution
+### 🧠 SQL Solution
 ```sql
 {query}
 ```
