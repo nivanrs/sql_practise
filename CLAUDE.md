@@ -10,7 +10,7 @@ A personal archive of LinkedIn "SQL of the Day" posts. Each post is a SQL practi
 
 - `posts/*.md` — One markdown file per post, named `YYYY-MM-DD_{slug}.md` (e.g. `2026-02-02_premium_vs_freemium_downloads.md`)
 - `posts/index.md` — Master index table: post number, title, source, exact posting date, links to file and PDF
-- `posts/media/pdfs/` — LinkedIn carousel PDFs (6 files, covering select posts Jan–Mar 2026)
+- `posts/media/pdfs/` — LinkedIn carousel PDFs (7 files, covering select posts Jan–Mar 2026)
 - `images/` — Legacy image assets for post #11 (Oscar problem)
 - `readme.md` — Project overview
 
@@ -91,4 +91,6 @@ Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, to
 
 - 26 posts total (24 indexed + 2 pending index entries: `finding_purchases.md`, `number_of_units_per_nationality.md`)
 - Post #11 (`person_with_most_oscars`) file is dated `2026-03-23` but index still shows `—` for posted date (URN unknown)
+- `2026-03-30_facebook_accounts.md` — current file for post #1 (Facebook Accounts); carousel PDF at `posts/media/pdfs/2026-03-30_facebook_accounts.pdf`
+- Carousel PDFs are generated with Python/matplotlib (`PdfPages` backend, `figsize=(10.8, 10.8)`, Warm Authority fonts); reusable generator scripts saved to `/tmp/`
 - `.playwright-mcp/` is gitignored — created when scraping LinkedIn via Playwright MCP
