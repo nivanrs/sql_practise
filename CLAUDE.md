@@ -90,7 +90,7 @@ Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, to
 1. Create `posts/YYYY-MM-DD_{slug}.md` using the format above
 2. Create `posts/linkedin/YYYY-MM-DD_{slug}.txt` — LinkedIn-copyable plain text version (no markdown syntax; use `→` bullets, `•` for lists, numbered for takeaways, `─────` dividers, emojis and hashtags preserved)
 3. If a carousel PDF exists, generate with Python/matplotlib and save to `posts/media/pdfs/YYYY-MM-DD_{slug}.pdf`
-4. Prepend a new row #1 to `posts/index.md` and renumber all existing rows — index is **reverse-chronological** (newest = #1)
+4. Append a new row to `posts/index.md` and assign the next sequential number — index is **chronological** (oldest = #1, newest = last)
    - **Posted date**: decode from LinkedIn URN with `urn >> 22` to get Unix ms timestamp (`datetime.fromtimestamp((urn >> 22) / 1000, tz=timezone.utc)`)
    - PDF link: `[📄](media/pdfs/{filename}.pdf)` or `—`
 
