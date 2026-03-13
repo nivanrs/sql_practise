@@ -85,13 +85,17 @@ Motifs (exact, never improvised): three filled dots top-right, right arrow botto
 
 Full spec: `posts/media/brand-guidelines/warm-authority.md`
 
+### Presentation sample
+
+https://www.canva.com/design/DAG-HWtEYj4/rK2Ae5G6JGPUfbNHnNcR-A/edit
+
 ## Carousel PDF Generation
 
 - Tool: Python + matplotlib (`PdfPages` backend)
 - Canvas: `figsize=(10.8, 10.8)`, `xlim/ylim=(0,1)`, `axis('off')`, `subplots_adjust(left=0,right=1,top=1,bottom=0)`
 - Save: `pdf.savefig(fig, dpi=150)` — no `bbox_inches`
 - Syntax highlighting colors: keywords `#B91646`, functions `#1A5FA8`, strings `#2A7A30`, identifiers `#1A1A1A`
-- Fonts directory: `/Users/nivanrs/.claude/skills/canvas-design/canvas-fonts/`
+- Fonts directory: `/Users/nivanrs/.agents/skills/canvas-design/canvas-fonts/`
 - Save reusable script to `/tmp/gen_{slug}.py`
 
 ## Index Rules
@@ -100,6 +104,11 @@ Full spec: `posts/media/brand-guidelines/warm-authority.md`
 - Posted date: decode from LinkedIn URN via `urn >> 22` to get Unix ms timestamp
 - Leave posted date as `—` if the URN is unknown
 - PDF link format: `[📄](media/pdfs/{filename}.pdf)` or `—`
+
+## Key Facts
+
+- **Legacy PDFs** (pre-2026-03-30, dark/cyan Canva style) are deprecated — do not replicate that aesthetic
+- `.playwright-mcp/` is gitignored — created when scraping LinkedIn via Playwright MCP
 
 ## Installed Skills
 
