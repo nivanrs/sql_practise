@@ -1,0 +1,40 @@
+𝗦𝗤𝗟 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻
+─────────────────────────────
+WITH cte_total_bonus AS (
+    SELECT
+        worker_ref_id,
+        SUM(bonus) AS total_bonus
+    FROM sf_bonus
+    GROUP BY worker_ref_id
+)
+SELECT
+    e.employee_title,
+    e.sex,
+    AVG(e.salary + b.total_bonus) AS average_compensation
+FROM sf_employee e
+INNER JOIN cte_total_bonus b
+    ON e.id = b.worker_ref_id
+GROUP BY 1, 2;
+
+─────────────────────────────
+𝗦𝗶𝗺𝗽𝗹𝗲 𝗹𝗼𝗴𝗶𝗰 𝗯𝗿𝗲𝗮𝗸𝗱𝗼𝘄𝗻
+─────────────────────────────
+→ Calculate the total bonus for each employee before joining tables
+→ Inner join the aggregated bonus data to filter out employees without bonuses
+→ Calculate the average compensation grouping by title and gender
+
+─────────────────────────────
+𝗧𝗵𝗶𝘀 𝗽𝗮𝘁𝘁𝗲𝗿𝗻 𝘁𝗲𝗹𝗹𝘀 𝘆𝗼𝘂:
+─────────────────────────────
+• High-level average compensation figures for each role and gender
+• To make the data actionable, you need to check minimum, maximum, and headcount per role
+• You can query the full distribution across quartiles to get a better read on equity (see comments)
+
+─────────────────────────────
+𝗞𝗲𝘆 𝘁𝗮𝗸𝗲𝗮𝘄𝗮𝘆𝘀
+─────────────────────────────
+1. Averages compress context. Always measure the full distribution.
+2. Using quartiles gives you a clearer view of actual compensation tiers.
+3. Pay close attention to business rules, like excluding employees without bonuses, to shape the initial SQL logic.
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataEngineering #PostgreSQL
