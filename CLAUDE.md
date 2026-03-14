@@ -102,3 +102,9 @@ Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, to
 - **Carousel generation**: all new PDFs use Python/matplotlib (`PdfPages`, `figsize=(10.8, 10.8)`, Warm Authority fonts); reusable scripts saved to `/tmp/gen_{slug}.py`
 - **Legacy PDFs** (pre-2026-03-30, dark/cyan Canva style) are deprecated — do not replicate that aesthetic
 - `.playwright-mcp/` is gitignored — created when scraping LinkedIn via Playwright MCP
+
+## Package Manager & Runtime
+
+- **Always use `bun`** instead of `npm`.
+- **Always use `bunx`** instead of `npx`.
+- This applies to all terminal commands, installation steps, and script executions in this repository.

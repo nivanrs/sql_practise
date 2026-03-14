@@ -32,4 +32,4 @@ All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).
 | 26 | Apple Product Counts | StrataScratch #10141 | — | [2026-04-06_apple_product_counts.md](2026-04-06_apple_product_counts.md) | [📄](media/pdfs/2026-04-06_apple_product_counts.pdf) |
 | 27 | Spam Posts | StrataScratch #10134 | — | [2026-04-13_spam_posts.md](2026-04-13_spam_posts.md) | [📄](media/pdfs/2026-04-13_spam_posts.pdf) |
 | 28 | Percentage of Shipable Orders | StrataScratch #10090 | — | [2026-04-20_percentage_of_shipable_orders.md](2026-04-20_percentage_of_shipable_orders.md) | [📄](media/pdfs/2026-04-20_percentage_of_shipable_orders.pdf) |
-| 29 | Income By Title and Gender | StrataScratch #10077 | 2026-03-14 | [2026-03-14_income_by_title_and_gender.md](2026-03-14_income_by_title_and_gender.md) | [📄](media/pdfs/2026-03-14_income_by_title_and_gender.pdf) |
+| 29 | Income By Title and Gender | StrataScratch #10077 | 2026-04-26 | [2026-04-26_income_by_title_and_gender.md](2026-04-26_income_by_title_and_gender.md) | [📄](media/pdfs/2026-04-26_income_by_title_and_gender.pdf) |

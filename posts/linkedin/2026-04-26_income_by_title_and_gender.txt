@@ -1,0 +1,49 @@
+Calculating total compensation in SQL is easy until some employees have multiple bonuses and others have none.
+
+💻 𝗦𝗤𝗟 𝗼𝗳 𝘁𝗵𝗲 𝗗𝗮𝘆: Income By Title and Gender (StrataScratch)
+🔗 Link in comments
+
+Problem: Find the average total compensation (salary + bonus) for employees, grouped by title and gender. Only include employees who received at least one bonus.
+
+─────────────────────────────
+
+🧠 𝗦𝗤𝗟 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻
+
+WITH cte_total_bonus AS (
+    SELECT
+        worker_ref_id,
+        SUM(bonus) AS total_bonus
+    FROM sf_bonus
+    GROUP BY worker_ref_id
+)
+SELECT
+    e.employee_title,
+    e.sex,
+    AVG(e.salary + b.total_bonus) AS average_compensation
+FROM sf_employee e
+INNER JOIN cte_total_bonus b
+    ON e.id = b.worker_ref_id
+GROUP BY 1, 2;
+
+─────────────────────────────
+
+🧩 𝗦𝗶𝗺𝗽𝗹𝗲 𝗹𝗼𝗴𝗶𝗰 𝗯𝗿𝗲𝗮𝗸𝗱𝗼𝘄𝗻:
+→ First, group all bonuses per employee. We use a CTE to sum them up to avoid double-counting regular salary rows.
+→ Use an inner join to link those bonuses back to the main table. This automatically filters out anyone who didn't get a bonus.
+→ Average the sum of salary and total bonus, grouped by role and gender.
+
+─────────────────────────────
+
+📊 𝗧𝗵𝗶𝘀 𝗽𝗮𝘁𝘁𝗲𝗿𝗻 𝘁𝗲𝗹𝗹𝘀 𝘆𝗼𝘂:
+• These averages provide a quick snapshot of the pay structure by role and gender.
+• Averages can be misleading. To see the full picture, you really need to check min/max values and headcount.
+• Run a distribution check with quartiles to see where the bulk of the team actually sits if you want to find the real pay gap.
+
+─────────────────────────────
+
+🎯 𝗞𝗲𝘆 𝘁𝗮𝗸𝗲𝗮𝘄𝗮𝘆𝘀:
+1. Business rules are everything. Excluding non-bonus employees changes the entire set of boundaries for your logic.
+2. CTEs aren't just for readability. They isolate the math before you complicate things with joins.
+3. Don't settle for the mean. The real story usually lives in the distribution.
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataEngineering #PostgreSQL

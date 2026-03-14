@@ -52,8 +52,8 @@ If the user did not explicitly request this skill by name, stop and ask them to 
 3) Ensure `web2md` is installed:
    - Run: `command -v web2md`
    - If missing, instruct the user to install it (assume the project exists at `~/workspace/softaworks/projects/web2md`):
-     - `cd ~/workspace/softaworks/projects/web2md && npm install && npm run build && npm link`
-     - Or: `cd ~/workspace/softaworks/projects/web2md && npm install && npm run build && npm install -g .`
+     - `cd ~/workspace/softaworks/projects/web2md && bun install && bun run build && bun link`
+     - Or: `cd ~/workspace/softaworks/projects/web2md && bun install && bun run build && bun install -g .`
 4) Convert:
    - Single URL → file:
      - `web2md '<url>' --out ./page.md`

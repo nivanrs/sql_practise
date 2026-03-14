@@ -52,9 +52,9 @@ The `web2md` CLI tool must be installed. The skill will check for it and provide
 
 ```bash
 cd ~/workspace/softaworks/projects/web2md
-npm install
-npm run build
-npm link
+bun install
+bun run build
+bun link
 ```
 
 ## Usage Examples

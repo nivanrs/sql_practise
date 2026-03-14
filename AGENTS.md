@@ -110,6 +110,12 @@ https://www.canva.com/design/DAG-HWtEYj4/rK2Ae5G6JGPUfbNHnNcR-A/edit
 - **Legacy PDFs** (pre-2026-03-30, dark/cyan Canva style) are deprecated — do not replicate that aesthetic
 - `.playwright-mcp/` is gitignored — created when scraping LinkedIn via Playwright MCP
 
+## Package Manager & Runtime
+
+- **Always use `bun`** instead of `npm`.
+- **Always use `bunx`** instead of `npx`.
+- This applies to all terminal commands, installation steps, and script executions in this repository.
+
 ## Installed Skills
 
 | Skill | Scope | Purpose |
