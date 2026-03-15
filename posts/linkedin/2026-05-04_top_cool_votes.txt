@@ -1,11 +1,5 @@
 My SQL query returned the correct result… but it was still wrong.
 
-No error. No warning. Just one row instead of three — and I almost shipped it.
-
-The problem: ROW_NUMBER() quietly kept one tied result and discarded the rest.
-
-─────────────────────────────────
-
 💻 SQL of the Day: Top Cool Votes
 🔗 https://platform.stratascratch.com/coding/10060-top-cool-votes?code_type=1
 
