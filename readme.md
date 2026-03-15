@@ -8,6 +8,9 @@ A personal archive of weekly SQL practice problems posted on [LinkedIn](https://
 posts/
 ├── index.md                  # Full post index (chronological, oldest first)
 ├── YYYY-MM-DD_{slug}.md      # One file per post (26 total)
+├── drafts/
+│   ├── {slug}_raw.md         # Raw draft exactly as written (any language)
+│   └── {slug}_critique.md    # Coaching feedback on the raw draft
 ├── linkedin/
 │   └── YYYY-MM-DD_{slug}.txt # LinkedIn-copyable plain text version
 └── media/
@@ -31,6 +34,10 @@ posts/
 ## Workflow
 
 Each post follows this sequence:
+
+**0. Write and save a rough draft** (`posts/drafts/{slug}_raw.md`)
+
+Write in any language, any format. The draft gets saved as-is, then reviewed for: hook angle, SQL correctness, logic precision, insight framing, and takeaway quality. Coaching feedback is saved to `posts/drafts/{slug}_critique.md` before the final post is written.
 
 **1. Write the markdown post** (`posts/YYYY-MM-DD_{slug}.md`)
 

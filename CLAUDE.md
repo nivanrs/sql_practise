@@ -9,6 +9,8 @@ A personal archive of LinkedIn "SQL of the Day" posts. Each post is a SQL practi
 ## Repository Structure
 
 - `posts/*.md` — One markdown file per post, named `YYYY-MM-DD_{slug}.md` (e.g. `2026-02-02_premium_vs_freemium_downloads.md`)
+- `posts/drafts/{slug}_raw.md` — Raw draft exactly as the user wrote it (any language, any format)
+- `posts/drafts/{slug}_critique.md` — Coaching feedback saved alongside the raw draft
 - `posts/linkedin/*.txt` — LinkedIn-copyable plain text version of each post (no markdown syntax)
 - `posts/index.md` — Master index table: post number, title, source, exact posting date, links to file and PDF
 - `posts/media/pdfs/` — LinkedIn carousel PDFs (7 files); all new carousels use Warm Authority; pre-2026-03-30 PDFs are legacy (dark/cyan Canva style, deprecated)
@@ -84,6 +86,39 @@ Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, to
 
 - **No dashes or em dashes** in post prose. Never use `-` as a sentence separator and never use `—`. Use a colon, a period, or restructure the sentence instead.
 - This applies to both `.md` and `.txt` files. Hyphens inside URLs, code, and compound adjectives used as modifiers before a noun are the only exceptions.
+
+## Draft Coaching Workflow
+
+When the user provides a rough draft (in any language, any format), do this before writing the polished post:
+
+1. **Save the raw draft** to `posts/drafts/{slug}_raw.md` exactly as written — no edits
+2. **Save the critique** to `posts/drafts/{slug}_critique.md` after running the coaching check
+3. **Run the coaching check** and give feedback on these four areas before touching the final post:
+
+### Coaching questions to answer per draft
+
+**Hook: is there a failure or surprise angle?**
+- What could go wrong if you used the wrong approach?
+- Is the draft starting from the solution, or from the problem?
+- If no hook is present, name the failure scenario the solution is protecting against.
+
+**Logic: is the explanation precise?**
+- Does the logic section explain WHY each step exists, or just what it does?
+- Flag any SQL issues in the draft (e.g. ORDER BY inside CTE with no LIMIT, ambiguous column aliases, wrong function for the task).
+
+**Insight: does it answer "so what"?**
+- Is the insight describing the solution, or the consequence of getting it wrong?
+- Can the insight be grounded in a real business scenario (platform, leaderboard, report)?
+
+**Takeaway: is it a lesson or a topic heading?**
+- "Must know X" is a topic. A takeaway names the specific rule or decision.
+- Push toward: "When [condition], use [X] because [consequence of not doing so]."
+
+### Format for coaching feedback
+Return feedback in this order:
+1. One-line summary of what's strong in the draft
+2. Numbered list of coaching notes (one per weakness)
+3. Confirm: "Ready to write the final post?" before proceeding
 
 ## Adding a New Post
 
