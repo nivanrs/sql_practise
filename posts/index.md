@@ -26,10 +26,13 @@ All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).
 | 20 | Acceptance Rate by Date | StrataScratch | 2026-01-19 | [2026-01-19_acceptance_rate_by_date.md](2026-01-19_acceptance_rate_by_date.md) | [📄](media/pdfs/SQL%20of%20the%20Day%20(19%20Jan%202025).pdf) |
 | 21 | Finding Returning Users | StrataScratch | 2026-01-26 | [2026-01-26_finding_returning_users.md](2026-01-26_finding_returning_users.md) | [📄](media/pdfs/SQL%20of%20the%20Day%20(26%20Jan%202025).pdf) |
 | 22 | Premium vs Freemium Downloads | StrataScratch | 2026-02-02 | [2026-02-02_premium_vs_freemium_downloads.md](2026-02-02_premium_vs_freemium_downloads.md) | [📄](media/pdfs/SQL%20of%20the%20Day%20(2%20Feb%202026).pdf) |
-| 23 | Ranking Most Active Guests | StrataScratch #10159 | 2026-03-09 | [2026-03-09_ranking_most_active_guests.md](2026-03-09_ranking_most_active_guests.md) | — |
-| 24 | Find the Genre of the Person with Most Oscar Wins | StrataScratch #10171 | — | [2026-03-23_person_with_most_oscars.md](2026-03-23_person_with_most_oscars.md) | — |
-| 25 | Facebook Accounts | StrataScratch #10296 | — | [2026-03-30_facebook_accounts.md](2026-03-30_facebook_accounts.md) | [📄](media/pdfs/2026-03-30_facebook_accounts.pdf) |
-| 26 | Apple Product Counts | StrataScratch #10141 | — | [2026-04-06_apple_product_counts.md](2026-04-06_apple_product_counts.md) | [📄](media/pdfs/2026-04-06_apple_product_counts.pdf) |
-| 27 | Spam Posts | StrataScratch #10134 | — | [2026-04-13_spam_posts.md](2026-04-13_spam_posts.md) | [📄](media/pdfs/2026-04-13_spam_posts.pdf) |
-| 28 | Percentage of Shipable Orders | StrataScratch #10090 | — | [2026-04-20_percentage_of_shipable_orders.md](2026-04-20_percentage_of_shipable_orders.md) | [📄](media/pdfs/2026-04-20_percentage_of_shipable_orders.pdf) |
-| 29 | Income By Title and Gender | StrataScratch #10077 | 2026-04-26 | [2026-04-26_income_by_title_and_gender.md](2026-04-26_income_by_title_and_gender.md) | [📄](media/pdfs/2026-04-26_income_by_title_and_gender.pdf) |
+| 23 | Finding Purchases | StrataScratch #10553 | 2026-03-02 | [2026-03-02_finding_purchases.md](2026-03-02_finding_purchases.md) | [📄](media/pdfs/SQL%20of%20the%20Day%20(2%20March%202026).pdf) |
+| 24 | Ranking Most Active Guests | StrataScratch #10159 | 2026-03-09 | [2026-03-09_ranking_most_active_guests.md](2026-03-09_ranking_most_active_guests.md) | — |
+| 25 | Number of Units per Nationality | StrataScratch #10156 | 2026-03-16 | [2026-03-16_number_of_units_per_nationality.md](2026-03-16_number_of_units_per_nationality.md) | — |
+| 26 | Find the Genre of the Person with Most Oscar Wins | StrataScratch #10171 | — | [2026-03-23_person_with_most_oscars.md](2026-03-23_person_with_most_oscars.md) | — |
+| 27 | Facebook Accounts | StrataScratch #10296 | 2026-03-30 | [2026-03-30_facebook_accounts.md](2026-03-30_facebook_accounts.md) | [📄](media/pdfs/2026-03-30_facebook_accounts.pdf) |
+| 28 | Apple Product Counts | StrataScratch #10141 | 2026-04-06 | [2026-04-06_apple_product_counts.md](2026-04-06_apple_product_counts.md) | [📄](media/pdfs/2026-04-06_apple_product_counts.pdf) |
+| 29 | Spam Posts | StrataScratch #10134 | 2026-04-13 | [2026-04-13_spam_posts.md](2026-04-13_spam_posts.md) | [📄](media/pdfs/2026-04-13_spam_posts.pdf) |
+| 30 | Percentage of Shipable Orders | StrataScratch #10090 | 2026-04-20 | [2026-04-20_percentage_of_shipable_orders.md](2026-04-20_percentage_of_shipable_orders.md) | [📄](media/pdfs/2026-04-20_percentage_of_shipable_orders.pdf) |
+| 31 | Income By Title and Gender | StrataScratch #10077 | 2026-04-26 | [2026-04-26_income_by_title_and_gender.md](2026-04-26_income_by_title_and_gender.md) | [📄](media/pdfs/2026-04-26_income_by_title_and_gender.pdf) |
+| 32 | Top Cool Votes | StrataScratch #10060 | 2026-05-04 | [2026-05-04_top_cool_votes.md](2026-05-04_top_cool_votes.md) | [📄](media/pdfs/2026-05-04_top_cool_votes.pdf) |

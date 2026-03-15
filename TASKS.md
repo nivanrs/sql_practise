@@ -3,24 +3,13 @@
 ## Pending
 
 ### Index
-- [ ] Add `2026-05-04_top_cool_votes.md` to `posts/index.md` as #30
-- [ ] Add `finding_purchases.md` to `posts/index.md` (determine correct date and number)
-- [ ] Add `number_of_units_per_nationality.md` to `posts/index.md` (determine correct date and number)
-
-### Missing posted dates (decode from LinkedIn URN: `urn >> 22` → Unix ms)
-- [ ] #24 — Find the Genre of the Person with Most Oscar Wins
-- [ ] #25 — Facebook Accounts
-- [ ] #26 — Apple Product Counts
-- [ ] #27 — Spam Posts
-- [ ] #28 — Percentage of Shipable Orders
+- [x] Add `2026-05-04_top_cool_votes.md` to `posts/index.md` as #32
+- [x] Add `2026-03-02_finding_purchases.md` to `posts/index.md` (insert chronologically, renumber as needed)
+- [x] Add `2026-03-16_number_of_units_per_nationality.md` to `posts/index.md` (insert chronologically, renumber as needed)
 
 ### Missing LinkedIn .txt files
-- [ ] `finding_purchases` — `posts/linkedin/` entry
-- [ ] `number_of_units_per_nationality` — `posts/linkedin/` entry
-
-### Missing carousel PDFs
-- [ ] `finding_purchases` — generate with Warm Authority style
-- [ ] `number_of_units_per_nationality` — generate with Warm Authority style
+- [x] `finding_purchases` — create `posts/linkedin/2026-03-02_finding_purchases.txt`
+- [x] `number_of_units_per_nationality` — create `posts/linkedin/2026-03-16_number_of_units_per_nationality.txt`
 
 ## Recurring (per new post)
 
