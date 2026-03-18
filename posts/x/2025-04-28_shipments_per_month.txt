@@ -1,11 +1,11 @@
-[1/7]
+[1/8]
 🧵
 Kalau kamu hanya count(shipment_id) tanpa sadar ada kombinasi shipment_id + sub_id, kamu akan menghitung pengiriman yang sama berkali-kali. Laporan bulananmu tidak akurat.
 
-[2/7]
+[2/8]
 Amazon punya tabel pengiriman di mana satu shipment bisa punya beberapa sub-ID. Pertanyaannya: berapa pengiriman unik yang selesai setiap bulan?
 
-[3/7]
+[3/8]
 ```sql
 with data as (
   select
@@ -18,20 +18,23 @@ select year_month,
 from data group by year_month;
 ```
 
-[4/7]
+[4/8]
 Kenapa concat(shipment_id, sub_id) sebagai composite_id?
 
 Karena kunci unik pengiriman adalah kombinasi keduanya, bukan shipment_id saja. Kalau hanya pakai shipment_id, satu pengiriman dengan 3 sub-ID akan terhitung 3 kali.
 
-[5/7]
+[5/8]
 Kenapa to_char(shipment_date, 'yyyy-mm'), bukan EXTRACT(MONTH)?
 
 EXTRACT hanya ambil bulan (angka 1-12). Kalau datamu lintas tahun, Januari 2023 dan Januari 2024 akan digabung. to_char menghasilkan '2023-01' vs '2024-01' sehingga tahun tetap terbedakan.
 
-[6/7]
+[6/8]
 Tim logistik yang melihat lonjakan di bulan tertentu bisa segera cek: apakah itu musiman, promosi, atau anomali operasional. Data per bulan adalah titik awal setiap investigasi.
 
-[7/7]
+[7/8]
+Kalau kunci unik di tabelmu adalah kombinasi dua kolom, selalu buat composite_id sebelum COUNT(DISTINCT). Mengandalkan satu kolom saja berisiko menghasilkan hitungan ganda yang tidak terdeteksi.
+
+[8/8]
 Ikuti untuk soal SQL harian berikutnya 🙌
 
 #SQLoftheDay #SQL #DataAnalytics #StrataScratch #LogisticsAnalytics #SupplyChain
