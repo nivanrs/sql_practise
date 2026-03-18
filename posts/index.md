@@ -4,10 +4,10 @@ All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).
 
 | # | Problem | Source | Posted | File | PDF | X | Threads |
 |---|---------|--------|--------|------|-----|---|---------|
-| 1 | Top 3 Search Click Behavior | StrataScratch | 2025-04-25 | [2025-04-25_top_3_search_click_behavior.md](2025-04-25_top_3_search_click_behavior.md) | — | — | — |
-| 2 | Unique Users per Client per Month | StrataScratch | 2025-04-27 | [2025-04-27_unique_users_per_client.md](2025-04-27_unique_users_per_client.md) | — | — | — |
-| 3 | Number of Shipments per Month | StrataScratch | 2025-04-28 | [2025-04-28_shipments_per_month.md](2025-04-28_shipments_per_month.md) | — | — | — |
-| 4 | People by Age (10+ Members) | Codewars | 2025-04-29 | [2025-04-29_people_by_age.md](2025-04-29_people_by_age.md) | — | — | — |
+| 1 | Top 3 Search Click Behavior | StrataScratch | 2025-04-25 | [2025-04-25_top_3_search_click_behavior.md](2025-04-25_top_3_search_click_behavior.md) | — | [🐦](x/2025-04-25_top_3_search_click_behavior.txt) | [🧵](threads/2025-04-25_top_3_search_click_behavior.txt) |
+| 2 | Unique Users per Client per Month | StrataScratch | 2025-04-27 | [2025-04-27_unique_users_per_client.md](2025-04-27_unique_users_per_client.md) | — | [🐦](x/2025-04-27_unique_users_per_client.txt) | [🧵](threads/2025-04-27_unique_users_per_client.txt) |
+| 3 | Number of Shipments per Month | StrataScratch | 2025-04-28 | [2025-04-28_shipments_per_month.md](2025-04-28_shipments_per_month.md) | — | [🐦](x/2025-04-28_shipments_per_month.txt) | [🧵](threads/2025-04-28_shipments_per_month.txt) |
+| 4 | People by Age (10+ Members) | Codewars | 2025-04-29 | [2025-04-29_people_by_age.md](2025-04-29_people_by_age.md) | — | [🐦](x/2025-04-29_people_by_age.txt) | [🧵](threads/2025-04-29_people_by_age.txt) |
 | 5 | Regex AlphaNumeric Split | Codewars | 2025-04-30 | [2025-04-30_regex_alphanumeric_split.md](2025-04-30_regex_alphanumeric_split.md) | — | — | — |
 | 6 | Candidates with Complete Skill Sets | StrataScratch | 2025-05-01 | [2025-05-01_candidates_complete_skill_sets.md](2025-05-01_candidates_complete_skill_sets.md) | — | — | — |
 | 7 | Most Lucrative Products | StrataScratch | 2025-05-02 | [2025-05-02_most_lucrative_products.md](2025-05-02_most_lucrative_products.md) | — | — | — |

@@ -1,0 +1,34 @@
+[1/7]
+🧵
+Kalau kamu hanya hitung total user tanpa pisah per klien per bulan, kamu tidak akan tahu klien mana yang sedang kehilangan pengguna. Tren buruk tersembunyi di dalam agregasi yang terlalu besar.
+
+[2/7]
+Berapa banyak pengguna unik yang dimiliki setiap klien, bulan per bulan? Ini pertanyaan dasar untuk memantau kesehatan klien dalam produk berbasis langganan.
+
+[3/7]
+```sql
+SELECT client_id,
+  EXTRACT(MONTH FROM time_id) AS event_month,
+  COUNT(DISTINCT user_id) AS unique_user_count
+FROM fact_events
+GROUP BY EXTRACT(MONTH FROM time_id), client_id
+ORDER BY event_month, unique_user_count DESC;
+```
+
+[4/7]
+Kenapa pakai COUNT(DISTINCT user_id), bukan COUNT(user_id)?
+
+Satu user bisa punya banyak event dalam sebulan. COUNT biasa akan menghitung duplikat. DISTINCT memastikan setiap user hanya dihitung satu kali per klien per bulan.
+
+[5/7]
+Kenapa GROUP BY menyebut EXTRACT(MONTH FROM time_id) lagi, bukan alias event_month?
+
+Karena alias kolom belum dikenal saat GROUP BY dieksekusi. Kamu harus ulangi ekspresinya — atau gunakan nomor kolom (GROUP BY 2, 1).
+
+[6/7]
+Bayangkan kamu kelola platform SaaS. Klien A punya 500 user di Januari, lalu turun ke 120 di Februari. Tanpa breakdown per klien per bulan, anomali ini tenggelam dalam rata-rata keseluruhan.
+
+[7/7]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #UserEngagement #GrowthStrategy

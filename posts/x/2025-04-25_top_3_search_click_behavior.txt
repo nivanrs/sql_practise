@@ -1,0 +1,47 @@
+[1/8]
+🧵
+Kalau tim produk tanya "seberapa efektif hasil pencarian kita?", kamu salah hitung satu kondisi saja. Angkanya langsung ngaco. Ini cara hitungnya yang benar.
+
+[2/8]
+Dari semua event pencarian di Facebook, berapa persen yang diklik di posisi 1-3? Berapa persen yang tidak diklik padahal ada di posisi teratas?
+
+[3a/8]
+Kita butuh dua metrik sekaligus dari satu tabel:
+
+```sql
+select
+  (100.0 * count(case when clicked = 1
+    and search_results_position <= 3
+    then 1 end) / count(*))
+    as top_3_clicked,
+```
+
+[3b/8]
+```sql
+  (100.0 * count(case when clicked = 0
+    and search_results_position <= 3
+    then 1 end) / count(*))
+    as top_3_notclicked
+from fb_search_events;
+```
+
+[4/8]
+Kenapa pakai CASE WHEN di dalam COUNT, bukan WHERE?
+
+WHERE hanya bisa filter satu kondisi. Di sini kita perlu DUA metrik berbeda dari baris yang sama — klik dan tidak klik. CASE WHEN menghitung keduanya sekaligus.
+
+[5/8]
+Kenapa pembaginya count(*), bukan count(clicked)?
+
+count(*) = semua baris (semua event pencarian). Persentase dihitung terhadap total pencarian, bukan hanya yang punya nilai clicked. Ini membuat angka sebanding.
+
+[6/8]
+Bayangkan tim search engine melihat top_3_clicked hanya 12%. Artinya 88% pengguna scroll melewati hasil teratas. Sinyal langsung: relevansi ranking bermasalah.
+
+[7/8]
+Kalau kamu perlu dua metrik dari satu tabel sekaligus, pakai CASE WHEN di dalam COUNT karena WHERE hanya bisa memilih satu kondisi dan akan memaksa kamu menulis dua query terpisah.
+
+[8/8]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #SearchAnalytics #UserBehavior

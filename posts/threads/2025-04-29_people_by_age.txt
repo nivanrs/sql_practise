@@ -1,0 +1,35 @@
+[1/7]
+Kalau kamu pakai WHERE COUNT(*) >= 10, query langsung error. WHERE tidak bisa membaca hasil agregasi. Banyak yang baru sadar setelah mencoba dan bingung dengan pesan errornya.
+
+[2/7]
+Dari tabel people, usia mana yang muncul minimal 10 kali? Soal ini melatih salah satu perbedaan paling penting dalam SQL: kapan pakai WHERE, kapan pakai HAVING.
+
+[3/7]
+```sql
+SELECT age,
+  COUNT(*) AS total_people
+FROM people
+GROUP BY age
+HAVING COUNT(*) >= 10;
+```
+
+[4/7]
+Kenapa HAVING, bukan WHERE?
+
+WHERE dieksekusi sebelum GROUP BY. Pada tahap itu, nilai COUNT(*) belum ada karena pengelompokan belum terjadi. HAVING dieksekusi setelah GROUP BY selesai, ketika setiap grup sudah punya nilai agregasi. Itulah mengapa filter pada COUNT, SUM, atau AVG selalu pakai HAVING.
+
+[5/7]
+Urutan eksekusi SQL yang perlu kamu pahami:
+FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY
+
+WHERE menyaring baris individual sebelum pengelompokan. HAVING menyaring grup setelah pengelompokan dan agregasi selesai. Keduanya beroperasi di tahap yang berbeda.
+
+[6/7]
+Pola HAVING COUNT(*) >= N muncul di banyak konteks nyata: usia dengan minimal 10 anggota, kota dengan minimal 5 toko, produk dengan minimal 100 transaksi, pengguna dengan minimal 3 sesi. Setiap kali kamu perlu ambang batas pada hasil GROUP BY, jawaban selalu HAVING.
+
+[7/7]
+Kalau kamu perlu filter berdasarkan hasil agregasi (COUNT, SUM, AVG), pakai HAVING karena WHERE hanya bekerja pada baris individual sebelum pengelompokan terjadi.
+
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #Codewars #HavingClause #Demographics
