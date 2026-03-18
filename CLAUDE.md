@@ -12,6 +12,8 @@ A personal archive of LinkedIn "SQL of the Day" posts. Each post is a SQL practi
 - `posts/drafts/{slug}_raw.md` — Raw draft exactly as the user wrote it (any language, any format)
 - `posts/drafts/{slug}_critique.md` — Coaching feedback saved alongside the raw draft
 - `posts/linkedin/*.txt` — LinkedIn-copyable plain text version of each post (no markdown syntax)
+- `posts/x/*.txt` — X (Twitter) thread version of each post in Indonesian (8-10 tweets)
+- `posts/threads/*.txt` — Threads thread version of each post in Indonesian (8-10 posts)
 - `posts/index.md` — Master index table: post number, title, source, exact posting date, links to file and PDF
 - `posts/media/pdfs/` — LinkedIn carousel PDFs (7 files); all new carousels use Warm Authority; pre-2026-03-30 PDFs are legacy (dark/cyan Canva style, deprecated)
 - `images/` — Legacy image assets for post #11 (Oscar problem)
@@ -124,15 +126,16 @@ Return feedback in this order:
 
 1. Create `posts/YYYY-MM-DD_{slug}.md` using the format above
 2. Create `posts/linkedin/YYYY-MM-DD_{slug}.txt` — LinkedIn-copyable plain text version (no markdown syntax; use `→` bullets, `•` for lists, numbered for takeaways, `─────` dividers, emojis and hashtags preserved)
-3. If a carousel PDF exists, generate with Python/matplotlib and save to `posts/media/pdfs/YYYY-MM-DD_{slug}.pdf`
-4. Append a new row to `posts/index.md` and assign the next sequential number — index is **chronological** (oldest = #1, newest = last)
+3. Create `posts/x/YYYY-MM-DD_{slug}.txt` — X thread in Indonesian (8-10 tweets, ≤280 chars each)
+4. Create `posts/threads/YYYY-MM-DD_{slug}.txt` — Threads thread in Indonesian (8-10 posts, ≤500 chars each)
+5. If a carousel PDF exists, generate with Python/matplotlib and save to `posts/media/pdfs/YYYY-MM-DD_{slug}.pdf`
+6. Append a new row to `posts/index.md` and assign the next sequential number — index is **chronological** (oldest = #1, newest = last)
    - **Posted date**: decode from LinkedIn URN with `urn >> 22` to get Unix ms timestamp (`datetime.fromtimestamp((urn >> 22) / 1000, tz=timezone.utc)`)
    - PDF link: `[📄](media/pdfs/{filename}.pdf)` or `—`
 
 ## Key Facts
 
-- 26 posts total (24 indexed + 2 pending index entries: `finding_purchases.md`, `number_of_units_per_nationality.md`)
-- Post #11 (`person_with_most_oscars`) file is dated `2026-03-23` but index still shows `—` for posted date (URN unknown)
+- 32 posts total (all indexed); post #26 (`person_with_most_oscars`) still shows `—` for posted date (URN unknown)
 - `2026-03-30_facebook_accounts.md` — current file for post #1 (Facebook Accounts); carousel PDF at `posts/media/pdfs/2026-03-30_facebook_accounts.pdf`
 - **Carousel generation**: all new PDFs use Python/matplotlib (`PdfPages`, `figsize=(10.8, 10.8)`, Warm Authority fonts); reusable scripts saved to `/tmp/gen_{slug}.py`
 - **Legacy PDFs** (pre-2026-03-30, dark/cyan Canva style) are deprecated — do not replicate that aesthetic
