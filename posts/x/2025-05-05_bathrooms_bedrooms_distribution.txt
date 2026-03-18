@@ -1,0 +1,36 @@
+[1/8]
+🧵
+Kalau kamu hanya melihat rata-rata tanpa tahu ada vila mewah di dalam data, kesimpulan kamu tentang ukuran properti tipikal bisa meleset jauh dari kenyataan.
+
+[2/8]
+Untuk setiap kota dan tipe properti di Airbnb, berapa rata-rata jumlah kamar mandi dan kamar tidur? Soal ini melatih agregasi dasar sekaligus mengingatkan batas dari fungsi AVG.
+
+[3/8]
+```sql
+SELECT city, property_type,
+  AVG(bathrooms) AS avg_bathrooms,
+  AVG(bedrooms) AS avg_bedrooms
+FROM airbnb_search_details
+GROUP BY city, property_type;
+```
+
+[4/8]
+Kenapa GROUP BY city, property_type?
+
+Karena kita ingin angka rata-rata yang spesifik per kombinasi kota dan tipe. Tanpa GROUP BY, AVG akan menghitung seluruh tabel jadi satu angka global yang tidak berguna untuk perbandingan.
+
+[5/8]
+Kenapa AVG() bisa menyesatkan?
+
+AVG sensitif terhadap outlier. Satu vila mewah dengan 10 kamar mandi bisa mendongkrak rata-rata seluruh apartemen standar di kota yang sama. Hasilnya tidak mencerminkan properti tipikal.
+
+[6/8]
+Tim produk Airbnb memakai distribusi ukuran properti untuk menentukan filter default di halaman pencarian. Kalau rata-rata sudah dipengaruhi outlier, filter yang dihasilkan tidak relevan bagi mayoritas pengguna.
+
+[7/8]
+Kalau data punya kemungkinan outlier ekstrem, sandingkan AVG dengan PERCENTILE_CONT(0.5) karena median lebih tahan terhadap nilai ekstrem dan lebih jujur mewakili properti tipikal.
+
+[8/8]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #AirbnbAnalytics #AggregationSQL

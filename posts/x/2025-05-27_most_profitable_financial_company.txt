@@ -1,0 +1,63 @@
+[1/11]
+🧵
+Kalau kamu hanya cari perusahaan dengan profit tertinggi secara global, kamu tidak tahu siapa pemimpin di setiap benua. Peringkat global bisa mendominasi satu region dan menyembunyikan pemain kuat di region lainnya.
+
+[2/11]
+Dari dataset Forbes Global 2010-2014, temukan perusahaan finansial paling menguntungkan di dunia. Lalu, siapa yang memimpin di masing-masing benua? Soal ini melatih penggunaan rank eksisting dan window function.
+
+[3/11]
+Query global: pakai rank yang sudah ada di tabel.
+```sql
+SELECT company, continent
+FROM forbes_global_2010_2014
+WHERE sector = 'Financials'
+  AND rank = 1;
+```
+
+[4/11]
+Query per benua, bagian 1: CTE buat ranking per benua.
+```sql
+WITH ranked AS (
+  SELECT company, continent,
+    ROW_NUMBER() OVER (
+      PARTITION BY continent
+      ORDER BY profits DESC
+    ) AS rn
+  FROM forbes_global_2010_2014
+  WHERE sector = 'Financials'
+)
+```
+
+[5/11]
+Query per benua (bagian 2): ambil satu pemenang per benua.
+```sql
+SELECT company, continent
+FROM ranked
+WHERE rn = 1;
+```
+
+[6/11]
+Kenapa query global cukup pakai WHERE rank = 1?
+
+Karena kolom rank sudah ada di tabel dan mencerminkan peringkat profit global. Tidak perlu menghitung ulang. Membaca struktur tabel sebelum query menghemat banyak baris kode yang tidak perlu.
+
+[7/11]
+Kenapa query per benua butuh ROW_NUMBER() OVER (PARTITION BY continent)?
+
+Karena ranking global tidak bisa dipecah per benua. ROW_NUMBER() membuat ulang peringkat dalam setiap partisi benua secara terpisah. Tanpa PARTITION BY, semua baris mendapat urutan global yang sama.
+
+[8/11]
+Kenapa CTE (WITH ranked AS ...) dan bukan subquery langsung?
+
+CTE memisahkan logika windowing dari logika filtering. Query utama jadi bersih: hanya ambil baris dengan rn = 1. Subquery bertumpuk di dalam FROM membuat query lebih sulit dibaca dan di-debug.
+
+[9/11]
+Tim strategi bank global memakai analisis ini untuk membandingkan posisi kompetitif di setiap region. Pemimpin global belum tentu mendominasi setiap benua karena faktor regulasi dan infrastruktur keuangan berbeda di setiap region.
+
+[10/11]
+Kalau perlu menemukan peringkat pertama di setiap kelompok dari satu tabel, pakai ROW_NUMBER() OVER (PARTITION BY ...) karena rank global tidak bisa dipecah per grup tanpa window function.
+
+[11/11]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #WindowFunctions #FinancialAnalytics

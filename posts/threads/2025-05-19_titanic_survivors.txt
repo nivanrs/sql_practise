@@ -1,0 +1,41 @@
+[1/9]
+Kalau kamu hanya hitung total penumpang yang selamat, kamu tidak tahu apakah kelas pertama punya tingkat keselamatan 3x lebih tinggi dari kelas ketiga. Angka total menyembunyikan perbedaan segmen yang paling penting dalam analisis.
+
+[2/9]
+Berapa penumpang yang selamat dan yang tidak selamat di setiap kelas (1, 2, 3) dalam data Titanic? Soal ini melatih teknik pivot kondisional menggunakan CASE WHEN di dalam fungsi agregasi untuk membangun laporan ringkas dalam satu query.
+
+[3/9]
+```sql
+SELECT survived,
+  SUM(CASE WHEN pclass=1 THEN 1 ELSE 0 END) AS first_class,
+  SUM(CASE WHEN pclass=2 THEN 1 ELSE 0 END) AS second_class,
+  SUM(CASE WHEN pclass=3 THEN 1 ELSE 0 END) AS third_class
+FROM titanic
+GROUP BY survived;
+```
+
+[4/9]
+Kenapa GROUP BY survived?
+
+Karena kita ingin dua baris hasil: satu untuk yang selamat (1) dan satu untuk yang tidak selamat (0). GROUP BY memisahkan data ke dalam dua kelompok ini sebelum agregasi dilakukan untuk setiap kolom kelas.
+
+[5/9]
+Kenapa SUM(CASE WHEN pclass=1 THEN 1 ELSE 0 END)?
+
+Ini adalah teknik pivot kondisional. Setiap ekspresi CASE WHEN bertindak sebagai filter per kelas di dalam satu query. Hasilnya adalah tiga kolom per baris output, masing-masing menghitung satu kelas secara terpisah tanpa subquery.
+
+[6/9]
+Teknik ini sangat umum untuk segmentasi pelanggan. Contoh: berapa pelanggan aktif vs. churned di setiap tier langganan? Tanpa pivot kondisional ini, kamu butuh tiga query terpisah atau melakukan pivot di luar SQL dengan tools tambahan.
+
+[7/9]
+Kenapa SUM lebih baik dari COUNT di sini?
+
+COUNT menghitung nilai non-NULL saja. SUM(CASE WHEN ... THEN 1 ELSE 0 END) lebih eksplisit dan selalu menghasilkan angka 0 untuk kelas yang tidak ada nilainya. COUNT bisa menghasilkan NULL yang perlu ditangani secara terpisah.
+
+[8/9]
+Kalau perlu memecah satu kolom kategorikal menjadi beberapa kolom hitungan dalam satu query, pakai SUM(CASE WHEN...) karena teknik ini menghasilkan laporan pivot langsung dari SQL tanpa memerlukan post-processing di luar database.
+
+[9/9]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #SQLTips #CustomerSegmentation

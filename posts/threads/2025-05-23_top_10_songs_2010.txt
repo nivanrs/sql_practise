@@ -1,0 +1,34 @@
+[1/8]
+Kalau kamu pakai LIMIT tanpa memahami urutan data di baliknya, kamu bisa mendapat 10 baris acak, bukan 10 baris teratas. Query terlihat benar, hasilnya menyesatkan, dan kamu tidak akan tahu ada yang salah sampai ada yang mempertanyakan datanya.
+
+[2/8]
+Dari dataset Billboard Top 100, kembalikan 10 lagu dengan peringkat tertinggi untuk tahun 2010. Soal ini melatih filtering, limiting, dan pentingnya memahami struktur data sebelum menulis satu baris query pun.
+
+[3/8]
+```sql
+SELECT DISTINCT year_rank, group_name, song_name
+FROM billboard_top_100_year_end
+WHERE year = 2010
+LIMIT 10;
+```
+
+[4/8]
+Kenapa DISTINCT?
+
+Data Billboard bisa punya baris duplikat untuk artis yang sama dengan lagu yang sama di tahun yang sama. DISTINCT memastikan setiap kombinasi year_rank, group_name, song_name hanya muncul sekali di hasil akhir tanpa noise.
+
+[5/8]
+Kenapa LIMIT 10 bisa langsung dipakai di sini tanpa ORDER BY?
+
+Karena data di tabel ini sudah terurut berdasarkan year_rank. LIMIT 10 mengambil 10 baris pertama yang sudah dalam urutan yang benar. Kalau urutan tabel tidak dijamin, kamu wajib menambahkan ORDER BY year_rank sebelum LIMIT.
+
+[6/8]
+Pola filtering dan limiting ini muncul di hampir setiap bagian bisnis: top produk terlaris bulan ini, pengguna paling aktif, transaksi terbesar per kategori. Tapi sebelum menulis query, selalu periksa dulu apakah data sudah terurut atau perlu kamu urutkan sendiri.
+
+[7/8]
+Kalau perlu mengambil N baris teratas dari dataset yang terurut, pastikan kamu tahu apakah urutan itu sudah ada di tabel atau perlu dibuat eksplisit dengan ORDER BY karena LIMIT tanpa urutan yang terjamin menghasilkan data acak yang terlihat valid tapi tidak bisa dipercaya.
+
+[8/8]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #MusicAnalytics #SQLTips
