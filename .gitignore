@@ -3,3 +3,5 @@
 
 .playwright-cli/
 .playwright-mcp/
+
+.worktrees/
