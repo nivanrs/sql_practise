@@ -32,7 +32,7 @@ posts/
   *.md                          ← unchanged
 ```
 
-Both directories are added to `posts/index.md` column references where applicable.
+Both directories are added to `posts/index.md` as two new link columns — **X** and **Threads** — positioned after the existing PDF column, using the same `[🐦](x/{filename}.txt)` / `[🧵](threads/{filename}.txt)` link format. Cells are `—` until a file exists.
 
 ---
 
@@ -59,15 +59,16 @@ Each thread follows a fixed 8–10 post skeleton. Both X and Threads use the sam
 - Hard limit: ≤280 characters per tweet
 - Tweet 1 opens with `🧵` thread marker
 - Breakdown posts 4–7 may be merged if needed to stay within character limits
+- If the SQL query (Post 3) exceeds 280 characters, split it across two consecutive tweets (3a and 3b) and adjust the total count N accordingly
 - Tighter, punchier sentences
-- Numbered format: `[1/N]` on each tweet
+- Numbered format: `[1/N]` on each tweet; N reflects the final post count after any merges or splits
 
 **Threads (posts/threads/):**
 - Soft limit: ≤500 characters per post
 - No thread marker needed on post 1
 - Each breakdown step gets its own full explanation
 - More conversational, slightly more breathing room
-- Numbered format: `[1/N]` on each post
+- Numbered format: `[1/N]` on each post; N reflects the final post count after any merges
 
 ---
 
@@ -77,6 +78,18 @@ Each thread follows a fixed 8–10 post skeleton. Both X and Threads use the sam
 - **Tone:** Native platform voice — informal, direct, conversational. Not a translation of the LinkedIn post; a fresh rewrite for the platform audience.
 - **No dashes or em dashes** in prose (same rule as LinkedIn posts). Use a colon or restructure instead.
 - Hyphens in code and compound adjectives are still allowed.
+
+### Hashtags
+
+Brand and technical tags stay in English regardless of post language. Topic-specific tags may be in Indonesian or English depending on common usage.
+
+**Always include in English:** `#SQLoftheDay` `#SQL` `#DataAnalytics`
+
+**Source tag:** match the source (e.g. `#StrataScratch`, `#Codewars`) — always English.
+
+**Topic tags:** 1–3 additional topic-specific tags, in English (e.g. `#WindowFunctions`, `#ConditionalCounting`). Indonesian topic tags are allowed only when there is no English equivalent in common use.
+
+**Count:** 4–7 total hashtags per thread. X and Threads may use slightly different tag sets where platform norms differ, but the brand tags above are always present.
 
 ---
 
@@ -93,7 +106,7 @@ No external script. No API key. No dependencies.
 
 ## CLAUDE.md Changes
 
-The "Adding a New Post" section gains two new steps after the LinkedIn `.txt` step:
+**1. "Adding a New Post" workflow** — gains two new steps after the LinkedIn `.txt` step:
 
 ```
 3. Create `posts/x/YYYY-MM-DD_{slug}.txt` — X thread in Indonesian (8-10 tweets, ≤280 chars each)
@@ -101,6 +114,11 @@ The "Adding a New Post" section gains two new steps after the LinkedIn `.txt` st
 ```
 
 Step numbering for PDF and index steps shifts accordingly.
+
+**2. Key Facts** — update the post count line from:
+> "26 posts total (24 indexed + 2 pending index entries: ...)"
+
+to reflect the current total of 32 posts (all indexed).
 
 ---
 
