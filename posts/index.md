@@ -8,10 +8,10 @@ All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).
 | 2 | Unique Users per Client per Month | StrataScratch | 2025-04-27 | [2025-04-27_unique_users_per_client.md](2025-04-27_unique_users_per_client.md) | — | [🐦](x/2025-04-27_unique_users_per_client.txt) | [🧵](threads/2025-04-27_unique_users_per_client.txt) |
 | 3 | Number of Shipments per Month | StrataScratch | 2025-04-28 | [2025-04-28_shipments_per_month.md](2025-04-28_shipments_per_month.md) | — | [🐦](x/2025-04-28_shipments_per_month.txt) | [🧵](threads/2025-04-28_shipments_per_month.txt) |
 | 4 | People by Age (10+ Members) | Codewars | 2025-04-29 | [2025-04-29_people_by_age.md](2025-04-29_people_by_age.md) | — | [🐦](x/2025-04-29_people_by_age.txt) | [🧵](threads/2025-04-29_people_by_age.txt) |
-| 5 | Regex AlphaNumeric Split | Codewars | 2025-04-30 | [2025-04-30_regex_alphanumeric_split.md](2025-04-30_regex_alphanumeric_split.md) | — | — | — |
-| 6 | Candidates with Complete Skill Sets | StrataScratch | 2025-05-01 | [2025-05-01_candidates_complete_skill_sets.md](2025-05-01_candidates_complete_skill_sets.md) | — | — | — |
-| 7 | Most Lucrative Products | StrataScratch | 2025-05-02 | [2025-05-02_most_lucrative_products.md](2025-05-02_most_lucrative_products.md) | — | — | — |
-| 8 | Highest Energy Consumption | StrataScratch | 2025-05-03 | [2025-05-03_highest_energy_consumption.md](2025-05-03_highest_energy_consumption.md) | — | — | — |
+| 5 | Regex AlphaNumeric Split | Codewars | 2025-04-30 | [2025-04-30_regex_alphanumeric_split.md](2025-04-30_regex_alphanumeric_split.md) | — | [🐦](x/2025-04-30_regex_alphanumeric_split.txt) | [🧵](threads/2025-04-30_regex_alphanumeric_split.txt) |
+| 6 | Candidates with Complete Skill Sets | StrataScratch | 2025-05-01 | [2025-05-01_candidates_complete_skill_sets.md](2025-05-01_candidates_complete_skill_sets.md) | — | [🐦](x/2025-05-01_candidates_complete_skill_sets.txt) | [🧵](threads/2025-05-01_candidates_complete_skill_sets.txt) |
+| 7 | Most Lucrative Products | StrataScratch | 2025-05-02 | [2025-05-02_most_lucrative_products.md](2025-05-02_most_lucrative_products.md) | — | [🐦](x/2025-05-02_most_lucrative_products.txt) | [🧵](threads/2025-05-02_most_lucrative_products.txt) |
+| 8 | Highest Energy Consumption | StrataScratch | 2025-05-03 | [2025-05-03_highest_energy_consumption.md](2025-05-03_highest_energy_consumption.md) | — | [🐦](x/2025-05-03_highest_energy_consumption.txt) | [🧵](threads/2025-05-03_highest_energy_consumption.txt) |
 | 9 | Bathrooms & Bedrooms Distribution | StrataScratch | 2025-05-05 | [2025-05-05_bathrooms_bedrooms_distribution.md](2025-05-05_bathrooms_bedrooms_distribution.md) | — | — | — |
 | 10 | Titanic Survivors and Non-Survivors | StrataScratch | 2025-05-19 | [2025-05-19_titanic_survivors.md](2025-05-19_titanic_survivors.md) | — | — | — |
 | 11 | Top 10 Songs of 2010 | StrataScratch | 2025-05-23 | [2025-05-23_top_10_songs_2010.md](2025-05-23_top_10_songs_2010.md) | — | — | — |

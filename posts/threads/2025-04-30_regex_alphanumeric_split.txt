@@ -1,0 +1,35 @@
+[1/8]
+Kalau kamu hapus karakter dengan REPLACE satu per satu, kamu butuh puluhan baris kode dan tetap akan kecolongan. Satu karakter yang terlewat merusak seluruh pipeline data cleaning.
+
+[2/8]
+Dari tabel repositories, pisahkan kolom address menjadi dua kolom: letters (huruf saja) dan numbers (angka saja). Soal ini melatih regex untuk ekstraksi string dengan presisi tinggi.
+
+[3/8]
+```sql
+SELECT
+  project,
+  regexp_replace(address, '[^[:alpha:]]', '', 'g') AS letters,
+  regexp_replace(address, '[^[:digit:]]', '', 'g') AS numbers
+FROM repositories;
+```
+
+[4/8]
+Kenapa [^[:alpha:]] bukan sekadar membuang angka satu per satu?
+
+Operator ^ di dalam [] berarti "semua KECUALI ini". Jadi [^[:alpha:]] artinya: buang semua karakter yang bukan huruf. Flag 'g' memastikan penggantian terjadi pada setiap kemunculan, bukan hanya yang pertama. Ini jauh lebih andal dari pendekatan manual.
+
+[5/8]
+Kenapa dua pemanggilan regexp_replace terpisah?
+
+Karena tujuannya berbeda: satu menyisakan huruf, satu menyisakan angka. Tidak ada cara menggabungkan keduanya dalam satu ekspresi karena kamu membutuhkan dua output berbeda dari sumber yang sama.
+
+[6/8]
+Data di dunia nyata jarang bersih. Identifier produk, kode wilayah, nomor registrasi, semuanya bisa bercampur huruf dan angka. Kemampuan memisahkan keduanya adalah fondasi dari setiap pipeline data cleaning yang andal dan tahan terhadap format yang tidak terduga.
+
+[7/8]
+Kalau perlu ekstrak komponen spesifik dari string campuran, pakai regexp_replace dengan pola negasi karena REPLACE biasa tidak skalabel dan rawan miss pada karakter yang tidak terduga.
+
+[8/8]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #Codewars #Regex #DataCleaning #PostgreSQL

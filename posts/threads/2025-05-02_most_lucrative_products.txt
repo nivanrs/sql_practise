@@ -1,0 +1,44 @@
+[1/9]
+Kalau kamu tidak batasi periode, kamu bisa salah mengidentifikasi produk terlaris. Produk yang bagus di H1 2022 belum tentu bagus sepanjang tahun. Keputusan stok dan marketing bisa meleset jauh dari target.
+
+[2/9]
+Dari tabel online_orders, temukan 5 produk dengan total revenue tertinggi di H1 2022 (Januari hingga Juni 2022). Soal ini melatih agregasi revenue dengan filter tanggal yang presisi dan ranking hasil agregasi.
+
+[3/9]
+```sql
+select product_id,
+  sum(cost_in_dollars * units_sold) as total_revenue
+from online_orders
+where 1=1
+  and date_sold >= date '2022-01-01'
+  and date_sold <= date '2022-06-30'
+group by product_id
+order by total_revenue desc
+limit 5;
+```
+
+[4/9]
+Kenapa sum(cost_in_dollars * units_sold), bukan hanya sum(cost_in_dollars)?
+
+Karena setiap baris mewakili satu transaksi dengan jumlah unit tertentu. Revenue per transaksi adalah harga dikali jumlah unit yang terjual. Menjumlahkan harga saja akan menghasilkan angka yang tidak bermakna dan tidak mewakili revenue sesungguhnya.
+
+[5/9]
+Kenapa WHERE dengan dua kondisi tanggal eksplisit?
+
+Keduanya setara dengan BETWEEN untuk tanggal. Namun dua kondisi eksplisit lebih mudah dibaca dan diubah saat periode analisis berubah. BETWEEN juga inklusif di kedua ujung, yang bisa jadi masalah kalau kolom tanggalmu menyimpan komponen waktu.
+
+[6/9]
+Kenapa ada WHERE 1=1?
+
+Bukan soal logika SQL, ini soal kebiasaan penulisan query yang mudah dimodifikasi. Dengan 1=1 sebagai kondisi awal, setiap filter berikutnya selalu diawali AND. Kamu bisa tambah atau hapus kondisi tanpa khawatir mana yang jadi kondisi pertama.
+
+[7/9]
+Di akhir kuartal, tim bisnis butuh tahu produk mana yang perlu stok lebih besar, anggaran marketing lebih tinggi, atau promosi lebih agresif di periode berikutnya. Query sederhana ini adalah titik awal dari setiap keputusan strategis berbasis data.
+
+[8/9]
+Kalau perlu agregasi revenue per produk dalam periode tertentu, filter dulu dengan WHERE baru GROUP BY dan ORDER BY karena mencampur logika filter dan agregasi membuat query sulit dibaca, divalidasi, dan dimodifikasi tim lain.
+
+[9/9]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #RevenueAnalysis #EcommerceAnalytics

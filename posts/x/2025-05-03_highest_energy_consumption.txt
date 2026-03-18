@@ -1,0 +1,53 @@
+[1/10]
+🧵
+Kalau kamu query hanya satu tabel regional, kamu tidak punya gambaran global. Keputusan infrastruktur berdasarkan data satu region bisa salah alokasi anggaran jutaan dolar.
+
+[2/10]
+Dari tiga tabel terpisah (EU, Asia, NA), temukan tanggal dengan total konsumsi energi tertinggi di seluruh data center Meta. Soal ini melatih penggabungan lintas tabel sebelum agregasi.
+
+[3/10]
+```sql
+WITH all_region AS (
+  SELECT date, consumption FROM fb_eu_energy
+  UNION ALL
+  SELECT date, consumption FROM fb_asia_energy
+  UNION ALL
+  SELECT date, consumption FROM fb_na_energy
+)
+```
+
+[4/10]
+```sql
+SELECT date,
+  SUM(consumption) AS total_consumption
+FROM all_region
+GROUP BY date
+ORDER BY total_consumption DESC
+LIMIT 2;
+```
+
+[5/10]
+Kenapa UNION ALL, bukan UNION?
+
+UNION membandingkan setiap baris untuk hapus duplikat: operasi mahal. UNION ALL langsung gabungkan semua baris tanpa cek duplikat. Karena tiap tabel dari region berbeda, duplikat antar tabel tidak mungkin ada.
+
+[6/10]
+Kenapa CTE (WITH all_region AS ...), bukan subquery langsung?
+
+CTE memisahkan logika penggabungan dari logika agregasi. Query utama jadi bersih. Kalau perlu tambah region keempat, cukup satu baris UNION ALL di CTE tanpa menyentuh query utama.
+
+[7/10]
+Kenapa GROUP BY date lalu ORDER BY DESC LIMIT 2?
+
+LIMIT 2 bukan LIMIT 1 karena soal ini meminta tanggal tertinggi, dan ada kemungkinan dua tanggal punya nilai yang sama. LIMIT 1 berisiko memotong hasil yang setara. Lebih aman ambil dua lalu validasi.
+
+[8/10]
+Tim infrastruktur Meta perlu tahu kapan puncak konsumsi energi terjadi untuk merencanakan kapasitas dan efisiensi. Tanpa menggabungkan data lintas region, laporan global tidak mungkin akurat.
+
+[9/10]
+Kalau perlu agregasi lintas beberapa tabel berstruktur sama, gabungkan dulu dengan UNION ALL dalam CTE karena query tanpa penggabungan eksplisit hanya menganalisis satu sumber dan menghasilkan kesimpulan yang tidak lengkap.
+
+[10/10]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #UnionAll #CTE #EnergyAnalytics

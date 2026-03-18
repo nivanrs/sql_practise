@@ -1,0 +1,41 @@
+[1/9]
+🧵
+Kalau kamu pakai WHERE skill = 'Python' AND skill = 'Tableau', hasilnya selalu kosong. Satu baris tidak bisa punya dua nilai di kolom yang sama sekaligus.
+
+[2/9]
+Dari tabel candidates, temukan kandidat yang memiliki ketiga skill: Python, Tableau, dan PostgreSQL. Soal ini melatih pola filter multi-kondisi yang benar pada data berbentuk baris per skill.
+
+[3/9]
+```sql
+SELECT candidate_id
+FROM candidates
+WHERE skill IN ('Python', 'Tableau', 'PostgreSQL')
+GROUP BY candidate_id
+HAVING COUNT(DISTINCT skill) = 3;
+```
+
+[4/9]
+Kenapa WHERE skill IN (...) dulu sebelum GROUP BY?
+
+Karena kita hanya peduli pada tiga skill itu. Membuang baris yang tidak relevan di awal membuat GROUP BY dan HAVING bekerja pada data yang lebih kecil dan lebih cepat.
+
+[5/9]
+Kenapa GROUP BY candidate_id?
+
+Setiap kandidat punya beberapa baris, satu per skill. GROUP BY mengumpulkan semua baris milik kandidat yang sama agar kita bisa menghitung berapa skill yang dimilikinya.
+
+[6/9]
+Kenapa COUNT(DISTINCT skill) = 3, bukan COUNT(*) = 3?
+
+Karena data bisa mengandung duplikat. Kalau kandidat punya dua baris Python, COUNT(*) = 3 akan lolos meski dia tidak punya semua skill. DISTINCT memastikan hitungan berdasarkan skill unik.
+
+[7/9]
+Pola ini muncul di banyak konteks: user yang sudah selesaikan semua modul kursus, produk yang tersedia di semua kategori, order yang punya semua tahap approval. Setiap kali satu entitas harus memenuhi semua kriteria, polanya sama.
+
+[8/9]
+Kalau satu entitas harus memenuhi semua kondisi dari daftar, pakai WHERE IN lalu HAVING COUNT(DISTINCT) = N karena AND pada satu kolom mustahil terpenuhi dalam satu baris.
+
+[9/9]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #HavingClause #SkillMatching

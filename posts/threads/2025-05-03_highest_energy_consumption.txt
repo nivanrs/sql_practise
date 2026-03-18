@@ -1,0 +1,47 @@
+[1/9]
+Kalau kamu query hanya satu tabel regional, kamu tidak punya gambaran global. Keputusan infrastruktur berdasarkan data satu region bisa menghasilkan alokasi anggaran yang jauh dari kenyataan kebutuhan seluruh sistem.
+
+[2/9]
+Dari tiga tabel terpisah (EU, Asia, NA), temukan tanggal dengan total konsumsi energi tertinggi di seluruh data center Meta. Soal ini melatih penggabungan lintas tabel sebelum agregasi dilakukan.
+
+[3/9]
+```sql
+WITH all_region AS (
+  SELECT date, consumption FROM fb_eu_energy
+  UNION ALL
+  SELECT date, consumption FROM fb_asia_energy
+  UNION ALL
+  SELECT date, consumption FROM fb_na_energy
+)
+SELECT date, SUM(consumption) AS total_consumption
+FROM all_region
+GROUP BY date
+ORDER BY total_consumption DESC
+LIMIT 2;
+```
+
+[4/9]
+Kenapa UNION ALL, bukan UNION?
+
+UNION membandingkan setiap baris untuk menghapus duplikat: operasi yang mahal secara komputasi. UNION ALL langsung menggabungkan semua baris tanpa pemeriksaan duplikat. Karena setiap tabel berasal dari region yang berbeda, duplikat antar tabel tidak mungkin terjadi.
+
+[5/9]
+Kenapa memakai CTE (WITH all_region AS ...), bukan subquery langsung di dalam FROM?
+
+CTE memisahkan logika penggabungan dari logika agregasi. Query utama menjadi jauh lebih bersih dan mudah dibaca. Kalau perlu menambahkan region kelima di masa depan, cukup tambahkan satu baris UNION ALL di dalam CTE tanpa menyentuh query utama sama sekali.
+
+[6/9]
+Kenapa ORDER BY total_consumption DESC LIMIT 2, bukan LIMIT 1?
+
+Karena ada kemungkinan dua tanggal punya total konsumsi yang sama persis. LIMIT 1 berisiko memotong hasil yang setara dan memberikan gambaran yang tidak lengkap. LIMIT 2 lebih aman untuk validasi apakah ada nilai kembar di puncak.
+
+[7/9]
+Tim infrastruktur Meta perlu tahu kapan puncak konsumsi energi terjadi untuk merencanakan kapasitas server dan anggaran efisiensi energi. Tanpa menggabungkan data lintas region terlebih dahulu, laporan global tidak akan pernah akurat.
+
+[8/9]
+Kalau perlu agregasi lintas beberapa tabel yang punya struktur kolom sama, gabungkan dulu dengan UNION ALL dalam CTE karena query yang hanya melihat satu tabel menghasilkan kesimpulan parsial yang bisa menyesatkan keputusan strategis.
+
+[9/9]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #UnionAll #CTE #EnergyAnalytics

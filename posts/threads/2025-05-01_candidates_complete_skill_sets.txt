@@ -1,0 +1,40 @@
+[1/9]
+Kalau kamu pakai WHERE skill = 'Python' AND skill = 'Tableau', hasilnya selalu kosong. Satu baris tidak bisa punya dua nilai di kolom yang sama sekaligus. Ini jebakan paling umum saat filter multi-kondisi pada data berbentuk baris per atribut.
+
+[2/9]
+Dari tabel candidates, temukan kandidat yang memiliki ketiga skill: Python, Tableau, dan PostgreSQL. Soal ini melatih pola filter multi-kondisi yang benar ketika data disimpan dalam format satu baris per skill.
+
+[3/9]
+```sql
+SELECT candidate_id
+FROM candidates
+WHERE skill IN ('Python', 'Tableau', 'PostgreSQL')
+GROUP BY candidate_id
+HAVING COUNT(DISTINCT skill) = 3;
+```
+
+[4/9]
+Kenapa WHERE skill IN (...) dulu sebelum GROUP BY?
+
+Karena kita hanya peduli pada tiga skill itu. Membuang baris yang tidak relevan di awal membuat GROUP BY dan HAVING bekerja pada dataset yang lebih kecil. Ini bukan hanya soal performa, tapi juga mencegah skill lain masuk hitungan.
+
+[5/9]
+Kenapa GROUP BY candidate_id?
+
+Setiap kandidat punya beberapa baris, satu baris per skill. GROUP BY mengumpulkan semua baris milik kandidat yang sama agar kita bisa menghitung berapa banyak skill unik yang dimilikinya.
+
+[6/9]
+Kenapa COUNT(DISTINCT skill) = 3, bukan COUNT(*) = 3?
+
+Karena data bisa mengandung duplikat. Kalau seorang kandidat punya dua baris dengan skill yang sama, COUNT(*) = 3 bisa lolos meski dia tidak punya ketiga skill yang dibutuhkan. DISTINCT memastikan hitungan berdasarkan skill yang benar-benar berbeda.
+
+[7/9]
+Pola ini muncul di banyak konteks nyata: user yang sudah menyelesaikan semua modul kursus wajib, produk yang tersedia di semua kategori sekaligus, atau order yang sudah melewati semua tahap approval. Setiap kali satu entitas harus memenuhi semua kriteria dari sebuah daftar, polanya sama persis.
+
+[8/9]
+Kalau satu entitas harus memenuhi semua kondisi dari sebuah daftar, pakai WHERE IN lalu HAVING COUNT(DISTINCT) = N karena menggunakan AND pada kolom yang sama dalam satu WHERE mustahil terpenuhi dalam satu baris data.
+
+[9/9]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #HavingClause #SkillMatching

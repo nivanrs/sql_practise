@@ -1,0 +1,46 @@
+[1/9]
+🧵
+Kalau kamu tidak batasi periode, kamu bisa salah mengidentifikasi produk terlaris. Produk yang bagus di H1 2022 belum tentu bagus sepanjang tahun. Keputusan strategi bisa meleset.
+
+[2/9]
+Dari tabel online_orders, temukan 5 produk dengan total revenue tertinggi di H1 2022 (Januari hingga Juni 2022). Soal ini melatih agregasi revenue dengan filter tanggal yang presisi.
+
+[3/9]
+```sql
+select product_id,
+  sum(cost_in_dollars * units_sold)
+    as total_revenue
+from online_orders
+where 1=1
+  and date_sold >= date '2022-01-01'
+  and date_sold <= date '2022-06-30'
+group by product_id
+order by total_revenue desc
+limit 5;
+```
+
+[4/9]
+Kenapa sum(cost_in_dollars * units_sold), bukan hanya sum(cost_in_dollars)?
+
+Karena setiap baris mewakili satu transaksi dengan jumlah unit tertentu. Revenue per transaksi adalah harga dikali jumlah unit. Menjumlahkan harga saja akan menghasilkan angka yang tidak bermakna.
+
+[5/9]
+Kenapa WHERE dengan dua kondisi tanggal, bukan BETWEEN?
+
+Keduanya setara untuk tanggal. Tapi dua kondisi eksplisit lebih mudah dibaca dan diubah saat periode analisis berubah. BETWEEN juga inklusif di kedua ujung, perlu hati-hati kalau datamu punya komponen waktu.
+
+[6/9]
+Kenapa WHERE 1=1?
+
+Bukan soal logika, ini soal kebiasaan penulisan query dinamis. Dengan 1=1, setiap filter berikutnya selalu diawali AND. Kamu bisa tambah atau hapus kondisi tanpa khawatir kondisi pertama tidak punya pasangan AND.
+
+[7/9]
+Di akhir kuartal, tim bisnis butuh tahu produk mana yang perlu stok lebih besar, anggaran marketing lebih tinggi, atau promosi lebih agresif di periode berikutnya. Query sederhana ini adalah titik awal setiap keputusan itu.
+
+[8/9]
+Kalau perlu agregasi revenue per produk dalam periode tertentu, filter dulu dengan WHERE baru GROUP BY dan ORDER BY karena mencampur logika filter dan agregasi dalam satu tahap membuat query sulit dibaca dan divalidasi.
+
+[9/9]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #RevenueAnalysis #EcommerceAnalytics
