@@ -32,7 +32,14 @@ posts/
   *.md                          ← unchanged
 ```
 
-Both directories are added to `posts/index.md` as two new link columns — **X** and **Threads** — positioned after the existing PDF column, using the same `[🐦](x/{filename}.txt)` / `[🧵](threads/{filename}.txt)` link format. Cells are `—` until a file exists.
+Both directories are added to `posts/index.md` as two new link columns — **X** and **Threads** — positioned after the existing PDF column. The updated table header row becomes:
+
+```
+| # | Problem | Source | Posted | File | PDF | X | Threads |
+|---|---------|--------|--------|------|-----|---|---------|
+```
+
+Cell values use the same link format as PDF: `[🐦](x/{filename}.txt)` and `[🧵](threads/{filename}.txt)`. Cells are `—` until a file exists.
 
 ---
 
@@ -48,7 +55,7 @@ Each thread follows a fixed 8–10 post skeleton. Both X and Threads use the sam
 | 4 | **Breakdown 1** | First step — explains *why* it exists, not just what it does. |
 | 5 | **Breakdown 2** | Second step. |
 | 6 | **Breakdown 3** | Third step. |
-| 7 | **Breakdown 4** | Fourth step (merge with 6 if fewer than 4 logical steps). |
+| 7 | **Breakdown 4** | Fourth step. If fewer than 4 logical steps, merge into fewer posts. Minimum 2 breakdown posts regardless of step count. |
 | 8 | **Insight** | "So what" — business consequence grounded in a real scenario. |
 | 9 | **Takeaway** | The specific rule. Format: "Kalau [kondisi], pakai [X] karena [konsekuensi]." |
 | 10 | **CTA** | Follow prompt + relevant hashtags in Indonesian. |
@@ -106,7 +113,14 @@ No external script. No API key. No dependencies.
 
 ## CLAUDE.md Changes
 
-**1. "Adding a New Post" workflow** — gains two new steps after the LinkedIn `.txt` step:
+**1. "Repository Structure" section** — add two new bullets after the `posts/linkedin/*.txt` line:
+
+```
+- `posts/x/*.txt` — X (Twitter) thread version of each post in Indonesian (8-10 tweets)
+- `posts/threads/*.txt` — Threads thread version of each post in Indonesian (8-10 posts)
+```
+
+**2. "Adding a New Post" workflow** — gains two new steps after the LinkedIn `.txt` step:
 
 ```
 3. Create `posts/x/YYYY-MM-DD_{slug}.txt` — X thread in Indonesian (8-10 tweets, ≤280 chars each)
@@ -115,10 +129,17 @@ No external script. No API key. No dependencies.
 
 Step numbering for PDF and index steps shifts accordingly.
 
-**2. Key Facts** — update the post count line from:
-> "26 posts total (24 indexed + 2 pending index entries: ...)"
+**3. Key Facts** — replace the post count line:
 
-to reflect the current total of 32 posts (all indexed).
+From:
+```
+- 26 posts total (24 indexed + 2 pending index entries: `finding_purchases.md`, `number_of_units_per_nationality.md`)
+```
+
+To:
+```
+- 32 posts total (all indexed); post #26 (`person_with_most_oscars`) still shows `—` for posted date (URN unknown)
+```
 
 ---
 
