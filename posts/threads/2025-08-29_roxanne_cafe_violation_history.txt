@@ -1,0 +1,45 @@
+[1/9]
+Kalau kamu hitung total pelanggaran Roxanne Cafe tanpa memecahnya per tahun, kamu tidak bisa tahu apakah situasinya memburuk atau membaik dari waktu ke waktu. Satu angka agregat menyembunyikan tren yang paling penting untuk keputusan operasional.
+
+[2/9]
+Berapa pelanggaran kesehatan yang dicatat Roxanne Cafe di setiap tahun? Data dari tabel sf_restaurant_health_violations milik Kota San Francisco. Soal ini melatih cara mengekstrak komponen tanggal dan mengelompokkan data berbasis periode waktu.
+
+[3/9]
+Solusinya pakai EXTRACT untuk isolasi tahun, lalu GROUP BY dan ORDER BY untuk susun hasilnya secara kronologis.
+```sql
+SELECT
+  EXTRACT(YEAR FROM inspection_date) AS inspection_year,
+  COUNT(*) AS number_of_violations
+FROM sf_restaurant_health_violations
+WHERE business_name = 'Roxanne Cafe'
+GROUP BY inspection_year
+ORDER BY inspection_year;
+```
+
+[4/9]
+Kenapa EXTRACT(YEAR FROM inspection_date) dan bukan langsung GROUP BY inspection_date?
+
+Kolom inspection_date berisi tanggal lengkap termasuk bulan dan hari. Kalau langsung GROUP BY kolom itu, setiap hari unik jadi satu kelompok terpisah. EXTRACT menarik hanya komponen tahun sehingga semua tanggal di tahun yang sama masuk ke satu baris ringkasan.
+
+[5/9]
+Kenapa ORDER BY inspection_year wajib disertakan?
+
+Tanpa ORDER BY, database tidak menjamin urutan baris. Laporan tren harus disajikan secara kronologis agar pembaca bisa melihat pola kenaikan atau penurunan dengan jelas. Output yang tidak urut membuat analisis tren tidak bisa dilakukan tanpa post-processing tambahan.
+
+[6/9]
+Kenapa WHERE business_name = 'Roxanne Cafe' diperlukan?
+
+Tabel menyimpan data inspeksi semua restoran di San Francisco. Tanpa filter nama, query akan menghitung pelanggaran dari ribuan restoran sekaligus dan hasilnya sama sekali tidak berguna untuk analisis satu bisnis spesifik.
+
+[7/9]
+Pola EXTRACT + GROUP BY sangat reusable. Kamu bisa pakai untuk fraud per kuartal, penjualan per bulan, atau klaim per tahun. Logikanya sama: ekstrak periode waktu dari kolom tanggal, lalu hitung event di periode itu.
+
+[8/9]
+Tim compliance restoran memakai pola ini untuk laporan tahunan ke manajemen dan regulator. Kalau pelanggaran naik tiga tahun berturut-turut, itu sinyal operasional serius yang harus ditangani sebelum sanksi yang lebih berat dijatuhkan.
+
+[9/9]
+Kalau perlu mengelompokkan event berdasarkan periode waktu dari kolom tanggal, pakai EXTRACT() karena GROUP BY langsung pada tanggal penuh akan menciptakan terlalu banyak kelompok yang tidak berguna untuk analisis tren.
+
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #SQLTips #TimeSeriesAnalysis

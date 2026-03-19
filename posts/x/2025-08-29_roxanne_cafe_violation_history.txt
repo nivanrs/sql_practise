@@ -1,0 +1,44 @@
+[1/9]
+🧵
+Kalau kamu hitung total pelanggaran Roxanne Cafe tanpa memecahnya per tahun, kamu tidak bisa tahu apakah situasinya memburuk atau membaik. Satu angka agregat menyembunyikan tren yang paling penting.
+
+[2/9]
+Berapa pelanggaran kesehatan yang dicatat Roxanne Cafe di setiap tahun? Data dari sf_restaurant_health_violations. Soal ini melatih ekstraksi komponen tanggal dan pengelompokan berbasis waktu.
+
+[3/9]
+Solusinya pakai EXTRACT untuk isolasi tahun, lalu GROUP BY dan ORDER BY.
+```sql
+SELECT
+  EXTRACT(YEAR FROM inspection_date) AS inspection_year,
+  COUNT(*) AS number_of_violations
+FROM sf_restaurant_health_violations
+WHERE business_name = 'Roxanne Cafe'
+GROUP BY inspection_year
+ORDER BY inspection_year;
+```
+
+[4/9]
+Kenapa EXTRACT(YEAR FROM inspection_date)?
+
+Kolom inspection_date berisi tanggal lengkap. Kalau langsung GROUP BY inspection_date, setiap hari jadi satu kelompok. EXTRACT menarik hanya komponen tahun sehingga semua tanggal di tahun yang sama masuk ke satu baris.
+
+[5/9]
+Kenapa ORDER BY inspection_year?
+
+Tanpa ORDER BY, urutan baris tidak terjamin. Laporan tren harus kronologis agar pembaca bisa melihat pola naik atau turun. Angka yang tidak urut membuat analisis tren tidak bisa dilakukan secara visual.
+
+[6/9]
+Kenapa WHERE business_name = 'Roxanne Cafe' diperlukan?
+
+Tabel menyimpan data semua restoran di San Francisco. Tanpa filter ini, query menghitung pelanggaran semua restoran dan hasilnya tidak ada artinya untuk analisis satu bisnis spesifik.
+
+[7/9]
+Tim compliance restoran memakai pola ini untuk laporan tahunan ke manajemen. Kalau pelanggaran naik tiga tahun berturut-turut, itu sinyal operasional yang harus ditangani sebelum regulator menjatuhkan sanksi lebih berat.
+
+[8/9]
+Kalau perlu mengelompokkan event berdasarkan periode waktu dari kolom tanggal, pakai EXTRACT() karena GROUP BY langsung pada tanggal penuh akan menciptakan terlalu banyak kelompok yang tidak berguna.
+
+[9/9]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #SQLTips #TimeSeriesAnalysis

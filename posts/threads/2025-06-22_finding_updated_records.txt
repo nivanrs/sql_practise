@@ -1,0 +1,39 @@
+[1/8]
+Kalau kamu langsung ambil semua baris salary dari tabel karyawan, kamu bisa mendapat duplikat. Beberapa karyawan punya lebih dari satu record dengan nilai berbeda dan tanpa tahu mana yang terbaru, laporanmu akan salah dan angka payroll tidak bisa dipercaya.
+
+[2/8]
+Tabel ms_employee_salary punya beberapa baris per karyawan dengan nilai salary yang berbeda-beda. Tidak ada kolom timestamp. Tugas kita: ambil satu baris per karyawan dengan salary tertinggi sebagai representasi data paling mutakhir.
+
+[3/8]
+Solusinya pakai MAX() dengan GROUP BY di semua kolom identitas karyawan.
+```sql
+SELECT id, first_name, last_name,
+  department_id,
+  MAX(salary) AS latest_salary
+FROM ms_employee_salary
+GROUP BY id, first_name, last_name, department_id
+ORDER BY id;
+```
+
+[4/8]
+Kenapa MAX(salary) dan bukan ambil baris terakhir?
+
+Tabel tidak punya kolom created_at atau updated_at. Tanpa kolom urutan yang jelas, tidak ada cara aman menentukan mana baris terbaru. Soal menyatakan salary tertinggi adalah salary terbaru, jadi MAX() adalah pendekatan yang tepat.
+
+[5/8]
+Kenapa GROUP BY menyertakan semua kolom non-agregasi?
+
+SQL mengharuskan setiap kolom di SELECT yang bukan fungsi agregasi masuk ke GROUP BY. Jika id, first_name, last_name, dan department_id tidak disertakan, query akan error atau menghasilkan output yang tidak terdefinisi.
+
+[6/8]
+Keterbatasan desain tabel ini nyata di dunia kerja. Kalau tabel HR tidak punya timestamp, tim analyst tidak bisa lacak riwayat perubahan salary. Tabel idealnya punya created_at atau updated_at agar ROW_NUMBER() bisa dipakai untuk ambil record terbaru dengan tepat.
+
+[7/8]
+HR analyst yang tidak sadar ada duplikat akan melaporkan total anggaran salary lebih tinggi dari sebenarnya. Di sistem payroll, ini berujung pada alokasi anggaran yang salah dan keputusan kompensasi yang tidak akurat untuk ratusan karyawan.
+
+[8/8]
+Kalau tabel tidak punya timestamp dan ada duplikat per entitas, pakai MAX() atau MIN() sebagai proxy karena tanpa kolom urutan, window function seperti ROW_NUMBER() tidak bisa dipakai dengan benar untuk menentukan record terbaru.
+
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #DataCleaning #SQLTips

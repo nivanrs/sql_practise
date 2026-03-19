@@ -1,0 +1,37 @@
+[1/8]
+Kalau restoran kamu kena inspeksi kesehatan dengan skor buruk dan kamu tidak tahu kapan itu terjadi, kamu tidak bisa buktikan ada perbaikan ke regulator. Data inspeksi yang tidak difilter dengan benar tidak memberikan informasi yang bisa dipakai untuk tindakan.
+
+[2/8]
+Temukan tanggal-tanggal ketika STREET CHURROS mendapat skor inspeksi kesehatan 95 atau di bawahnya, beserta alasan inspeksinya. Sumber data: tabel los_angeles_restaurant_health_inspections milik Kota Los Angeles.
+
+[3/8]
+Solusinya cukup dengan dua kondisi WHERE digabung dengan AND.
+```sql
+SELECT activity_date, pe_description
+FROM los_angeles_restaurant_health_inspections
+WHERE facility_name = 'STREET CHURROS'
+  AND score <= 95;
+```
+
+[4/8]
+Kenapa filter facility_name diperlukan?
+
+Tabel menyimpan data semua restoran di LA. Tanpa filter nama, kamu akan menganalisis ribuan bisnis sekaligus dan output tidak akan berguna. Filter nama spesifik memastikan semua baris yang keluar benar-benar relevan untuk satu entitas bisnis.
+
+[5/8]
+Kenapa kondisinya score <= 95 dan bukan score < 95?
+
+Skor 95 sudah dianggap tidak memenuhi threshold dalam konteks soal ini. Operator <= memastikan baris dengan skor tepat 95 ikut tercakup dalam hasil. Jika pakai operator <, satu titik data inspeksi yang penting bisa hilang dari analisis secara diam-diam.
+
+[6/8]
+Pola WHERE 1=1 berguna kalau kamu sering menambah atau menghapus kondisi filter saat eksplorasi data. Dengan menulis WHERE 1=1 AND facility_name = ... AND score <= 95, kamu bisa komentari satu kondisi tanpa mengubah baris WHERE.
+
+[7/8]
+Bayangkan brand manager yang perlu laporan rekam jejak kepatuhan untuk investor atau audit. Satu tanggal inspeksi yang terlewat karena filter salah bisa mengubah narasi dari "kami sudah perbaiki masalah" menjadi "kami menyembunyikan informasi".
+
+[8/8]
+Kalau perlu filter data berdasarkan nama entitas spesifik dan threshold numerik, kombinasikan dua kondisi WHERE dengan AND karena satu kondisi saja tidak cukup untuk mengisolasi data yang relevan dan akurat.
+
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #SQLTips #FoodIndustry

@@ -1,0 +1,36 @@
+[1/8]
+🧵
+Kalau restoran kamu kena inspeksi kesehatan dengan skor buruk dan kamu tidak tahu kapan itu terjadi, kamu tidak bisa buktikan ada perbaikan ke regulator. Data inspeksi yang tidak difilter tidak berguna.
+
+[2/8]
+Temukan tanggal-tanggal ketika STREET CHURROS mendapat skor inspeksi kesehatan 95 atau di bawahnya, beserta alasan inspeksinya. Data: los_angeles_restaurant_health_inspections.
+
+[3/8]
+Solusinya cukup dengan WHERE dua kondisi.
+```sql
+SELECT activity_date, pe_description
+FROM los_angeles_restaurant_health_inspections
+WHERE facility_name = 'STREET CHURROS'
+  AND score <= 95;
+```
+
+[4/8]
+Kenapa filter facility_name dulu?
+
+Tabel berisi data semua restoran di LA. Tanpa filter nama, kamu akan menganalisis ribuan restoran sekaligus. Filter spesifik ke satu entitas memastikan output relevan dan tidak campur dengan data bisnis lain.
+
+[5/8]
+Kenapa kondisinya score <= 95 dan bukan score < 95?
+
+Skor 95 sudah dianggap tidak lulus threshold inspeksi dalam soal ini. Operator <= memastikan baris dengan skor tepat 95 ikut masuk. Jika pakai <, satu titik data penting bisa hilang dari analisis.
+
+[6/8]
+Bayangkan brand manager yang mau laporan ke investor tentang rekam jejak kepatuhan restoran. Satu tanggal inspeksi yang terlewat karena filter salah bisa mengubah narasi dari "kami perbaiki masalah" menjadi "kami sembunyikan masalah".
+
+[7/8]
+Kalau perlu filter data berdasarkan nama entitas tertentu dan threshold numerik, kombinasikan dua kondisi WHERE dengan AND karena satu kondisi saja tidak cukup untuk isolasi data yang relevan.
+
+[8/8]
+Ikuti untuk soal SQL harian berikutnya 🙌
+
+#SQLoftheDay #SQL #DataAnalytics #StrataScratch #SQLTips #FoodIndustry
