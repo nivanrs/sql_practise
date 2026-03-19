@@ -27,13 +27,14 @@ Full spec: `posts/media/brand-guidelines/warm-authority.md` | PNG reference: `po
 | Role | Hex | Usage |
 |------|-----|-------|
 | Ground | `#FBF3E4` | Background — warm cream, never white |
-| Authority | `#1A1A1A` | Headlines, body text, structural marks |
+| Authority | `#161616` | Headlines, body text, structural marks |
 | Accent | `#B91646` | Section titles, script, emotional markers **only** |
 
 ### Typography
 | Role | Font | Notes |
 |------|------|-------|
 | Display | Big Shoulders Bold | Ultra-condensed, all-caps, architectural scale |
+| Subheading | Instrument Sans Bold | Labels and sub-level headings only; never used for prose |
 | Body | Instrument Sans Regular | Humanist sans, never bold for prose |
 | Script | Nothing You Could Do | Crimson only, single moments |
 | Code | JetBrains Mono | Reduced weight, muted tone |
@@ -43,6 +44,7 @@ Full spec: `posts/media/brand-guidelines/warm-authority.md` | PNG reference: `po
 - **Right-pointing arrow** — bottom-right navigation
 - **Pill badge** — cream fill + black stroke, frames author name
 - **Horizontal rules** — section dividers, page top/bottom borders
+- **Crimson vertical bar** — left-aligned, precedes every section heading; consistent weight and height across all sections
 
 ### Principles
 - Space first: generous vertical breathing room, constant horizontal margins
