@@ -1,0 +1,53 @@
+<!-- EXAMPLE: Delete this file after you understand the format. -->
+
+💻 SQL of the Day: Spam Posts
+🔗 https://platform.stratascratch.com/coding/10134-spam-posts?code_type=1
+
+─────────────────────────────────
+
+Problem:
+
+Calculate the spam share for each day. The spam share is the percentage of posts flagged as spam (posts whose keywords contain the word 'spam') out of all posts viewed that day. Output the post date and the spam share.
+
+─────────────────────────────────
+
+🧠 SQL Solution
+
+SELECT
+    post_date,
+    100 * COUNT(DISTINCT CASE WHEN a.post_keywords LIKE '%spam%' THEN a.post_id END)::FLOAT
+        / COUNT(DISTINCT a.post_id) AS spam_share
+FROM facebook_posts a
+JOIN facebook_post_views b ON a.post_id = b.post_id
+GROUP BY post_date;
+
+─────────────────────────────────
+
+🧩 Simple logic breakdown
+
+→ JOIN facebook_posts with facebook_post_views on post_id: only count posts that were actually viewed
+→ GROUP BY post_date: one rate per day
+→ CASE WHEN ... LIKE '%spam%': flags spam posts; non-spam rows return NULL, which COUNT skips
+→ COUNT(DISTINCT spam posts) / COUNT(DISTINCT all posts): the daily spam rate, multiplied by 100
+→ ::FLOAT: prevents integer division from truncating every result to 0
+
+─────────────────────────────────
+
+📊 This pattern tells you:
+
+• Platform health over time: a rising spam share signals a degrading content ecosystem before user complaints surface
+• Labeling at scale: the keyword flag is a rule-based label that feeds machine learning classifiers. SQL gives you the rate the model needs to evaluate precision and recall.
+• Where data analytics meets data science: the analyst produces this rate; the data scientist trains a model on it. Neither can work without the other.
+
+─────────────────────────────────
+
+🎯 Key takeaways
+
+1. COUNT(DISTINCT CASE WHEN condition THEN col END) is the go-to for conditional distinct counting. It filters and deduplicates in one step.
+2. Know when to use COUNT, SUM, and AVG. COUNT(DISTINCT ...) counts unique entities. SUM(CASE WHEN ... THEN 1 ELSE 0 END) counts occurrences including duplicates. For a custom percentage, build the ratio explicitly with COUNT / COUNT.
+3. Cast before you divide. Integer division truncates: 1 / 100 = 0, not 0.01. Cast one operand to FLOAT or NUMERIC first.
+4. LIKE '%spam%' is a contains-check. The leading % means the word can appear anywhere in the keyword string.
+
+─────────────────────────────────
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #SpamDetection #ConditionalCounting #DataScience
