@@ -1,0 +1,57 @@
+You used the wrong ranking function. The query ran fine. The leaderboard was wrong.
+
+💻 SQL of the Day: Top Businesses with Most Reviews
+
+─────────────────────────────────
+
+Problem:
+
+Find the top 5 businesses with the most reviews. Return the business name and total review count.
+
+─────────────────────────────────
+
+🧠 SQL Solution
+
+WITH business_rank AS (
+    SELECT
+        business_id,
+        name,
+        SUM(review_count) AS review_count,
+        RANK() OVER (ORDER BY SUM(review_count) DESC) AS rnk
+    FROM yelp_business
+    GROUP BY business_id, name
+)
+
+SELECT name, review_count
+FROM business_rank
+WHERE rnk <= 5;
+
+─────────────────────────────────
+
+🧩 Simple logic breakdown
+
+→ SUM(review_count) grouped by business gives total reviews per business
+→ RANK() assigns position by descending count. Two businesses with the same total get rank 3. The next rank is 5, not 4.
+→ WHERE rnk <= 5 keeps every business within the top 5 positions, including any tied at the boundary
+
+─────────────────────────────────
+
+📊 This pattern tells you:
+
+• ROW_NUMBER() would return exactly 5 rows and look fine. But if two businesses tie at position 4, SQL drops one arbitrarily. A business that earned its spot on the Yelp leaderboard just disappears. No error, no warning.
+• DENSE_RANK() has the opposite problem. It handles ties, but compresses rank numbers. Two businesses tied at rank 3 means the next rank is 4, not 5. With a top-5 filter, an extra business squeezes in at rank 5 that RANK() would exclude. You get more rows than the business expects.
+• The question tells you which function to use, not habit. "Top 5 positions" calls for RANK(). "Top 5 distinct score levels" calls for DENSE_RANK(). "Give every row a unique number" calls for ROW_NUMBER().
+
+─────────────────────────────────
+
+🎯 Key takeaways
+
+1. ROW_NUMBER() on a tied leaderboard is a silent bug. It returns clean output, passes every visual check, and still drops valid entries.
+2. RANK() is the right call for competitive rankings. Tied businesses share the same position, and WHERE rnk <= 5 catches every one of them.
+3. DENSE_RANK() can quietly expand top-N results past what you expect. When ties exist above the cutoff, compressed numbering lets lower-ranked entries slip through.
+
+Which ranking function trips you up most? Drop it in the comments.
+
+─────────────────────────────────
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #WindowFunctions #Ranking #Yelp

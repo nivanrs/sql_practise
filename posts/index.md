@@ -37,3 +37,4 @@ All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).
 | 31 | Income By Title and Gender | StrataScratch #10077 | 2026-04-26 | [2026-04-26_income_by_title_and_gender.md](2026-04-26_income_by_title_and_gender.md) | [📄](media/pdfs/2026-04-26_income_by_title_and_gender.pdf) |
 | 32 | Top Cool Votes | StrataScratch #10060 | 2026-05-04 | [2026-05-04_top_cool_votes.md](2026-05-04_top_cool_votes.md) | [📄](media/pdfs/2026-05-04_top_cool_votes.pdf) |
 | 33 | Reviews of Categories | StrataScratch #10049 | — | [2026-05-11_reviews_of_categories.md](2026-05-11_reviews_of_categories.md) | [📄](media/pdfs/2026-05-11_reviews_of_categories.pdf) |
+| 34 | Top Businesses with Most Reviews | StrataScratch #10048 | — | [2026-05-18_top_businesses_most_reviews.md](2026-05-18_top_businesses_most_reviews.md) | [📄](media/pdfs/2026-05-18_top_businesses_most_reviews.pdf) |

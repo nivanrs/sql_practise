@@ -88,6 +88,7 @@ Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, to
 
 - **No dashes or em dashes** in post prose. Never use `-` as a sentence separator and never use `—`. Use a colon, a period, or restructure the sentence instead.
 - This applies to both `.md` and `.txt` files. Hyphens inside URLs, code, and compound adjectives used as modifiers before a noun are the only exceptions.
+- **No external links in the `.txt` file.** LinkedIn's algorithm suppresses reach on posts that contain external links in the body. The `🔗` line stays in the `.md` file and the PDF (as a clickable annotation), but is omitted from the `.txt` entirely. Post the link manually as the **first comment** after publishing.
 
 ## Draft Coaching Workflow
 
@@ -125,7 +126,7 @@ Return feedback in this order:
 ## Adding a New Post
 
 1. Create `posts/YYYY-MM-DD_{slug}.md` using the format above
-2. Create `posts/linkedin/YYYY-MM-DD_{slug}.txt` — LinkedIn-copyable plain text version (no markdown syntax; use `→` bullets, `•` for lists, numbered for takeaways, `─────` dividers, emojis and hashtags preserved)
+2. Create `posts/linkedin/YYYY-MM-DD_{slug}.txt` — LinkedIn-copyable plain text version (no markdown syntax; use `→` bullets, `•` for lists, numbered for takeaways, `─────` dividers, emojis and hashtags preserved). **Omit the `🔗` link line** — LinkedIn penalizes external links in the post body. Post the link as the first comment when publishing.
 3. If a carousel PDF exists, generate with Python/matplotlib and save to `posts/media/pdfs/YYYY-MM-DD_{slug}.pdf`
 4. Append a new row to `posts/index.md` and assign the next sequential number — index is **chronological** (oldest = #1, newest = last)
    - **Posted date**: decode from LinkedIn URN with `urn >> 22` to get Unix ms timestamp (`datetime.fromtimestamp((urn >> 22) / 1000, tz=timezone.utc)`)
@@ -195,8 +196,36 @@ Match `posts/media/pdfs/2026-05-04_top_cool_votes.pdf` for all design decisions:
 - Cover: title centered (ha="center", x=W/2), thin left crimson bar at x≈0.742
 - Author pill: CENTERED at bottom (`px = (W - pw) / 2`)
 - Script CTA "follow for daily SQL": CENTERED on slide 6
-- Code block: FancyBboxPatch rounded corners, CODE_LH=0.50, calibrate char width with renderer probe
+- Code block: FancyBboxPatch rounded corners, CODE_LH=0.50, calibrate char width with renderer probe. Reduce CODE_LH to ~0.41 and fs to 11 on dense code slides to keep the block above the bottom rule.
 - Slide 5 header: two-line Impact stack in ACC and AUTH
+
+### Clickable links in the PDF
+
+The problem URL must appear as a **clickable annotation** in the PDF (on the cover and problem slides). Use `.set_url()` on the text object — matplotlib's PDF backend embeds a standard `/URI` action:
+
+```python
+t = ax.text(x, fy(y), "platform.stratascratch.com/coding/{id}",
+            ha="center", va="top", fontsize=9, fontfamily=FC, color=MUTE)
+t.set_url("https://platform.stratascratch.com/coding/{full-slug}?code_type=1")
+```
+
+This works even with `matplotlib.use("Agg")` because `PdfPages` writes via `backend_pdf` directly.
+
+### Email CTA
+
+Slide 6 and slide 7 of every carousel end with a two-line closing block (script font + mono font):
+
+- Line 1 (script, crimson): `follow for more SQL problems`
+- Line 2 (mono, muted): `questions? nivanrs@gmail.com`
+
+The email text must also be clickable. Use `.set_url("mailto:nivanrs@gmail.com")` on the text object — PDF readers open the mail client on click:
+
+```python
+_email = ax.text(...)
+_email.set_url("mailto:nivanrs@gmail.com")
+```
+
+Wording is fixed — do not vary it. "questions?" is intentional: it implies the reader had a reaction, and the email address lands last as the emphatic word (Strunk rule 18).
 
 ### Color constants
 ```python
@@ -208,11 +237,12 @@ CODE = "#F2E8D5"   # Code block background — slightly darker cream
 
 ## Key Facts
 
-- 33 posts total (all indexed in `posts/index.md`)
+- 34 posts total (all indexed in `posts/index.md`)
 - Post #11 (`person_with_most_oscars`) file is dated `2026-03-23` but index still shows `—` for posted date (URN unknown)
 - `2026-03-30_facebook_accounts.md` — current file for post #1 (Facebook Accounts); carousel PDF at `posts/media/pdfs/2026-03-30_facebook_accounts.pdf`
 - **Legacy PDFs** (pre-2026-03-30, dark/cyan Canva style) are deprecated — do not replicate that aesthetic
 - `.playwright-mcp/` is gitignored — created when scraping LinkedIn via Playwright MCP
+- **Standard email CTA**: slides 6 and 7 of every carousel close with `follow for more SQL problems` (script, crimson) + `questions? nivanrs@gmail.com` (mono, muted) — wording is fixed
 
 ## Package Manager & Runtime
 
