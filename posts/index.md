@@ -36,3 +36,4 @@ All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).
 | 30 | Percentage of Shipable Orders | StrataScratch #10090 | 2026-04-20 | [2026-04-20_percentage_of_shipable_orders.md](2026-04-20_percentage_of_shipable_orders.md) | [📄](media/pdfs/2026-04-20_percentage_of_shipable_orders.pdf) |
 | 31 | Income By Title and Gender | StrataScratch #10077 | 2026-04-26 | [2026-04-26_income_by_title_and_gender.md](2026-04-26_income_by_title_and_gender.md) | [📄](media/pdfs/2026-04-26_income_by_title_and_gender.pdf) |
 | 32 | Top Cool Votes | StrataScratch #10060 | 2026-05-04 | [2026-05-04_top_cool_votes.md](2026-05-04_top_cool_votes.md) | [📄](media/pdfs/2026-05-04_top_cool_votes.pdf) |
+| 33 | Reviews of Categories | StrataScratch #10049 | — | [2026-05-11_reviews_of_categories.md](2026-05-11_reviews_of_categories.md) | [📄](media/pdfs/2026-05-11_reviews_of_categories.pdf) |

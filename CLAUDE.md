@@ -131,12 +131,86 @@ Return feedback in this order:
    - **Posted date**: decode from LinkedIn URN with `urn >> 22` to get Unix ms timestamp (`datetime.fromtimestamp((urn >> 22) / 1000, tz=timezone.utc)`)
    - PDF link: `[📄](media/pdfs/{filename}.pdf)` or `—`
 
+## Carousel PDF Generation
+
+All new carousels are generated with Python/matplotlib. Reusable scripts are saved to `/tmp/gen_{slug}.py`.
+
+### Font setup (MUST come before any `plt` call)
+
+Brand fonts live in the repo at `posts/media/brand-guidelines/fonts/`. Register them every session:
+
+```python
+import matplotlib.font_manager as fm, os
+
+FONT_DIR = (r"C:\Users\nramadha\OneDrive - The Dairy Farm Company Ltd"
+            r"\new_code\sql_practise\posts\media\brand-guidelines\fonts")
+for _fn in ["BigShouldersDisplay-Bold.ttf", "InstrumentSans-Regular.ttf",
+            "InstrumentSans-Bold.ttf", "NothingYouCouldDo-Regular.ttf",
+            "JetBrainsMono-Regular.ttf"]:
+    fp = os.path.join(FONT_DIR, _fn)
+    if os.path.exists(fp):
+        fm.fontManager.addfont(fp)
+
+FD = "Big Shoulders Display"   # Display headlines
+FB = "Instrument Sans"         # Body / subheading
+FS = "Nothing You Could Do"    # Script accent
+FC = "JetBrains Mono"          # Code blocks
+```
+
+### Canvas setup (critical — do NOT use `plt.subplots()`)
+
+```python
+W, H = 10.8, 10.8
+
+def new_slide():
+    fig = plt.figure(figsize=(W, H))
+    fig.patch.set_facecolor(GND)
+    ax = fig.add_axes([0, 0, 1, 1])   # fills 100% of figure — NO margins
+    ax.set_facecolor(GND)
+    ax.set_xlim(0, W); ax.set_ylim(0, H)
+    ax.axis("off")
+    return fig, ax
+
+def save(pdf, fig):
+    pdf.savefig(fig, facecolor=GND)   # NO bbox_inches — preserves exact canvas
+    plt.close(fig)
+```
+
+Common mistakes that break layout:
+- Using `plt.subplots()` or `plt.subplot()` — adds internal margins
+- Using `bbox_inches="tight"` — crops canvas to content, destroys all proportions
+- Running the script from git bash — causes fatal errors on this machine
+
+### Running carousel scripts
+
+Always run via PowerShell, never git bash:
+```
+powershell -Command "python 'C:\tmp\gen_{slug}.py'"
+```
+
+### Reference layout
+
+Match `posts/media/pdfs/2026-05-04_top_cool_votes.pdf` for all design decisions:
+- Section headers: Impact (Big Shoulders Display) fs=88, crimson, va="top" — **no** vertical bar on content slides
+- Cover: title centered (ha="center", x=W/2), thin left crimson bar at x≈0.742
+- Author pill: CENTERED at bottom (`px = (W - pw) / 2`)
+- Script CTA "follow for daily SQL": CENTERED on slide 6
+- Code block: FancyBboxPatch rounded corners, CODE_LH=0.50, calibrate char width with renderer probe
+- Slide 5 header: two-line Impact stack in ACC and AUTH
+
+### Color constants
+```python
+GND  = "#FBF3E4"   # Ground — warm cream background
+AUTH = "#161616"   # Authority — near-black
+ACC  = "#B91646"   # Accent — crimson
+CODE = "#F2E8D5"   # Code block background — slightly darker cream
+```
+
 ## Key Facts
 
-- 26 posts total (24 indexed + 2 pending index entries: `finding_purchases.md`, `number_of_units_per_nationality.md`)
+- 33 posts total (all indexed in `posts/index.md`)
 - Post #11 (`person_with_most_oscars`) file is dated `2026-03-23` but index still shows `—` for posted date (URN unknown)
 - `2026-03-30_facebook_accounts.md` — current file for post #1 (Facebook Accounts); carousel PDF at `posts/media/pdfs/2026-03-30_facebook_accounts.pdf`
-- **Carousel generation**: all new PDFs use Python/matplotlib (`PdfPages`, `figsize=(10.8, 10.8)`, Warm Authority fonts); reusable scripts saved to `/tmp/gen_{slug}.py`
 - **Legacy PDFs** (pre-2026-03-30, dark/cyan Canva style) are deprecated — do not replicate that aesthetic
 - `.playwright-mcp/` is gitignored — created when scraping LinkedIn via Playwright MCP
 

@@ -31,3 +31,16 @@ The philosophy demands that technical information wear the same aesthetic as emo
   - **Horizontal rules** — section dividers, page top/bottom borders
   - **Crimson vertical bar** — left-aligned, precedes every section heading; consistent weight and height across all sections
 - **Rhythm**: Generous vertical breathing room; horizontal margins held constant; text never crowds
+
+## Font Files
+
+All brand fonts are stored in the repo at `posts/media/brand-guidelines/fonts/`.
+
+| Role | matplotlib name | File |
+|------|----------------|------|
+| Display (headlines) | `Big Shoulders Display` | `BigShouldersDisplay-Bold.ttf` |
+| Body | `Instrument Sans` | `InstrumentSans-Regular.ttf`, `InstrumentSans-Bold.ttf` |
+| Script | `Nothing You Could Do` | `NothingYouCouldDo-Regular.ttf` |
+| Code | `JetBrains Mono` | `JetBrainsMono-Regular.ttf` |
+
+These fonts must be registered with `fm.fontManager.addfont()` at the start of every carousel script before any `plt` call. See `CLAUDE.md` → "Carousel PDF Generation" for the full setup block.

@@ -1,0 +1,48 @@
+## 💻 SQL of the Day: Reviews of Categories
+🔗 https://platform.stratascratch.com/coding/10049-reviews-of-categories?code_type=1
+
+### Problem:
+Find the **total number of reviews** for each business category in the Yelp dataset. Return the **category name** and the **total review count**, ordered from highest to lowest.
+
+---
+
+### 🧠 SQL Solution
+```sql
+WITH split_category AS (
+    SELECT
+        UNNEST(STRING_TO_ARRAY(categories, ';')) AS category,
+        review_count
+    FROM yelp_business
+)
+
+SELECT
+    category,
+    SUM(review_count) AS no_of_reviews
+FROM split_category
+GROUP BY 1
+ORDER BY 2 DESC;
+```
+
+---
+
+### 🧩 Simple logic breakdown
+- **The problem**: each row in `yelp_business` stores multiple categories as a single semicolon-delimited string (e.g. `"Restaurants;Bars;Nightlife"`). Running `GROUP BY categories` here treats `"Restaurants;Bars"` and `"Bars;Restaurants"` as two separate categories. Not one review lands in the right bucket.
+- **`STRING_TO_ARRAY(categories, ';')`**: splits the string on the semicolon delimiter and returns a PostgreSQL array. Each element in the array is one category.
+- **`UNNEST(...)`**: expands that array into individual rows. One business belonging to three categories becomes three rows, each carrying its original `review_count`.
+- **`SUM(review_count)` after `GROUP BY category`**: aggregates across all those exploded rows. Every category receives the total review weight from every business that listed it.
+
+---
+
+### 📊 This pattern tells you:
+- **Delimited strings hide real multiplicity**: a business listed under `"Restaurants;Bars;Nightlife"` contributes to three categories simultaneously. Without splitting first, that cross-membership is invisible to any aggregation.
+- **`GROUP BY` cannot see inside a string**: it treats the entire value as a single opaque key. Two categories packed into one row go uncounted as separate entities unless you explode them first.
+- **This pattern appears in many real systems**: product tags, user roles, content genres, permission sets. Anywhere multiple values are stored in one column, expand-then-aggregate applies.
+
+---
+
+### 🎯 Key takeaways
+1. When a column stores multiple values as a delimited string, `GROUP BY` on that column will miscount. Split first, then aggregate.
+2. In PostgreSQL, the correct pattern is two functions in sequence: `STRING_TO_ARRAY` converts the string to an array; `UNNEST` expands that array into rows. Each has one job and they cannot be swapped.
+3. This is not a Yelp-specific edge case. Any system storing multi-value data in a single column (tags, categories, roles, genres as delimited strings or JSON arrays) requires the same expand-before-aggregate approach.
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #PostgreSQL #StringFunctions #Yelp
