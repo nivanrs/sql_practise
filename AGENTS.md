@@ -74,14 +74,15 @@ All carousel PDFs use this design system.
 | Role | Value |
 |------|-------|
 | Background | `#FBF3E4` warm cream |
-| Text | `#1A1A1A` near-black |
+| Text | `#161616` near-black |
 | Accent | `#B91646` crimson |
-| Display font | Big Shoulders Bold |
-| Body font | Instrument Sans Regular |
-| Code font | JetBrains Mono |
-| Script font | Nothing You Could Do (crimson only) |
+| Display font | Big Shoulders Bold (all-caps, carousel scale 64–80pt) |
+| Subheading font | Instrument Sans Bold (labels/headings only, never prose) |
+| Body font | Instrument Sans Regular (carousel scale 11–14pt) |
+| Script font | Nothing You Could Do (crimson only, carousel scale 28–36pt) |
+| Code font | JetBrains Mono (carousel scale 10–12pt) |
 
-Motifs (exact, never improvised): three filled dots top-right, right arrow bottom-right, pill badge for author name, horizontal rules top and bottom.
+Motifs (exact, never improvised): three filled dots top-right, right arrow bottom-right, pill badge for author name, horizontal rules top and bottom, crimson vertical bar left-aligned before every section heading.
 
 Full spec: `posts/media/brand-guidelines/warm-authority.md`
 
@@ -94,7 +95,7 @@ https://www.canva.com/design/DAG-HWtEYj4/rK2Ae5G6JGPUfbNHnNcR-A/edit
 - Tool: Python + matplotlib (`PdfPages` backend)
 - Canvas: `figsize=(10.8, 10.8)`, `xlim/ylim=(0,1)`, `axis('off')`, `subplots_adjust(left=0,right=1,top=1,bottom=0)`
 - Save: `pdf.savefig(fig, dpi=150)` — no `bbox_inches`
-- Syntax highlighting colors: keywords `#B91646`, functions `#1A5FA8`, strings `#2A7A30`, identifiers `#1A1A1A`
+- Syntax highlighting colors: keywords `#B91646`, functions `#1A5FA8`, strings `#2A7A30`, identifiers `#161616`
 - Fonts directory: `/Users/nivanrs/.agents/skills/canvas-design/canvas-fonts/`
 - Save reusable script to `/tmp/gen_{slug}.py`
 
@@ -118,14 +119,39 @@ https://www.canva.com/design/DAG-HWtEYj4/rK2Ae5G6JGPUfbNHnNcR-A/edit
 
 ## Installed Skills
 
-| Skill | Scope | Purpose |
-|-------|-------|---------|
-| `humanizer` | project + global | Strip AI writing patterns from post text |
-| `writing-clearly-and-concisely` | project + global | Tighten prose before finalising |
-| `web-to-markdown` | project + global | Scrape StrataScratch/Codewars problem pages into markdown |
-| `commit-work` | project + global | Stage, commit, and push with smart messages |
-| `social-content` | project + global | LinkedIn-specific copy and hook writing |
-| `copy-editing` | project + global | Polish takeaways and logic breakdown sections |
-| `canvas-design` | project + global | Generate PDFs and PNGs from design systems |
-| `pdf` | project + global | Programmatic PDF manipulation (merge, extract, inspect) |
-| `playwright-cli` | project only | Browser automation for LinkedIn scraping |
+Skills in `.agents/skills/` are the primary set for this project. Invoke via the `Skill` tool.
+
+### Project skills (`.agents/skills/`)
+
+| Skill | Purpose |
+|-------|---------|
+| `humanizer` | Strip AI writing patterns from post text |
+| `writing-clearly-and-concisely` | Tighten prose before finalising |
+| `web-to-markdown` | Scrape StrataScratch/Codewars problem pages into markdown |
+| `commit-work` | Stage, commit, and push with smart Conventional Commit messages |
+| `social-content` | LinkedIn-specific copy and hook writing |
+| `copy-editing` | Polish takeaways and logic breakdown sections (7-sweep framework) |
+| `canvas-design` | Generate carousel PDFs and PNGs using Warm Authority brand |
+| `pdf` | Programmatic PDF manipulation (merge, extract, inspect) |
+| `playwright-cli` | Browser automation for LinkedIn scraping and URN extraction |
+
+### Global skills — relevant for this project
+
+| Skill | When to use |
+|-------|-------------|
+| `superpowers:brainstorming` | Before drafting a new post or designing a carousel |
+| `superpowers:writing-plans` | Before multi-step work (e.g. new platform adaptation, post series) |
+| `superpowers:verification-before-completion` | Before committing post + index + PDF together |
+
+### Global skills — marginal (situational only)
+
+| Skill | Condition |
+|-------|-----------|
+| `brand-color-psychology` | Only if Warm Authority palette is revisited from scratch |
+| `data-visualization` | Only if carousels become chart-forward rather than code-forward |
+| `storytelling-with-data` | Concept applies to "📊 This pattern tells you:" sections, but `copy-editing` (So What sweep) already covers this; only add if carousels gain actual charts |
+| `simplify` | Only for one-off Python carousel generation scripts |
+
+### Global skills — not relevant for this project
+
+`pptx`, `ppt-visual`, `scientific-slides`, `senior-data-scientist`, `senior-data-engineer`, `data-quality-frameworks`, `data-storytelling`, `brand-guidelines` (Anthropic brand only), `web-typography`, `minimalist-ui`, `frontend-design`, `ui-ux-pro-max`, `web-design-guidelines`, `web-design-reviewer`, `xlsx`, `claude-api`, `notebooklm`, `loop`, `superpowers:tdd`, `code-review:code-review`, `update-config`, `keybindings-help`, and registry skills (`pptx-presentation-builder`, `refero-design`, `visual-identity-direction`, `brand-typography-systems`, `revealjs-slides`, `slidev-styling`).

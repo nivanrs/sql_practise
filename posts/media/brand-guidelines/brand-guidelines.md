@@ -11,7 +11,7 @@
 | Role | Name | Hex | Usage |
 |---|---|---|---|
 | Background | Warm Cream | `#FBF3E4` | All slide backgrounds |
-| Primary Text | Near Black | `#1A1A1A` | Body copy, sub-labels |
+| Primary Text | Near Black | `#161616` | Body copy, sub-labels |
 | Accent / Highlight | Crimson | `#B91646` | Section headings, script CTA |
 | Surface Dark | Code Panel | `#1E1E1E` | Code block background |
 | Code Text | Soft White | `#E8E8E8` | Code body text |
@@ -42,6 +42,7 @@
 | Role | Canva / Google Font |
 |---|---|
 | T1 / T2 Hero & Section Headings | **Big Shoulders Bold** |
+| T3 Sub-labels / Subheadings | **Instrument Sans Bold** |
 | T3 Body | **Instrument Sans Regular** |
 | T4 Script CTA | **Nothing You Could Do** |
 | T6 Code | **JetBrains Mono** |
@@ -91,6 +92,7 @@
 | Horizontal rule lines | CTA slide, top and bottom | Thin single lines, full-width |
 | Bottom-right rule | Slides 1–4, bottom-right corner | Short line, acts as page marker |
 | Author badge / outline box | Title slide | Thin black border, cream fill, UPPERCASE label inside |
+| Crimson vertical bar | Left of every section heading | Consistent weight and height; never improvised |
 
 ### Code Block Styling
 - Dark panel (~60% of slide width on Solution slides)

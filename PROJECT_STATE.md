@@ -30,7 +30,7 @@ Posts #1–#17 and #23–#24 have no PDF. All new PDFs use the Warm Authority st
 
 ## Design System
 
-- **Current**: Warm Authority (cream `#FBF3E4`, crimson `#B91646`, near-black `#1A1A1A`)
+- **Current**: Warm Authority (cream `#FBF3E4`, crimson `#B91646`, near-black `#161616`)
 - **Legacy** (pre-2026-03-30): dark navy/cyan Canva style — deprecated, do not recreate
 - Carousel generator scripts saved to `/tmp/gen_{slug}.py` during session
 

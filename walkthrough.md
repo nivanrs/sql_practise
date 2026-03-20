@@ -86,14 +86,15 @@ Defined in [warm-authority.md](file:///Users/nivanrs/Library/Mobile%20Documents/
 | Role | Value |
 |------|-------|
 | Background | `#FBF3E4` warm cream |
-| Text | `#1A1A1A` near-black |
+| Text | `#161616` near-black |
 | Accent | `#B91646` crimson |
 | Display font | Big Shoulders Bold (ultra-condensed, all-caps) |
+| Subheading font | Instrument Sans Bold (labels and sub-level headings only) |
 | Body font | Instrument Sans Regular |
 | Code font | JetBrains Mono |
 | Script font | Nothing You Could Do (crimson only) |
 
-**Motifs** (exact, never improvised): three filled dots (top-right), right arrow (bottom-right), pill badge (author name), horizontal rules (top/bottom borders).
+**Motifs** (exact, never improvised): three filled dots (top-right), right arrow (bottom-right), pill badge (author name), horizontal rules (top/bottom borders), crimson vertical bar (left-aligned, precedes every section heading).
 
 **PDF generation**: Python + matplotlib, `PdfPages` backend, `figsize=(10.8, 10.8)`, 150 dpi. Scripts saved to `/tmp/gen_{slug}.py`. Fonts loaded from `/Users/nivanrs/.claude/skills/canvas-design/canvas-fonts/`.
 

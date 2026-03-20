@@ -49,7 +49,7 @@ No markdown syntax. Uses `→` for bullets, `•` for lists, `─────` d
 
 **3. Generate the carousel PDF** (`posts/media/pdfs/YYYY-MM-DD_{slug}.pdf`)
 
-6 slides: Cover, The Problem, The Solution, How It Works, This Pattern Tells You, Key Takeaways. Generated with Python + matplotlib using the Warm Authority design system (cream `#FBF3E4`, crimson `#B91646`, near-black `#1A1A1A`). Generator scripts saved to `/tmp/gen_{slug}.py`.
+6 slides: Cover, The Problem, The Solution, How It Works, This Pattern Tells You, Key Takeaways. Generated with Python + matplotlib using the Warm Authority design system (cream `#FBF3E4`, crimson `#B91646`, near-black `#161616`). Generator scripts saved to `/tmp/gen_{slug}.py`.
 
 **4. Update the index** (`posts/index.md`)
 
