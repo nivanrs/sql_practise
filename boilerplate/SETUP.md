@@ -21,9 +21,34 @@ This boilerplate gives you:
 5. **Add your first post** following `post_template.md`
 6. **Update `posts/index.md`** with your first entry
 
+```mermaid
+flowchart LR
+    A([Copy boilerplate]) --> B["Find & replace\n{{ placeholders }}"]
+    B --> C[Install skills]
+    C --> D["Delete examples/"]
+    D --> E[Add first post]
+    E --> F([Update index])
+```
+
 ## How to use this repo
 
 Once set up, every post follows the same five-step sequence. The AI agent (Claude Code with `CLAUDE.md` loaded) handles each step when you run it inside the repo directory.
+
+```mermaid
+flowchart TD
+    A([Write rough draft]) --> B[Paste into Claude Code]
+    B --> C[Agent saves raw draft]
+    C --> D[4-dimension coaching check]
+    D --> E{Ready?}
+    E -->|Revise| A
+    E -->|Confirm| F["Write .md post"]
+    F --> G["Write LinkedIn .txt"]
+    G --> H{Carousel needed?}
+    H -->|Yes| I[Generate PDF]
+    H -->|No| J[Update index]
+    I --> J([Done])
+    J([Done])
+```
 
 ### Step 0: Write a rough draft
 
@@ -61,6 +86,19 @@ Skip this step if you don't need a carousel for a given post.
 The agent appends a new row to `posts/index.md`. You need to supply the LinkedIn URN once the post is live — paste it in and the agent decodes the posted timestamp automatically.
 
 If you don't have the URN yet, leave the posted date as `—` and update it later.
+
+### File outputs per step
+
+```mermaid
+graph LR
+    S0["Step 0\nDraft"] -->|saves| F0["drafts/{slug}_raw.md\ndrafts/{slug}_critique.md"]
+    S1["Step 1\nPost"] -->|creates| F1["posts/YYYY-MM-DD_{slug}.md"]
+    S2["Step 2\nLinkedIn"] -->|creates| F2["linkedin/{slug}.txt"]
+    S3["Step 3\nCarousel"] -->|generates| F3["media/pdfs/{slug}.pdf"]
+    S4["Step 4\nIndex"] -->|appends row| F4["posts/index.md"]
+
+    S0 --> S1 --> S2 --> S3 --> S4
+```
 
 ---
 

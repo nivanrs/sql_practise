@@ -95,6 +95,23 @@ When the user provides a rough draft (in any language, any format), do this befo
 2. **Save the critique** to `posts/drafts/{slug}_critique.md` after running the coaching check
 3. **Run the coaching check** and give feedback on these four areas before touching the final post:
 
+```mermaid
+flowchart TD
+    A([Raw draft received]) --> B["Save verbatim\ndrafts/{slug}_raw.md"]
+    B --> C{4-Dimension Check}
+
+    C --> Q1["Hook\n{{COACHING_Q1_TITLE}}"]
+    C --> Q2["Logic\n{{COACHING_Q2_TITLE}}"]
+    C --> Q3["Insight\n{{COACHING_Q3_TITLE}}"]
+    C --> Q4["Takeaway\n{{COACHING_Q4_TITLE}}"]
+
+    Q1 & Q2 & Q3 & Q4 --> D["Save critique\ndrafts/{slug}_critique.md"]
+    D --> E["Return numbered feedback\n+ confirm prompt"]
+    E --> F{Ready to write?}
+    F -->|Yes| G([Write final post])
+    F -->|No| A
+```
+
 ### Coaching questions to answer per draft
 
 **{{COACHING_Q1_TITLE}}**

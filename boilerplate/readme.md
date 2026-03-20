@@ -18,6 +18,24 @@ posts/
     └── brand-guidelines/     # {{BRAND_NAME}} design system
 ```
 
+```mermaid
+graph TD
+    root["posts/"]
+    root --> idx["index.md\nmaster index"]
+    root --> post["YYYY-MM-DD_{slug}.md\nfull post"]
+    root --> drafts["drafts/"]
+    root --> linkedin["linkedin/"]
+    root --> media["media/"]
+
+    drafts --> raw["{slug}_raw.md\nraw draft"]
+    drafts --> crit["{slug}_critique.md\ncoaching feedback"]
+
+    linkedin --> txt["YYYY-MM-DD_{slug}.txt\nLinkedIn plain text"]
+
+    media --> pdfs["pdfs/\ncarousel PDFs"]
+    media --> brand["brand-guidelines/\ndesign system"]
+```
+
 ## Posts
 
 0 posts archived.
@@ -31,6 +49,14 @@ posts/
 ## Workflow
 
 Each post follows this sequence:
+
+```mermaid
+flowchart LR
+    A["0\nRough draft"] --> B["1\nMarkdown post\n.md"]
+    B --> C["2\nLinkedIn text\n.txt"]
+    C --> D["3\nCarousel PDF\n.pdf"]
+    D --> E["4\nIndex\nindex.md"]
+```
 
 **0. Write and save a rough draft** (`posts/drafts/{slug}_raw.md`)
 
