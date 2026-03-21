@@ -3,5 +3,18 @@
     "allow": [
       "Skill(humanizer)"
     ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"Session ended. If anything new came up, update memory/user.md, memory/preferences.md, memory/decisions.md, or memory/people.md.\"}'",
+            "shell": "bash"
+          }
+        ]
+      }
+    ]
   }
 }

@@ -7,7 +7,7 @@ A personal archive of weekly SQL practice problems posted on [LinkedIn](https://
 ```
 posts/
 ├── index.md                  # Full post index (chronological, oldest first)
-├── YYYY-MM-DD_{slug}.md      # One file per post (26 total)
+├── YYYY-MM-DD_{slug}.md      # One file per post
 ├── drafts/
 │   ├── {slug}_raw.md         # Raw draft exactly as written (any language)
 │   └── {slug}_critique.md    # Coaching feedback on the raw draft
@@ -20,7 +20,7 @@ posts/
 
 ## Posts
 
-26 posts archived, spanning **April 2025 – April 2026**.
+36 posts archived, spanning **April 2025 – June 2026**.
 
 → [View full post index](posts/index.md)
 
@@ -29,7 +29,8 @@ posts/
 | Apr – May 2025 | Aggregations, JOINs, regex, window functions |
 | Jun – Aug 2025 | Filtering, CTEs, inspection data, subqueries |
 | Dec 2025 – Feb 2026 | YoY comparisons, session analysis, freemium metrics |
-| Mar – Apr 2026 | Conditional counting, ranking, ratio analysis |
+| Mar – May 2026 | Conditional counting, ranking, ratio analysis, string expansion |
+| Jun 2026 | Subquery patterns, performance management |
 
 ## Workflow
 
@@ -45,15 +46,15 @@ Standard sections: Problem, SQL Solution, Simple logic breakdown, This pattern t
 
 **2. Write the LinkedIn plain text** (`posts/linkedin/YYYY-MM-DD_{slug}.txt`)
 
-No markdown syntax. Uses `→` for bullets, `•` for lists, `─────` dividers, bold Unicode for section headers. No dashes or em dashes in prose.
+Opens with a hook sentence (the failure scenario) before the post title. No markdown syntax. Uses `→` for bullets, `•` for lists, `─────` dividers, emoji + plain text for section headers. No dashes or em dashes in prose. No external links in the body — post the problem URL as the first comment after publishing.
 
 **3. Generate the carousel PDF** (`posts/media/pdfs/YYYY-MM-DD_{slug}.pdf`)
 
-6 slides: Cover, The Problem, The Solution, How It Works, This Pattern Tells You, Key Takeaways. Generated with Python + matplotlib using the Warm Authority design system (cream `#FBF3E4`, crimson `#B91646`, near-black `#161616`). Generator scripts saved to `/tmp/gen_{slug}.py`.
+7 slides: Cover, The Problem, The Solution, How It Works, This Pattern Tells You, Key Takeaways, CTA. Generated with Python + matplotlib using the Warm Authority design system (cream `#FBF3E4`, crimson `#B91646`, near-black `#161616`). Generator scripts saved to `/tmp/gen_{slug}.py`.
 
 **4. Update the index** (`posts/index.md`)
 
-Prepend a new row as `#1` and renumber all existing rows. Index is reverse-chronological. Posted date is decoded from the LinkedIn URN (`urn >> 22` gives Unix ms timestamp). Leave as `—` if the URN is unknown.
+Append a new row at the bottom and assign the next sequential number. Index is chronological — oldest post is #1, newest is last. Posted date is decoded from the LinkedIn URN (`urn >> 22` gives Unix ms timestamp). Leave as `—` if the URN is unknown.
 
 ## Design System
 

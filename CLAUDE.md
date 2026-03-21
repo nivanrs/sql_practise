@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session Memory (read this every session)
+
+At the start of every session, read these four files before doing anything else:
+
+- `memory/personality.md` — how to think and communicate when working with me (read this first)
+- `memory/user.md` — who I am, my role, context
+- `memory/preferences.md` — how I like things done
+- `memory/decisions.md` — key past decisions and their rationale
+- `memory/people.md` — relevant people and their roles
+
+At the end of every session (before the conversation closes), update any of these files that have new or changed information. Only write what is genuinely new — do not restate what is already there.
+
 ## What This Repo Is
 
 A personal archive of LinkedIn "SQL of the Day" posts. Each post is a SQL practice problem sourced from StrataScratch or Codewars. No build system, no tests — this is a content/documentation repo.
