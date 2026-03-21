@@ -84,6 +84,16 @@ Each post file follows this structure (header emoji is `💻`):
 
 Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, topic-specific tags at the end).
 
+## LinkedIn .txt Writing Skills (Mandatory)
+
+When writing any `posts/linkedin/*.txt` file, you MUST invoke these skills in sequence before finalizing the content:
+
+1. `writing-clearly-and-concisely` — apply Strunk's rules: cut filler, prefer active voice, favor short declarative sentences
+2. `humanizer` — strip AI-generated patterns, make the prose sound like a person wrote it
+3. `social-content` — optimize for LinkedIn reach: hook strength, readability, call-to-action placement
+
+Do not skip these even when revising an existing `.txt` file. Apply all three every time.
+
 ## Writing Style Rules
 
 - **No dashes or em dashes** in post prose. Never use `-` as a sentence separator and never use `—`. Use a colon, a period, or restructure the sentence instead.

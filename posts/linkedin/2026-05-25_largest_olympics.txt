@@ -1,0 +1,55 @@
+Two Olympics editions tied for the most athletes. LIMIT 1 picked one and dropped the other. The report looked fine. It was wrong.
+
+💻 SQL of the Day: Largest Olympics
+
+─────────────────────────────────
+
+Problem:
+
+Find the Olympics with the most distinct athletes. Return the name of the edition and the number of distinct athletes.
+
+─────────────────────────────────
+
+🧠 SQL Solution
+
+WITH Olymp AS (
+  SELECT games, COUNT(DISTINCT id) AS athletes
+  FROM olympics_athletes_events
+  GROUP BY games
+)
+SELECT *
+FROM Olymp
+WHERE athletes = (
+  SELECT MAX(athletes)
+  FROM Olymp
+);
+
+─────────────────────────────────
+
+🧩 Simple logic breakdown
+
+→ COUNT(DISTINCT id) counts unique athletes per Olympics. One person in three events is still one person.
+→ The subquery finds the single highest athlete count across all Olymipcs.
+→ WHERE athletes = (SELECT MAX(...)) keeps every Olympics at that peak, including ties.
+
+─────────────────────────────────
+
+📊 This pattern tells you:
+
+• ORDER BY athletes DESC LIMIT 1 returns one row when two editions tie. The second is dropped silently. No error. No warning. A stakeholder acts on whichever row SQL happened to return first.
+• Olympic participation fluctuates across decades. Boycotts, political crises, and global growth all shift attendance. Assuming a unique winner is an assumption, not a fact.
+• Conditional equality scales to any aggregation: revenue peaks, user records, or any top-value query where missing a tie produces a wrong answer.
+
+─────────────────────────────────
+
+🎯 Key takeaways
+
+1. Use COUNT(DISTINCT id) when one person can appear in multiple rows. Counting rows overcounts people. Counting distinct IDs counts people.
+2. Prefer WHERE athletes = (SELECT MAX(...)) over ORDER BY + LIMIT 1 when ties are possible. LIMIT 1 discards tied results and the output still looks correct.
+3. LIMIT 1 is not a bug detector. It returns clean, plausible output even when it drops valid data. The only defense is knowing ties can exist before you write the query.
+
+Have you ever caught a LIMIT 1 quietly dropping a tied result? What gave it away?
+
+─────────────────────────────────
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #Olympics
