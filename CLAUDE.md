@@ -36,6 +36,7 @@ Design philosophy: **Warm Authority** — warmth of invitation pressed against t
 Full spec: `posts/media/brand-guidelines/warm-authority.md` | PNG reference: `posts/media/brand-guidelines/brand-guidelines.png`
 
 ### Palette
+
 | Role | Hex | Usage |
 |------|-----|-------|
 | Ground | `#FBF3E4` | Background — warm cream, never white |
@@ -43,6 +44,7 @@ Full spec: `posts/media/brand-guidelines/warm-authority.md` | PNG reference: `po
 | Accent | `#B91646` | Section titles, script, emotional markers **only** |
 
 ### Typography
+
 | Role | Font | Notes |
 |------|------|-------|
 | Display | Big Shoulders Bold | Ultra-condensed, all-caps, architectural scale |
@@ -52,6 +54,7 @@ Full spec: `posts/media/brand-guidelines/warm-authority.md` | PNG reference: `po
 | Code | JetBrains Mono | Reduced weight, muted tone |
 
 ### Recurring Motifs (exact, never improvised)
+
 - **Three filled dots** — top-right, carousel position indicator
 - **Right-pointing arrow** — bottom-right navigation
 - **Pill badge** — cream fill + black stroke, frames author name
@@ -59,6 +62,7 @@ Full spec: `posts/media/brand-guidelines/warm-authority.md` | PNG reference: `po
 - **Crimson vertical bar** — left-aligned, precedes every section heading; consistent weight and height across all sections
 
 ### Principles
+
 - Space first: generous vertical breathing room, constant horizontal margins
 - Typography at two extremes only: monumental display OR quiet body — nothing in between
 - Crimson is directional, not decorative — fires only at moments of genuine importance
@@ -66,12 +70,12 @@ Full spec: `posts/media/brand-guidelines/warm-authority.md` | PNG reference: `po
 
 ## Presentation sample
 
-https://www.canva.com/design/DAG-HWtEYj4/rK2Ae5G6JGPUfbNHnNcR-A/edit
-
+<https://www.canva.com/design/DAG-HWtEYj4/rK2Ae5G6JGPUfbNHnNcR-A/edit>
 
 ## Post Markdown Format
 
 Each post file follows this structure (header emoji is `💻`):
+
 ```
 ## 💻 SQL of the Day: {Title}
 🔗 {LinkedIn shortlink or StrataScratch URL} — StrataScratch links must include `?code_type=1` (e.g. `https://platform.stratascratch.com/coding/10141-apple-product-counts?code_type=1`)
@@ -82,16 +86,24 @@ Each post file follows this structure (header emoji is `💻`):
 ```sql
 {query}
 ```
+
 ---
+
 ### 🧩 Simple logic breakdown
+
 {bullet breakdown}
 ---
-### 📊 This pattern tells you:
-{business context bullets}
+
+### 📊 This pattern tells you
+
+{business context bullets, what impact to the businss, can it used to maximise profit, revenue, cost saving, etc}
 ---
+
 ### 🎯 Key takeaways
+
 {bullets}
 {hashtags}
+
 ```
 
 Hashtag format: `#SQLoftheDay #SQL #{Source} #DataAnalytics ...` (3–8 tags, topic-specific tags at the end).
@@ -200,6 +212,7 @@ def save(pdf, fig):
 ```
 
 Common mistakes that break layout:
+
 - Using `plt.subplots()` or `plt.subplot()` — adds internal margins
 - Using `bbox_inches="tight"` — crops canvas to content, destroys all proportions
 - Running the script from git bash — causes fatal errors on this machine
@@ -207,6 +220,7 @@ Common mistakes that break layout:
 ### Running carousel scripts
 
 Always run via PowerShell, never git bash:
+
 ```
 powershell -Command "python 'C:\tmp\gen_{slug}.py'"
 ```
@@ -214,6 +228,7 @@ powershell -Command "python 'C:\tmp\gen_{slug}.py'"
 ### Reference layout
 
 Match `posts/media/pdfs/2026-05-04_top_cool_votes.pdf` for all design decisions:
+
 - Section headers: Impact (Big Shoulders Display) fs=88, crimson, va="top" — **no** vertical bar on content slides
 - Cover: title centered (ha="center", x=W/2), thin left crimson bar at x≈0.742
 - Author pill: CENTERED at bottom (`px = (W - pw) / 2`)
@@ -250,6 +265,7 @@ _email.set_url("mailto:nivanrs@gmail.com")
 Wording is fixed — do not vary it. "questions?" is intentional: it implies the reader had a reaction, and the email address lands last as the emphatic word (Strunk rule 18).
 
 ### Color constants
+
 ```python
 GND  = "#FBF3E4"   # Ground — warm cream background
 AUTH = "#161616"   # Authority — near-black
