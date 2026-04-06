@@ -1,0 +1,52 @@
+A word that appears once is noise. A word that appears a hundred times is a signal.
+
+💻 SQL of the Day: Word Count in Drafts
+
+Count how many times each word appears across all drafts in google_file_store. Output each word and its count, ordered by frequency descending.
+
+─────────────────────────────────
+
+🧠 SQL Solution
+
+with raw as (
+  select
+    LOWER(REGEXP_REPLACE(word, '[^a-zA-Z0-9]', '', 'g')) AS word
+    from google_file_store,
+    UNNEST(STRING_TO_ARRAY(contents, ' ')) AS word
+)
+
+select 
+    word, 
+    count(*) as occurrences
+from raw
+group by word
+order by 2 desc
+
+─────────────────────────────────
+
+🧩 Simple logic breakdown
+
+→ STRING_TO_ARRAY splits each document on spaces into an array of tokens
+→ UNNEST explodes that array so every token becomes its own row
+→ REGEXP_REPLACE strips punctuation so "word." and "word" don't count as two different words
+→ LOWER normalizes case so "Draft" and "draft" collapse into one
+→ COUNT then aggregates across the cleaned tokens
+
+─────────────────────────────────
+
+📊 This pattern tells you:
+
+• What vocabulary a team actually uses vs. what they intend to use
+• Where attention lives in a document corpus before any model touches the data
+• Whether documents are finished: heavy hedge words like "maybe" or "pending" signal unresolved decisions, not finished work
+• The same output feeds a wordcloud directly
+
+─────────────────────────────────
+
+🎯 Key takeaways
+
+1. Clean before you split. REGEXP_REPLACE on a full string is predictable. On a fragment after UNNEST, punctuation attached without a space survives.
+2. LOWER and REGEXP_REPLACE together are the minimum for any word frequency task. Either one alone still produces fragmented counts.
+3. Word frequency is a proxy for attention. What appears most is what people kept coming back to, regardless of what the document was supposed to cover.
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #TextAnalytics #StringProcessing #NLP

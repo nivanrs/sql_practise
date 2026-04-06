@@ -41,3 +41,4 @@ All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).
 | 35 | Largest Olympics | StrataScratch #9942 | — | [2026-05-25_largest_olympics.md](2026-05-25_largest_olympics.md) | [📄](media/pdfs/2026-05-25_largest_olympics.pdf) |
 | 36 | Highest Target Under Manager | StrataScratch #9905 | — | [2026-06-01_highest_target_under_manager.md](2026-06-01_highest_target_under_manager.md) | [📄](media/pdfs/2026-06-01_highest_target_under_manager.pdf) |
 | 37 | Best Selling Item | StrataScratch #10172 | — | [2026-06-08_best_selling_item.md](2026-06-08_best_selling_item.md) | [📄](media/pdfs/2026-06-08_best_selling_item.pdf) |
+| 38 | Word Count in Drafts | StrataScratch #9817 | — | [2026-06-15_word_count_in_drafts.md](2026-06-15_word_count_in_drafts.md) | — |
