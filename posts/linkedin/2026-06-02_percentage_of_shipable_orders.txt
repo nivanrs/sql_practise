@@ -1,0 +1,42 @@
+A paid order is not always a shippable order.
+
+💻 SQL of the Day: Percentage of Shipable Orders
+
+Problem: Find the percentage of orders that can actually be shipped. An order only counts as shippable when the customer's address is known.
+
+─────────────────────────────
+
+🧠 SQL Solution
+
+SELECT
+    100.0
+    * COUNT(CASE WHEN c.address IS NOT NULL THEN 1 END)
+    / COUNT(*) AS percent_shipable
+FROM orders AS o
+INNER JOIN customers AS c
+    ON o.cust_id = c.id;
+
+─────────────────────────────
+
+🧩 Logic Breakdown
+→ Join orders with customers so every order can be checked against the customer's address record.
+→ CASE WHEN counts only orders with valid addresses.
+→ Divide by COUNT(*) for total orders, multiply by 100.0 for percentage (floating-point division).
+
+Alternative: AVG((address IS NOT NULL)::INT) * 100 is more concise but less explicit.
+
+─────────────────────────────
+
+📊 Business Impact
+• Fulfillment readiness: Orders without addresses may look valid in the order table, but operations teams cannot ship them.
+• Cost control: Measuring this early helps teams avoid wasted picking, packing, routing, and customer support work.
+
+─────────────────────────────
+
+🎯 Key Takeaways
+1. Use COUNT(CASE WHEN ... THEN 1 END) / COUNT(*) for explicit percentage calculations.
+2. The 100.0 (not 100) ensures floating-point division, preventing integer truncation.
+
+💬 Would you use COUNT(CASE WHEN) or AVG(condition::INT)?
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #BusinessIntelligence #SupplyChainAnalytics

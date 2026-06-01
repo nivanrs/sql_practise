@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="950" viewBox="0 0 700 950">
+  <defs>
+    <style>
+      .terminal { fill: #FBF3E4; stroke: #161616; stroke-width: 2; }
+      .process { fill: #F2E8D5; stroke: #161616; stroke-width: 2; }
+      .decision { fill: #FBF3E4; stroke: #B91646; stroke-width: 3; }
+      .result { fill: #FBF3E4; stroke: #B91646; stroke-width: 3; }
+      .text { font-family: Arial, sans-serif; font-size: 16px; fill: #161616; text-anchor: middle; }
+      .small { font-family: Arial, sans-serif; font-size: 13px; fill: #161616; text-anchor: middle; }
+      .arrow { stroke: #161616; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .accent-arrow { stroke: #B91646; stroke-width: 2; fill: none; marker-end: url(#arrowhead-accent); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#161616"/>
+    </marker>
+    <marker id="arrowhead-accent" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#B91646"/>
+    </marker>
+  </defs>
+
+  <rect width="700" height="950" fill="#FBF3E4"/>
+
+  <!-- Title -->
+  <text x="350" y="35" class="text" style="font-size: 22px; font-weight: bold;">Percentage of Shipable Orders</text>
+
+  <!-- orders table (oval) -->
+  <ellipse cx="200" cy="100" rx="90" ry="35" class="terminal"/>
+  <text x="200" y="100" class="text">orders</text>
+  <text x="200" y="117" class="small">table</text>
+
+  <!-- customers table (oval) -->
+  <ellipse cx="500" cy="100" rx="90" ry="35" class="terminal"/>
+  <text x="500" y="100" class="text">customers</text>
+  <text x="500" y="117" class="small">table</text>
+
+  <!-- Arrows to JOIN -->
+  <path d="M 200 135 L 200 180 L 310 180" class="arrow"/>
+  <path d="M 500 135 L 500 180 L 390 180" class="arrow"/>
+
+  <!-- JOIN (diamond) -->
+  <path d="M 350 150 L 410 180 L 350 210 L 290 180 Z" class="decision"/>
+  <text x="350" y="178" class="small">INNER</text>
+  <text x="350" y="192" class="small">JOIN</text>
+
+  <!-- Arrow down -->
+  <path d="M 350 210 L 350 260" class="accent-arrow"/>
+
+  <!-- Check address (rectangle) -->
+  <rect x="220" y="260" width="260" height="70" class="process" rx="5"/>
+  <text x="350" y="285" class="text">Check address</text>
+  <text x="350" y="307" class="small">address IS NOT NULL</text>
+
+  <!-- Arrow down -->
+  <path d="M 350 330 L 350 380" class="arrow"/>
+
+  <!-- Cast to integer (rectangle) -->
+  <rect x="220" y="380" width="260" height="70" class="process" rx="5"/>
+  <text x="350" y="405" class="text">Cast to integer</text>
+  <text x="350" y="427" class="small">::INT (true→1, false→0)</text>
+
+  <!-- Arrow down -->
+  <path d="M 350 450 L 350 500" class="arrow"/>
+
+  <!-- Calculate average (rectangle with accent) -->
+  <rect x="220" y="500" width="260" height="70" class="result" rx="5"/>
+  <text x="350" y="525" class="text">Calculate average</text>
+  <text x="350" y="547" class="small">AVG(...) * 100</text>
+
+  <!-- Arrow down -->
+  <path d="M 350 570 L 350 620" class="accent-arrow"/>
+
+  <!-- Result (oval) -->
+  <ellipse cx="350" cy="660" rx="110" ry="35" class="result"/>
+  <text x="350" y="660" class="text" style="font-weight: bold;">percent_shipable</text>
+  <text x="350" y="677" class="small">percentage result</text>
+
+  <!-- Legend -->
+  <g transform="translate(50, 770)">
+    <text x="0" y="0" class="small" style="font-weight: bold; text-anchor: start;">Legend:</text>
+
+    <!-- Data source -->
+    <ellipse cx="40" cy="35" rx="35" ry="18" class="terminal"/>
+    <text x="90" y="40" class="small" style="text-anchor: start;">Data source / Result</text>
+
+    <!-- Join operation -->
+    <path d="M 25 70 L 55 85 L 25 100 L -5 85 Z" class="decision"/>
+    <text x="90" y="90" class="small" style="text-anchor: start;">Join operation</text>
+
+    <!-- Processing step -->
+    <rect x="10" y="120" width="60" height="30" class="process" rx="3"/>
+    <text x="90" y="140" class="small" style="text-anchor: start;">Processing step</text>
+  </g>
+</svg>
