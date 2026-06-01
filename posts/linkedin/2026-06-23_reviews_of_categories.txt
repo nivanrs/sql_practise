@@ -1,0 +1,48 @@
+Wrong approach. Wrong numbers.
+
+💻 SQL of the Day: Reviews of Categories
+
+Problem: Find the total number of reviews for each business category in the Yelp dataset. Return the category name and total review count, ordered highest to lowest.
+
+─────────────────────────────
+
+🧠 SQL Solution
+
+WITH split_category AS (
+    SELECT
+        UNNEST(STRING_TO_ARRAY(categories, ';')) AS category,
+        review_count
+    FROM yelp_business
+)
+
+SELECT
+    category,
+    SUM(review_count) AS no_of_reviews
+FROM split_category
+GROUP BY 1
+ORDER BY 2 DESC;
+
+─────────────────────────────
+
+🧩 Logic Breakdown
+→ STRING_TO_ARRAY(categories, ';') splits the semicolon string into a PostgreSQL array, one element per category.
+→ UNNEST() expands that array into rows: a business with three categories becomes three rows, each keeping its review_count.
+→ SUM(review_count) GROUP BY category totals reviews across every exploded row.
+
+─────────────────────────────
+
+📊 Business Impact
+• Category demand at a glance: totals per category show which segments (Restaurants, Bars, Nightlife) pull the most engagement, so marketing and partnerships know where to invest.
+• Cross-listed segments get undercounted: a business in three categories should feed all three. Miss the split and your "top category" report quietly understates the segments that span the most businesses.
+• Curation priorities: categories with low review counts surface where the catalog is thin or mistagged and needs editorial attention.
+
+─────────────────────────────
+
+🎯 Key Takeaways
+1. A delimited column miscounts under GROUP BY. Split first, then aggregate.
+2. STRING_TO_ARRAY builds the array; UNNEST turns it into rows. Two jobs, not interchangeable.
+3. The same pattern fits tags, roles, genres, and permission sets, not just Yelp.
+
+💬 Where have you hit multi-value columns like this?
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #PostgreSQL #StringFunctions #Yelp

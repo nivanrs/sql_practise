@@ -1,0 +1,50 @@
+Calculating total compensation in SQL is easy until some employees have multiple bonuses and others have none.
+
+💻 SQL of the Day: Income By Title and Gender
+
+Problem: Find the average total compensation (salary + bonus) by title and gender. Only include employees who received at least one bonus, and remember an employee can receive more than one.
+
+─────────────────────────────
+
+🧠 SQL Solution
+
+WITH cte_total_bonus AS (
+    SELECT
+        worker_ref_id,
+        SUM(bonus) AS total_bonus
+    FROM sf_bonus
+    GROUP BY worker_ref_id
+)
+SELECT
+    e.employee_title,
+    e.sex,
+    AVG(e.salary + b.total_bonus) AS average_compensation
+FROM sf_employee e
+INNER JOIN cte_total_bonus b
+    ON e.id = b.worker_ref_id
+GROUP BY 1, 2;
+
+─────────────────────────────
+
+🧩 Logic Breakdown
+→ Aggregate every bonus per employee first with SUM(bonus) GROUP BY worker_ref_id, so multiple bonus rows do not multiply the salary.
+→ The INNER JOIN to the bonus CTE drops anyone who never received a bonus, no WHERE clause needed.
+→ Average salary + total_bonus, grouped by title and sex.
+
+─────────────────────────────
+
+📊 Business Impact
+• Pay-equity exposure: average comp by title and gender is the first screen for a pay gap that carries legal and retention risk if ignored.
+• The average can hide it: two roles can share a mean while one masks a wide spread, so an equity call made on the average alone can clear a gap that is really there.
+• Benchmarking: role averages compared against market data flag where pay sits below market and retention risk is quietly building.
+
+─────────────────────────────
+
+🎯 Key Takeaways
+1. When a parent row has many child rows, aggregate the children in a CTE before joining, or the join inflates the parent value.
+2. INNER JOIN on the bonus table filters out non-bonus employees on its own.
+3. Averages hide spread. For equity work, also read the quartiles with percentile_cont().
+
+💬 Would you aggregate the bonus first, or join then aggregate?
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataEngineering #PostgreSQL

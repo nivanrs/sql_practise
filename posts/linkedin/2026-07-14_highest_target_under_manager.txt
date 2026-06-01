@@ -1,0 +1,44 @@
+Two employees tie for the highest target. Your query returns one. The other gets passed over for promotion. That is what LIMIT 1 does when you forget about ties.
+
+💻 SQL of the Day: Highest Target Under Manager
+
+Problem: Find the first name and target of the employee with the highest target among those reporting to manager_id = 13.
+
+─────────────────────────────
+
+🧠 SQL Solution
+
+SELECT first_name, target
+FROM salesforce_employees
+WHERE target = (
+    SELECT MAX(target)
+    FROM salesforce_employees
+    WHERE manager_id = 13
+)
+AND manager_id = 13;
+
+─────────────────────────────
+
+🧩 Logic Breakdown
+→ The subquery SELECT MAX(target) WHERE manager_id = 13 finds the highest target on that team.
+→ The outer query keeps every employee whose target equals that maximum.
+→ Filtering manager_id = 13 in both places stops a same-target employee from another team slipping in.
+→ Every tied top performer comes back, which LIMIT 1 would not do.
+
+─────────────────────────────
+
+📊 Business Impact
+• Performance visibility: see who carries the heaviest quota and may need support.
+• Compensation equity: when several people tie at the top, HR can check that pay and recognition match the workload.
+• Capacity planning: knowing the ceiling target sets realistic expectations when onboarding new reps or rebalancing the team.
+
+─────────────────────────────
+
+🎯 Key Takeaways
+1. Find the boundary value with MAX() in a subquery, then match it. This keeps ties that ORDER BY + LIMIT 1 would drop.
+2. When scoping to a group, apply the filter in both the subquery and the outer query.
+3. MAX() is deterministic. LIMIT 1 without ORDER BY is arbitrary, and with ORDER BY it still drops ties.
+
+💬 Subquery = MAX, or a window function, for top performers?
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #Subqueries #Salesforce #PerformanceManagement

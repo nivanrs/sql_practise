@@ -1,0 +1,48 @@
+You used the wrong ranking function. The query ran fine. The leaderboard was wrong.
+
+💻 SQL of the Day: Top Businesses with Most Reviews
+
+Problem: Find the top 5 businesses with the most reviews. Return the business name and total review count.
+
+─────────────────────────────
+
+🧠 SQL Solution
+
+WITH business_rank AS (
+    SELECT
+        business_id,
+        name,
+        SUM(review_count) AS review_count,
+        RANK() OVER (ORDER BY SUM(review_count) DESC) AS rnk
+    FROM yelp_business
+    GROUP BY business_id, name
+)
+
+SELECT name, review_count
+FROM business_rank
+WHERE rnk <= 5;
+
+─────────────────────────────
+
+🧩 Logic Breakdown
+→ SUM(review_count) grouped by business gives total reviews per business.
+→ RANK() OVER (ORDER BY total DESC) ranks them. Two businesses tied at rank 3 push the next to rank 5, not 4.
+→ WHERE rnk <= 5 keeps everyone in the top 5 positions, including any tied at the boundary.
+
+─────────────────────────────
+
+📊 Business Impact
+• Public leaderboards have to be fair: if two businesses tie for 5th, dropping one makes a business that earned its spot vanish from a ranking customers and partners actually see.
+• Spend follows the list: featured placement and partnership outreach get aimed at this top 5, so a silently truncated leaderboard points budget at the wrong accounts.
+• Competitive signal: a business tracking its own rank needs to know when it is tied with a rival, not just its raw position.
+
+─────────────────────────────
+
+🎯 Key Takeaways
+1. ROW_NUMBER() on a tied leaderboard is a silent bug: clean output, missing entries.
+2. RANK() is the right default for competitive top-N. Tied rows share a position and WHERE rnk <= 5 catches all of them.
+3. DENSE_RANK() is not a safe swap. It can return more rows than expected when ties sit above the cutoff.
+
+💬 RANK() or DENSE_RANK() for your top-N queries?
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #WindowFunctions #Ranking #Yelp

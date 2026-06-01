@@ -1,0 +1,49 @@
+My SQL query returned the correct result… but it was still wrong.
+
+💻 SQL of the Day: Top Cool Votes
+
+Problem: Find the review text with the highest number of cool votes. Return the business name and the review text.
+
+─────────────────────────────
+
+🧠 SQL Solution
+
+WITH rank_list AS (
+    SELECT
+        business_name,
+        review_text,
+        cool,
+        DENSE_RANK() OVER (ORDER BY cool DESC) AS rnk
+    FROM yelp_reviews
+)
+
+SELECT
+    business_name,
+    review_text
+FROM rank_list
+WHERE rnk = 1;
+
+─────────────────────────────
+
+🧩 Logic Breakdown
+→ DENSE_RANK() OVER (ORDER BY cool DESC) ranks every review, highest votes first.
+→ Ties share a rank: two reviews with 10 cool votes both get rank 1, not rank 1 and rank 2.
+→ WHERE rnk = 1 returns every top review, not one arbitrary row.
+
+─────────────────────────────
+
+📊 Business Impact
+• Content discovery: platforms surface "top" content with queries like this. Drop a tie and a valid recommendation never reaches users.
+• A tied business loses visibility it earned, and the product ends up recommending less-liked content while looking correct.
+• Editorial trust: a "most loved review" feature that shows one of several tied winners looks arbitrary the moment a reader spots an equal review left out.
+
+─────────────────────────────
+
+🎯 Key Takeaways
+1. ROW_NUMBER() forces unique numbers (1, 2, 3, 4) and silently drops tied rows.
+2. RANK() keeps ties but skips ranks (1, 1, 3, 4). DENSE_RANK() keeps ties with no gap (1, 1, 2, 3).
+3. For "all rows tied at the top," DENSE_RANK() works, and so does WHERE cool = (SELECT MAX(cool) FROM yelp_reviews).
+
+💬 Which ranking function bites you most often?
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #WindowFunctions #Ranking #Yelp

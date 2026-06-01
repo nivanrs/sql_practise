@@ -131,7 +131,7 @@ example:
 * **Step 2:** {Explain the filtering, joining, or main logic}
 * **Step 3:** {Explain the final aggregation or sorting}
 
-Also generate flowchart as SVG to explain the logic. Save it in same folder with name `{slug}_flowchart.svg` and embed it in the markdown file with `![Flowchart]({slug}_flowchart.svg)`.
+Also generate flowchart as excelidraw and render it as svg to explain the logic. Save it in same folder with name `{slug}_flowchart.svg` and embed it in the markdown file with `![Flowchart]({slug}_flowchart.svg)`.
 
 Flowchart requirements:
 - Use standard flowchart shapes: oval for start/end, diamond for decisions/joins, rectangle for processes

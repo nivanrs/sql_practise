@@ -1,0 +1,46 @@
+Two Olympics editions tied for the most athletes. LIMIT 1 picked one and dropped the other. The report looked fine. It was wrong.
+
+💻 SQL of the Day: Largest Olympics
+
+Problem: Find the Olympics with the most distinct athletes. Return the edition name and the number of distinct athletes.
+
+─────────────────────────────
+
+🧠 SQL Solution
+
+WITH Olymp AS (
+  SELECT games, COUNT(DISTINCT id) AS athletes
+  FROM olympics_athletes_events
+  GROUP BY games
+)
+SELECT *
+FROM Olymp
+WHERE athletes = (
+  SELECT MAX(athletes)
+  FROM Olymp
+);
+
+─────────────────────────────
+
+🧩 Logic Breakdown
+→ COUNT(DISTINCT id) GROUP BY games counts unique athletes per edition. One person in three events is still one athlete.
+→ The subquery SELECT MAX(athletes) returns the single highest count across all editions.
+→ WHERE athletes = (SELECT MAX(...)) keeps every edition at that peak, ties included.
+
+─────────────────────────────
+
+📊 Business Impact
+• Records get quoted: "most-attended Games" lands in media, sponsor decks, and planning models. If two editions tie and you publish one, the record is a coin flip.
+• Capacity planning leans on peaks: host cities size venues and budgets off historical highs, so missing a tied peak understates the real ceiling.
+• Trend analysis: comparing the largest edition across decades only holds up if every tied peak is counted, or the growth story rests on an arbitrary pick.
+
+─────────────────────────────
+
+🎯 Key Takeaways
+1. Use COUNT(DISTINCT id) when one entity spans many rows. Counting rows overcounts people.
+2. Prefer = (SELECT MAX(...)) over ORDER BY + LIMIT 1 when ties can exist.
+3. LIMIT 1 is not a bug detector. It returns clean output even while dropping valid data.
+
+💬 Ever caught LIMIT 1 quietly dropping a tie?
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #DataAnalyst #Olympics

@@ -1,0 +1,64 @@
+Before I wrote a single line of SQL, my manager and I had to agree on what "best-selling" actually means.
+
+💻 SQL of the Day: Best Selling Item
+
+Problem: Find the best-selling item for each month, where best-selling means the highest total amount paid. Output the month, item description, and total paid.
+
+─────────────────────────────
+
+🧠 SQL Solution
+
+WITH raw AS (
+    SELECT
+        EXTRACT(MONTH FROM invoicedate) AS month,
+        description,
+        unitprice * quantity AS total_paid
+    FROM online_retail
+    WHERE quantity > 0
+),
+agg AS (
+    SELECT
+        month,
+        description,
+        SUM(total_paid) AS total_paid
+    FROM raw
+    GROUP BY month, description
+),
+ranked AS (
+    SELECT
+        month,
+        description,
+        total_paid,
+        RANK() OVER (PARTITION BY month ORDER BY total_paid DESC) AS rnk
+    FROM agg
+)
+SELECT month, description, total_paid
+FROM ranked
+WHERE rnk = 1;
+
+─────────────────────────────
+
+🧩 Logic Breakdown
+→ WHERE quantity > 0 removes returns. Refunds are stored as negative quantities, and they can push a returned item to the top.
+→ unitprice * quantity gives revenue per row.
+→ SUM aggregates to revenue per item per month.
+→ RANK() OVER (PARTITION BY month ORDER BY total_paid DESC) ranks items inside each month and keeps ties.
+→ WHERE rnk = 1 returns the monthly winner, or winners if two items tie.
+
+─────────────────────────────
+
+📊 Business Impact
+• Inventory planning: spot which items peak in which months and pre-order stock before demand arrives.
+• Margin: if an item already leads the month, a discount cuts margin without adding demand.
+• Seasonal strategy: items that top the chart every year separate from one-time spikes, which shapes what stays in the core range.
+
+─────────────────────────────
+
+🎯 Key Takeaways
+1. Define "best-selling" before writing the query. Revenue and units sold can crown different winners.
+2. WHERE quantity > 0 removes refunds. Skip it and a heavily returned item can rank first by revenue.
+3. RANK() keeps ties. ORDER BY ... LIMIT 1 picks one arbitrarily and looks complete when it is not.
+
+💬 Do you rank by revenue or by units sold?
+
+#SQLoftheDay #SQL #StrataScratch #DataAnalytics #WindowFunctions #Ranking #RetailAnalytics
