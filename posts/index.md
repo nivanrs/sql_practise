@@ -33,12 +33,12 @@ All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).
 | 27 | Facebook Accounts | StrataScratch #10296 | 2026-03-30 | [2026-03-30_facebook_accounts.md](2026-03-30_facebook_accounts.md) | [📄](media/pdfs/2026-03-30_facebook_accounts.pdf) |
 | 28 | Apple Product Counts | StrataScratch #10141 | 2026-04-06 | [2026-04-06_apple_product_counts.md](2026-04-06_apple_product_counts.md) | [📄](media/pdfs/2026-04-06_apple_product_counts.pdf) |
 | 29 | Spam Posts | StrataScratch #10134 | 2026-04-13 | [2026-04-13_spam_posts.md](2026-04-13_spam_posts.md) | [📄](media/pdfs/2026-04-13_spam_posts.pdf) |
-| 30 | Percentage of Shipable Orders | StrataScratch #10090 | — | [2026-06-02_percentage_of_shipable_orders.md](2026-06-02_percentage_of_shipable_orders.md) | — |
-| 31 | Income By Title and Gender | StrataScratch #10077 | — | [2026-06-09_income_by_title_and_gender.md](2026-06-09_income_by_title_and_gender.md) | — |
-| 32 | Top Cool Votes | StrataScratch #10060 | — | [2026-06-16_top_cool_votes.md](2026-06-16_top_cool_votes.md) | — |
-| 33 | Reviews of Categories | StrataScratch #10049 | — | [2026-06-23_reviews_of_categories.md](2026-06-23_reviews_of_categories.md) | — |
-| 34 | Top Businesses with Most Reviews | StrataScratch #10048 | — | [2026-06-30_top_businesses_most_reviews.md](2026-06-30_top_businesses_most_reviews.md) | — |
-| 35 | Largest Olympics | StrataScratch #9942 | — | [2026-07-07_largest_olympics.md](2026-07-07_largest_olympics.md) | — |
-| 36 | Highest Target Under Manager | StrataScratch #9905 | — | [2026-07-14_highest_target_under_manager.md](2026-07-14_highest_target_under_manager.md) | — |
-| 37 | Best Selling Item | StrataScratch #10172 | — | [2026-07-21_best_selling_item.md](2026-07-21_best_selling_item.md) | — |
-| 38 | Word Count in Drafts | StrataScratch #9817 | — | [2026-07-28_word_count_in_drafts.md](2026-07-28_word_count_in_drafts.md) | — |
+| 30 | Percentage of Shipable Orders | StrataScratch #10090 | — | [2026-06-02_percentage_of_shipable_orders.md](2026-06-02_percentage_of_shipable_orders.md) | [📄](media/pdfs/2026-06-02_percentage_of_shipable_orders.pdf) |
+| 31 | Income By Title and Gender | StrataScratch #10077 | — | [2026-06-09_income_by_title_and_gender.md](2026-06-09_income_by_title_and_gender.md) | [📄](media/pdfs/2026-06-09_income_by_title_and_gender.pdf) |
+| 32 | Top Cool Votes | StrataScratch #10060 | — | [2026-06-16_top_cool_votes.md](2026-06-16_top_cool_votes.md) | [📄](media/pdfs/2026-06-16_top_cool_votes.pdf) |
+| 33 | Reviews of Categories | StrataScratch #10049 | — | [2026-06-23_reviews_of_categories.md](2026-06-23_reviews_of_categories.md) | [📄](media/pdfs/2026-06-23_reviews_of_categories.pdf) |
+| 34 | Top Businesses with Most Reviews | StrataScratch #10048 | — | [2026-06-30_top_businesses_most_reviews.md](2026-06-30_top_businesses_most_reviews.md) | [📄](media/pdfs/2026-06-30_top_businesses_most_reviews.pdf) |
+| 35 | Largest Olympics | StrataScratch #9942 | — | [2026-07-07_largest_olympics.md](2026-07-07_largest_olympics.md) | [📄](media/pdfs/2026-07-07_largest_olympics.pdf) |
+| 36 | Highest Target Under Manager | StrataScratch #9905 | — | [2026-07-14_highest_target_under_manager.md](2026-07-14_highest_target_under_manager.md) | [📄](media/pdfs/2026-07-14_highest_target_under_manager.pdf) |
+| 37 | Best Selling Item | StrataScratch #10172 | — | [2026-07-21_best_selling_item.md](2026-07-21_best_selling_item.md) | [📄](media/pdfs/2026-07-21_best_selling_item.pdf) |
+| 38 | Word Count in Drafts | StrataScratch #9817 | — | [2026-07-28_word_count_in_drafts.md](2026-07-28_word_count_in_drafts.md) | [📄](media/pdfs/2026-07-28_word_count_in_drafts.pdf) |

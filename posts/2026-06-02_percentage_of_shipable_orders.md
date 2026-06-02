@@ -41,7 +41,7 @@ INNER JOIN customers
 - Mathematically equivalent: AVG of 1s and 0s = COUNT(1s) / COUNT(all)
 - More concise but less explicit about what's being counted
 
-![Flowchart](percentage_of_shipable_orders_flowchart.svg)
+![Flowchart](2026-06-02_percentage_of_shipable_orders_flowchart.png)
 
 Editorial note: [percentage_of_shipable_orders_note.md](drafts/percentage_of_shipable_orders_note.md)
 

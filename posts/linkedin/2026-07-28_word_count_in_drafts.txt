@@ -1,52 +1,47 @@
-A word that appears once is noise. A word that appears a hundred times is a signal.
+Skip one cleaning step and "word." and "word" become two separate rows. Your top-words report fragments at every sentence boundary.
 
 💻 SQL of the Day: Word Count in Drafts
 
-Count how many times each word appears across all drafts in google_file_store. Output each word and its count, ordered by frequency descending.
+Problem: Find the number of times each word appears across all drafts in google_file_store. Output each word and its count, ordered by frequency descending.
 
-─────────────────────────────────
+─────────────────────────────
 
 🧠 SQL Solution
 
-with raw as (
-  select
-    LOWER(REGEXP_REPLACE(word, '[^a-zA-Z0-9]', '', 'g')) AS word
-    from google_file_store,
-    UNNEST(STRING_TO_ARRAY(contents, ' ')) AS word
+WITH raw AS (
+    SELECT LOWER(
+               REGEXP_REPLACE(word, '[^a-zA-Z0-9]', '', 'g')
+           ) AS word
+    FROM google_file_store,
+         UNNEST(STRING_TO_ARRAY(contents, ' ')) AS word
 )
+SELECT word, COUNT(*) AS occurrences
+FROM raw
+GROUP BY word
+ORDER BY 2 DESC;
 
-select 
-    word, 
-    count(*) as occurrences
-from raw
-group by word
-order by 2 desc
+─────────────────────────────
 
-─────────────────────────────────
+🧩 Logic Breakdown
+→ STRING_TO_ARRAY splits each draft on spaces; UNNEST explodes the array so every token becomes its own row.
+→ REGEXP_REPLACE strips punctuation so "word." and "word" stop counting as two words.
+→ LOWER normalizes case so "Draft" and "draft" collapse into one.
+→ COUNT(*) GROUP BY word aggregates the cleaned tokens, ordered by frequency.
 
-🧩 Simple logic breakdown
+─────────────────────────────
 
-→ STRING_TO_ARRAY splits each document on spaces into an array of tokens
-→ UNNEST explodes that array so every token becomes its own row
-→ REGEXP_REPLACE strips punctuation so "word." and "word" don't count as two different words
-→ LOWER normalizes case so "Draft" and "draft" collapse into one
-→ COUNT then aggregates across the cleaned tokens
+📊 Business Impact
+• Voice of the corpus: word frequency surfaces the vocabulary a team actually uses, exposing the themes that dominate the drafts rather than the ones leadership assumes are there.
+• Cheap signal before ML: a corpus where "blocked", "issue", or "pending" ranks near the top flags risk and sentiment before anyone builds a model.
+• Document health: drafts heavy with hedge words like "maybe", "consider", and "pending" point to unresolved decisions, not finished work.
 
-─────────────────────────────────
+─────────────────────────────
 
-📊 This pattern tells you:
+🎯 Key Takeaways
+1. Clean before you split. REGEXP_REPLACE on the token is predictable, but punctuation that runs into the next word with no space survives the split.
+2. LOWER and REGEXP_REPLACE together are the minimum normalization for any word-frequency task. Either one alone still fragments the counts.
+3. Word frequency is a proxy for attention. What people write most is what they are actually thinking about, whatever the document is supposed to cover.
 
-• What vocabulary a team actually uses vs. what they intend to use
-• Where attention lives in a document corpus before any model touches the data
-• Whether documents are finished: heavy hedge words like "maybe" or "pending" signal unresolved decisions, not finished work
-• The same output feeds a wordcloud directly
-
-─────────────────────────────────
-
-🎯 Key takeaways
-
-1. Clean before you split. REGEXP_REPLACE on a full string is predictable. On a fragment after UNNEST, punctuation attached without a space survives.
-2. LOWER and REGEXP_REPLACE together are the minimum for any word frequency task. Either one alone still produces fragmented counts.
-3. Word frequency is a proxy for attention. What appears most is what people kept coming back to, regardless of what the document was supposed to cover.
+💬 What is the first cleaning step you reach for on messy text?
 
 #SQLoftheDay #SQL #StrataScratch #DataAnalytics #TextAnalytics #StringProcessing #NLP
