@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Titanic Survivors and Non-Survivors"
+date: 2025-05-19
+---
+
 ## 💻 SQL of the Day: Titanic Survivors and Non-Survivors
 
 🔗 https://lnkd.in/g2tJVEkj

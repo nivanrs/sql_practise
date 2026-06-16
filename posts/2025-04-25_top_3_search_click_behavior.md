@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Top 3 Search Click Behavior"
+date: 2025-04-25
+---
+
 ## 💻 SQL of the Day: Top 3 Search Click Behavior
 
 Today's exercise dives into user behavior within search results. It's a great case for measuring both engagement and missed opportunities.

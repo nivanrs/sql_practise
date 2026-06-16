@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Top Businesses with Most Reviews"
+pdf: "/posts/media/pdfs/2026-06-30_top_businesses_most_reviews.pdf"
+---
+
 When two businesses tie for 5th place with identical review counts, does your query return both or arbitrarily pick one? The wrong approach silently drops valid leaderboard entries.
 
 ## 💻 SQL of the Day: Top Businesses with Most Reviews

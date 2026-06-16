@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Highest Energy Consumption"
+date: 2025-05-03
+---
+
 ## 💻 SQL of the Day: Highest Energy Consumption
 
 Today's challenge: Find the date with the highest total energy consumption across Meta's three regional data centers.

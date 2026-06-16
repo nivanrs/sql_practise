@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Users by Average Session Time"
+pdf: "/posts/media/pdfs/SQL%20of%20the%20Day%20(5%20Jan%202025"
+date: 2026-01-05
+---
+
 ## 💻 SQL of the Day: Users by Average Session Time
 
 🔗 https://lnkd.in/gqRqDh5k

@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Premium vs Freemium Downloads"
+pdf: "/posts/media/pdfs/SQL%20of%20the%20Day%20(2%20Feb%202026"
+date: 2026-02-02
+---
+
 ## 💻 SQL of the Day: Premium vs Freemium Downloads
 
 🔗 https://lnkd.in/gp-CQzWH

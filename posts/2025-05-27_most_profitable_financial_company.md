@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Most Profitable Financial Company in the World (and by Continent)"
+date: 2025-05-27
+---
+
 ## 💻 SQL of the Day: Most Profitable Financial Company in the World (and by Continent)
 
 Today's challenge comes from the Forbes Global 2010–2014 dataset. The goal is to find the most profitable financial company in the world.

@@ -1,3 +1,9 @@
+---
+layout: post
+title: "People by Age (10+ Members)"
+date: 2025-04-29
+---
+
 ## 💻 SQL of the Day: People by Age (10+ Members)
 
 Today's challenge: Identify age groups with at least 10 people.

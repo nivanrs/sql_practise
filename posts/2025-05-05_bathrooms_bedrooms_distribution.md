@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Bathrooms & Bedrooms Distribution"
+date: 2025-05-05
+---
+
 ## 💻 SQL of the Day: Bathrooms & Bedrooms Distribution
 
 A quick dive into comparing average vs. median listing sizes by city and property type.

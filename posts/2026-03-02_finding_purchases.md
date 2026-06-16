@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Finding Purchases"
+pdf: "/posts/media/pdfs/SQL%20of%20the%20Day%20(2%20March%202026"
+date: 2026-03-02
+---
+
 ## 💻 SQL of the Day: Finding Purchases
 
 🔗 https://platform.stratascratch.com/coding/10553-finding-purchases?code_type=1

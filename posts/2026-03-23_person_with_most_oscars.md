@@ -1,3 +1,8 @@
+---
+layout: post
+title: "Find the Genre of the Person with Most Oscar Wins"
+---
+
 ## 🎬 SQL of the Day: Find the Genre of the Person with the Most Oscar Wins
 
 🔗 [StrataScratch Problem #10171](https://platform.stratascratch.com/coding/10171-find-the-genre-of-the-person-with-the-most-number-of-oscar-winnings/solutions?code_type=1)

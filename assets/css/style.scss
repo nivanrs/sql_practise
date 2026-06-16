@@ -1,84 +1,314 @@
 ---
 ---
-@import "jekyll-theme-minimal";
-
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Instrument+Sans:wght@400;700&family=JetBrains+Mono&display=swap');
 
-/* Warm Authority Brand Overrides */
-
-body {
-  background-color: #FBF3E4;
-  color: #161616;
-  font-family: 'Instrument Sans', sans-serif;
-  line-height: 1.6;
+/* Variables */
+:root {
+  --wa-cream: #FBF3E4;
+  --wa-black: #161616;
+  --wa-crimson: #B91646;
+  
+  --font-display: 'Big Shoulders Display', sans-serif;
+  --font-body: 'Instrument Sans', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
 }
 
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--wa-cream);
+  color: var(--wa-black);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
-  color: #161616;
+  color: var(--wa-black);
 }
 
 h1 {
-  font-family: 'Big Shoulders Display', sans-serif;
+  font-family: var(--font-display);
   text-transform: uppercase;
-  font-size: 3.5rem;
+  font-size: 4rem;
   line-height: 1.1;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-top: 3rem;
   margin-bottom: 1rem;
 }
 
-h2, h3, h4 {
-  font-family: 'Instrument Sans', sans-serif;
-  font-weight: 700;
+h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+p, ul, ol {
+  margin-bottom: 1.5rem;
+}
+
+li {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 a {
-  color: #B91646;
+  color: var(--wa-crimson);
   text-decoration: none;
+  font-weight: bold;
 }
 
 a:hover {
   text-decoration: underline;
 }
 
-code, pre {
-  font-family: 'JetBrains Mono', monospace;
-  background-color: rgba(22, 22, 22, 0.05);
-  color: #161616;
+strong {
+  color: var(--wa-black);
+  font-weight: 700;
 }
 
-header {
-  border-bottom: 2px solid #161616;
-  padding-bottom: 2rem;
+/* Code */
+code, pre {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+}
+
+code {
+  background-color: rgba(22, 22, 22, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+pre {
+  background-color: #f0e6d3; /* Darker cream for contrast */
+  padding: 1.5rem;
+  border-left: 4px solid var(--wa-black);
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Header & Footer */
+.site-header {
+  padding: 2rem 0;
   margin-bottom: 3rem;
 }
 
-/* Custom visual motif: crimson vertical bar before section headings */
-h2::before, h3::before {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 1em;
-  background-color: #B91646;
-  margin-right: 12px;
-  vertical-align: text-bottom;
+.site-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: var(--wa-black);
+  text-decoration: none;
+  letter-spacing: 1px;
 }
 
-/* Override default link color in the wrapper */
-.wrapper a {
-  color: #B91646;
+.site-title:hover {
+  text-decoration: none;
+  color: var(--wa-crimson);
 }
 
-strong {
-  color: #161616;
+.site-footer {
+  margin-top: 5rem;
+  padding: 3rem 0;
+  border-top: 2px solid var(--wa-black);
+  text-align: center;
 }
 
-/* Custom Pill badge for author */
 .author-badge {
   display: inline-block;
-  background-color: #FBF3E4;
-  border: 2px solid #161616;
+  background-color: var(--wa-cream);
+  border: 2px solid var(--wa-black);
   border-radius: 50px;
   padding: 4px 16px;
   font-weight: bold;
   font-size: 0.9em;
+}
+
+/* Custom visual motif: crimson vertical bar */
+.page-content h2::before, .page-content h3::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 0.9em;
+  background-color: var(--wa-crimson);
+  margin-right: 12px;
+  vertical-align: baseline;
+  position: relative;
+  top: 2px;
+}
+
+/* Home Page */
+.home-hero {
+  margin-bottom: 4rem;
+  border-bottom: 2px solid var(--wa-black);
+  padding-bottom: 3rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  max-width: 600px;
   margin-bottom: 2rem;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.section-heading::before {
+  display: none !important;
+}
+
+/* Grid layout for posts */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.post-card {
+  display: block;
+  background-color: #fffaf0;
+  border: 2px solid var(--wa-black);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--wa-black);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  height: 100%;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 4px 0px var(--wa-black);
+  border-color: var(--wa-crimson);
+  text-decoration: none;
+}
+
+.post-date {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.post-card .post-title {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.read-more {
+  display: inline-block;
+  font-weight: bold;
+  color: var(--wa-crimson);
+  font-size: 0.95rem;
+}
+
+/* Post Page */
+.post-header {
+  margin-bottom: 3rem;
+}
+
+.post-meta {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.pdf-download-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #fffaf0;
+  border: 2px solid var(--wa-black);
+  border-left: 8px solid var(--wa-crimson);
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--wa-crimson);
+  color: var(--wa-cream) !important;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid var(--wa-crimson);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--wa-black);
+  border-color: var(--wa-black);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--wa-black) !important;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: 2px solid var(--wa-black);
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--wa-black);
+  color: var(--wa-cream) !important;
+  text-decoration: none;
+}
+
+.post-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--wa-black);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(22, 22, 22, 0.2);
+  text-align: left;
+}
+
+th {
+  border-bottom: 2px solid var(--wa-black);
+  font-weight: 700;
 }

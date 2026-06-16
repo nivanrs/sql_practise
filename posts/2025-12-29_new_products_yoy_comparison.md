@@ -1,3 +1,9 @@
+---
+layout: post
+title: "New Products (Year-over-Year Comparison)"
+date: 2025-12-29
+---
+
 ## 💻 SQL of the Day: New Products (Year-over-Year Comparison)
 
 🔗 https://lnkd.in/gTZSM9E6

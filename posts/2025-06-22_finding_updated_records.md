@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Finding Updated Records"
+date: 2025-06-22
+---
+
 ## 💻 SQL of the Day: Finding Updated Records
 
 🔗 https://lnkd.in/gSmuPbFN

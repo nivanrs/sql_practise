@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Apple Product Counts"
+pdf: "/posts/media/pdfs/2026-04-06_apple_product_counts.pdf"
+date: 2026-04-06
+---
+
 ## 💻 SQL of the Day: Apple Product Counts
 🔗 https://platform.stratascratch.com/coding/10141-apple-product-counts?code_type=1
 

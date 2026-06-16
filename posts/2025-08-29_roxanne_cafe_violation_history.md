@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Roxanne Cafe Violation History by Year"
+date: 2025-08-29
+---
+
 ## 💻 SQL of the Day: Roxanne Cafe Violation History by Year
 
 🔗 StrataScratch Problem #9728

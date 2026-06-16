@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Unique Users per Client per Month"
+date: 2025-04-27
+---
+
 ## 💻 SQL of the Day: Unique Users per Client per Month
 
 Today's exercise focuses on monitoring user engagement trends over time — an important aspect of product and client analytics.

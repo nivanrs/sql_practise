@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Churro Activity Dates (Inspection Failures)"
+date: 2025-08-26
+---
+
 ## 💻 SQL of the Day: Churro Activity Dates (Inspection Failures)
 
 🔗 StrataScratch Problem #9688

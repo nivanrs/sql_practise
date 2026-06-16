@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Most Lucrative Products"
+date: 2025-05-02
+---
+
 ## 💻 SQL of the Day: Most Lucrative Products
 
 Today's challenge: Find the top 5 most lucrative products in H1 2022.

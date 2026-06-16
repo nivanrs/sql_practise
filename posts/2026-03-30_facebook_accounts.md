@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Facebook Accounts"
+pdf: "/posts/media/pdfs/2026-03-30_facebook_accounts.pdf"
+date: 2026-03-30
+---
+
 ## 💻 SQL of the Day: Facebook Accounts
 
 🔗 https://platform.stratascratch.com/coding/10296-facebook-accounts?code_type=1

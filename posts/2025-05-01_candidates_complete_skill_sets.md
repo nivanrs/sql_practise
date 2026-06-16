@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Candidates with Complete Skill Sets"
+date: 2025-05-01
+---
+
 ## 💻 SQL of the Day: Candidates with Complete Skill Sets
 
 Today's challenge: Identify candidates who possess all three required skills — Python, Tableau, and PostgreSQL.

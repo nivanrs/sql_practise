@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Percentage of Shipable Orders"
+pdf: "/posts/media/pdfs/2026-06-02_percentage_of_shipable_orders.pdf"
+---
+
 A paid order is not always a shippable order.
 
 ## 💻 SQL of the Day: Percentage of Shipable Orders

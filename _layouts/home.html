@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="home-hero">
+    <h1>{{ site.title }}</h1>
+    <p class="subtitle">{{ site.description }}</p>
+    
+    <div class="hero-content">
+        {{ content }}
+    </div>
+</div>
+
+<h2 class="section-heading">All Posts</h2>
+
+<div class="post-grid">
+    {% for post in site.posts reversed %}
+    <a href="{{ post.url | relative_url }}" class="post-card">
+        <div class="post-card-content">
+            {% if post.date %}
+            <span class="post-date">{{ post.date }}</span>
+            {% endif %}
+            <h3 class="post-title">{{ post.title }}</h3>
+            <span class="read-more">Read Post &rarr;</span>
+        </div>
+    </a>
+    {% endfor %}
+</div>

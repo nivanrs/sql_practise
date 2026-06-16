@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Acceptance Rate by Date"
+pdf: "/posts/media/pdfs/SQL%20of%20the%20Day%20(19%20Jan%202025"
+date: 2026-01-19
+---
+
 ## 💻 SQL of the Day: Acceptance Rate by Date
 
 🔗 https://lnkd.in/g-nAiJfF

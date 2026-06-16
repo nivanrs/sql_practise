@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Highest Target Under Manager"
+pdf: "/posts/media/pdfs/2026-07-14_highest_target_under_manager.pdf"
+---
+
 When multiple salespeople tie for the highest target under the same manager, does your query show all of them or arbitrarily pick one for the performance report?
 
 ## 💻 SQL of the Day: Highest Target Under Manager

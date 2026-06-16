@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Spam Posts"
+pdf: "/posts/media/pdfs/2026-04-13_spam_posts.pdf"
+date: 2026-04-13
+---
+
 ## 💻 SQL of the Day: Spam Posts
 🔗 https://platform.stratascratch.com/coding/10134-spam-posts?code_type=1
 

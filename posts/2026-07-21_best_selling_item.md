@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Best Selling Item"
+pdf: "/posts/media/pdfs/2026-07-21_best_selling_item.pdf"
+---
+
 Negative quantities in transactional data are refunds, not sales. Without filtering them out, a heavily-returned item can rank first by revenue magnitude and break your entire monthly report.
 
 ## 💻 SQL of the Day: Best Selling Item

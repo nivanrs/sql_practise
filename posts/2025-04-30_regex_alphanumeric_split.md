@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Regex AlphaNumeric Split"
+date: 2025-04-30
+---
+
 ## 💻 SQL of the Day: Regex AlphaNumeric Split
 
 Continuing the "SQL of the Day" series — today's challenge is all about splitting alphanumeric strings into pure letters and digits.

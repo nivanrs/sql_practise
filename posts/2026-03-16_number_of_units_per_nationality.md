@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Number of Units per Nationality"
+date: 2026-03-16
+---
+
 ## 💻 SQL of the Day: Number of Units per Nationality
 
 🔗 https://platform.stratascratch.com/coding/10156-number-of-units-per-nationality?code_type=1

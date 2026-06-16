@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Number of Shipments per Month"
+date: 2025-04-28
+---
+
 ## 💻 SQL of the Day: Number of Shipments per Month
 
 Today's challenge: Calculate the number of unique shipments per month-year from Amazon.

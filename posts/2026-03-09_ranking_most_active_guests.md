@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Ranking Most Active Guests"
+date: 2026-03-09
+---
+
 ## 💻 SQL of the Day: Ranking Most Active Guests
 
 🔗 https://platform.stratascratch.com/coding/10159-ranking-most-active-guests?code_type=1

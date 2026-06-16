@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Finding Returning Users"
+pdf: "/posts/media/pdfs/SQL%20of%20the%20Day%20(26%20Jan%202025"
+date: 2026-01-26
+---
+
 ## 💻 SQL of the Day: Finding Returning Users
 
 🔗 https://lnkd.in/gJBXjHi3

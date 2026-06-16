@@ -1,3 +1,10 @@
+---
+layout: post
+title: "Highest Cost Orders"
+pdf: "/posts/media/pdfs/SQL%20of%20the%20Day%20(12%20Jan%202025"
+date: 2026-01-12
+---
+
 ## 💻 SQL of the Day: Highest Cost Orders
 
 🔗 https://lnkd.in/gK6QfpWu

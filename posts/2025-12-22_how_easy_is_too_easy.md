@@ -1,3 +1,9 @@
+---
+layout: post
+title: "How Easy Is Too Easy? (Compilation)"
+date: 2025-12-22
+---
+
 ## 💻 SQL of the Day: How Easy Is Too Easy?
 
 I worked on several easy SQL questions from StrataScratch recently. Here are the problems:

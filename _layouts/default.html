@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <!-- Warm Authority Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Instrument+Sans:wght@400;700&family=JetBrains+Mono&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+        <div class="container">
+            {{ content }}
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>A personal archive by <span class="author-badge">Nivan</span></p>
+        </div>
+    </footer>
+</body>
+</html>
