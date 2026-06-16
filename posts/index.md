@@ -1,3 +1,7 @@
+---
+layout: default
+title: Posts Index
+---
 # SQL of the Day — Post Index
 
 All posts scraped from [LinkedIn](https://www.linkedin.com/in/nivanrs/).

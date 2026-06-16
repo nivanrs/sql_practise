@@ -1,0 +1,11 @@
+title: SQL of the Day
+description: A personal archive of weekly SQL practice problems.
+theme: jekyll-theme-minimal
+markdown: kramdown
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - posts
