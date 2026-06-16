@@ -14,11 +14,12 @@ layout: default
 <h2 class="section-heading">All Posts</h2>
 
 <div class="post-grid">
-    {% for post in site.posts reversed %}
+    {% assign all_posts = site.pages | where_exp: "item", "item.path contains 'posts/' and item.title and item.path != 'posts/index.md'" | sort: "date" | reverse %}
+    {% for post in all_posts %}
     <a href="{{ post.url | relative_url }}" class="post-card">
         <div class="post-card-content">
             {% if post.date %}
-            <span class="post-date">{{ post.date }}</span>
+            <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
             {% endif %}
             <h3 class="post-title">{{ post.title }}</h3>
             <span class="read-more">Read Post &rarr;</span>
