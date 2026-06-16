@@ -2,6 +2,7 @@
 layout: post
 title: "Largest Olympics"
 pdf: "/posts/media/pdfs/2026-07-07_largest_olympics.pdf"
+date: 2026-07-07
 ---
 
 Olympic attendance fluctuates with boycotts, host politics, and global participation. If two editions tie for the highest athlete count, does your query show both or flip a coin?

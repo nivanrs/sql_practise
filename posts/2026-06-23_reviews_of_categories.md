@@ -2,6 +2,7 @@
 layout: post
 title: "Reviews of Categories"
 pdf: "/posts/media/pdfs/2026-06-23_reviews_of_categories.pdf"
+date: 2026-06-23
 ---
 
 A business listed under "Restaurants;Bars;Nightlife" contributes to three categories simultaneously. Running GROUP BY on that string treats it as one opaque value and miscounts everything.

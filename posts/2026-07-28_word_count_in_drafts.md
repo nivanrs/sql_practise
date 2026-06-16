@@ -2,6 +2,7 @@
 layout: post
 title: "Word Count in Drafts"
 pdf: "/posts/media/pdfs/2026-07-28_word_count_in_drafts.pdf"
+date: 2026-07-28
 ---
 
 Skip one cleaning step and "word." and "word" become two separate rows. Your top-words report quietly fragments at every sentence boundary.

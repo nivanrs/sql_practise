@@ -7,8 +7,4 @@ relative_links:
   enabled: true
   collections: true
 
-collections_dir: .
-collections:
-  posts:
-    output: true
-    permalink: /:collection/:name
+

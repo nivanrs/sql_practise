@@ -2,6 +2,7 @@
 layout: post
 title: "Top Cool Votes"
 pdf: "/posts/media/pdfs/2026-06-16_top_cool_votes.pdf"
+date: 2026-06-16
 ---
 
 When two reviews tie for the highest score, which one should your platform surface? The wrong ranking function silently drops one with no warning.

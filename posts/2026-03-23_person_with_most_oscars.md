@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Find the Genre of the Person with Most Oscar Wins"
+date: 2026-03-23
 ---
 
 ## 🎬 SQL of the Day: Find the Genre of the Person with the Most Oscar Wins

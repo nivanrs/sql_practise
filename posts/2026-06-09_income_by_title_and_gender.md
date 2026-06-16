@@ -2,6 +2,7 @@
 layout: post
 title: "Income By Title and Gender"
 pdf: "/posts/media/pdfs/2026-06-09_income_by_title_and_gender.pdf"
+date: 2026-06-09
 ---
 
 Compensation equity audits fail when you measure the wrong population. Here's how to calculate average total compensation by title and gender while correctly handling employees with multiple bonuses.
