@@ -14,7 +14,8 @@ layout: default
 <h2 class="section-heading">All Posts</h2>
 
 <div class="post-grid">
-    {% assign all_posts = site.pages | where_exp: "item", "item.path contains 'posts/' and item.date" | sort: "date" | reverse %}
+    {% assign posts_only = site.pages | where_exp: "item", "item.path contains 'posts/'" %}
+    {% assign all_posts = posts_only | where_exp: "item", "item.date != nil" | sort: "date" | reverse %}
     {% for post in all_posts %}
     <a href="{{ post.url | relative_url }}" class="post-card">
         <div class="post-card-content">
