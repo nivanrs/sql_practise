@@ -2,9 +2,6 @@
 layout: home
 title: Home
 ---
-# SQL of the Day
-
-A personal archive of weekly SQL practice problems posted on [LinkedIn](https://www.linkedin.com/in/nivanrs/). Problems are sourced from StrataScratch and Codewars.
 
 ## Structure
 
